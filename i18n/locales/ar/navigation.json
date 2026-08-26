@@ -1,0 +1,30 @@
+{
+  "title": "التنقل",
+  "mainMenu": "القائمة الرئيسية",
+  "openMenu": "فتح القائمة",
+  "closeMenu": "إغلاق القائمة",
+  "skipToContent": "الانتقال إلى المحتوى الرئيسي",
+  "items": {
+    "chat": "المحادثة",
+    "conversations": "المحادثات",
+    "settings": "الإعدادات",
+    "admin": "الإدارة",
+    "help": "المساعدة"
+  },
+  "userMenu": {
+    "profile": "الملف الشخصي",
+    "settings": "الإعدادات",
+    "signOut": "تسجيل الخروج",
+    "signedInAs": "مسجّل الدخول بوصفك"
+  },
+  "themeToggle": {
+    "label": "تبديل المظهر",
+    "light": "فاتح",
+    "dark": "داكن",
+    "system": "النظام"
+  },
+  "languageSelector": {
+    "label": "اختيار اللغة",
+    "currentLanguage": "اللغة الحالية"
+  }
+}

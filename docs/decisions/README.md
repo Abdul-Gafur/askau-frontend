@@ -1,0 +1,1 @@
+# Architecture Decision Records (ADRs)\n\nThis directory contains records of significant architectural decisions made during the development of AskAU.

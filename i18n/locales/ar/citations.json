@@ -1,0 +1,22 @@
+{
+  "title": "الاستشهادات",
+  "sources": "المصادر",
+  "source": "المصدر",
+  "viewSource": "عرض المصدر",
+  "openDocument": "فتح الوثيقة",
+  "noSources": "لا توجد مصادر مُستشهَد بها",
+  "citationNumber": "استشهاد {number}",
+  "documentType": {
+    "policy": "سياسة",
+    "procedure": "إجراء",
+    "sop": "إجراء تشغيل موحّد",
+    "guideline": "دليل توجيهي",
+    "manual": "دليل",
+    "circular": "منشور",
+    "faq": "أسئلة شائعة",
+    "report": "تقرير",
+    "other": "وثيقة"
+  },
+  "accessDenied": "ليس لديك صلاحية الوصول إلى هذه الوثيقة.",
+  "notAvailable": "هذه الوثيقة غير متاحة حالياً."
+}

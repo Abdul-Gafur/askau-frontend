@@ -1,0 +1,1 @@
+# Frontend Architecture\n\nThe frontend follows a feature-oriented architecture. Core abstractions include the `lib/api` service layer for all backend communication.

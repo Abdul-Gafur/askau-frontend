@@ -1,0 +1,22 @@
+{
+  "title": "Citations",
+  "sources": "Sources",
+  "source": "Source",
+  "viewSource": "Voir la source",
+  "openDocument": "Ouvrir le document",
+  "noSources": "Aucune source citée",
+  "citationNumber": "Citation {number}",
+  "documentType": {
+    "policy": "Politique",
+    "procedure": "Procédure",
+    "sop": "SOP",
+    "guideline": "Directive",
+    "manual": "Manuel",
+    "circular": "Circulaire",
+    "faq": "FAQ",
+    "report": "Rapport",
+    "other": "Document"
+  },
+  "accessDenied": "Vous n'avez pas accès à ce document.",
+  "notAvailable": "Ce document n'est pas disponible actuellement."
+}

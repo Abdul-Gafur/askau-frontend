@@ -1,0 +1,1 @@
+# Accessibility (WCAG)\n\nAskAU targets WCAG 2.2 AA compliance. All interactive elements must be keyboard accessible and properly labeled for screen readers.

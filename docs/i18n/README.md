@@ -1,0 +1,1 @@
+# Internationalization (i18n)\n\nAskAU supports English, French, Arabic, and Portuguese using `next-intl`.

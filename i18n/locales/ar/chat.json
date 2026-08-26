@@ -1,0 +1,31 @@
+{
+  "title": "محادثة AskAU",
+  "placeholder": "اطرح سؤالاً حول سياسات وإجراءات ووثائق الاتحاد الأفريقي...",
+  "send": "إرسال",
+  "sending": "جارٍ الإرسال...",
+  "newChat": "محادثة جديدة",
+  "clearChat": "مسح المحادثة",
+  "stopGenerating": "إيقاف الإنشاء",
+  "regenerate": "إعادة إنشاء الرد",
+  "copyMessage": "نسخ الرسالة",
+  "copiedMessage": "تم نسخ الرسالة",
+  "thinking": "AskAU يفكر...",
+  "typing": "AskAU يكتب...",
+  "welcomeTitle": "مرحباً بك في AskAU",
+  "welcomeSubtitle": "مساعدك الذكي للمعرفة في مفوضية الاتحاد الأفريقي",
+  "welcomeDescription": "اطرح أسئلة حول السياسات والإجراءات والوثائق الرسمية للاتحاد الأفريقي.",
+  "emptyChatHint": "ابدأ بطرح سؤال أدناه.",
+  "disclaimer": "يقدم AskAU إجابات مستندة إلى وثائق الاتحاد الأفريقي الرسمية. تحقق دائماً من المعلومات المهمة مع المصدر الأصلي.",
+  "comingSoon": "واجهة المحادثة قريباً",
+  "comingSoonDescription": "ستُنفَّذ واجهة محادثة AskAU في المرحلة الثانية.",
+  "messageRole": {
+    "user": "أنت",
+    "assistant": "AskAU",
+    "system": "النظام"
+  },
+  "feedback": {
+    "helpful": "كان هذا مفيداً",
+    "notHelpful": "لم يكن هذا مفيداً",
+    "submitted": "شكراً على ملاحظاتك"
+  }
+}

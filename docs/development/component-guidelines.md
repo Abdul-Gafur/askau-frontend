@@ -1,0 +1,1 @@
+# Component Guidelines\n\n- Separate server and client components\n- Keep components small and focused\n- Business logic belongs in hooks or service layers

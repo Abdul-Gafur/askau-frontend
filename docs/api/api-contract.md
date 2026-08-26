@@ -1,0 +1,1 @@
+# API Contract\n\nThe API contract is maintained via OpenAPI. Type safety is enforced by sharing types between the backend and frontend.

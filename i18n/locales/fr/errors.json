@@ -1,0 +1,20 @@
+{
+  "generic": "Une erreur inattendue s'est produite. Veuillez réessayer.",
+  "notFound": "Page introuvable",
+  "notFoundDescription": "La page que vous recherchez n'existe pas ou a été déplacée.",
+  "unauthorized": "Accès refusé",
+  "unauthorizedDescription": "Vous n'avez pas la permission d'accéder à cette ressource.",
+  "serverError": "Erreur serveur",
+  "serverErrorDescription": "Une erreur s'est produite de notre côté. Veuillez réessayer.",
+  "networkError": "Erreur réseau",
+  "networkErrorDescription": "Impossible de se connecter. Vérifiez votre connexion internet.",
+  "timeout": "Délai d'attente dépassé",
+  "rateLimited": "Trop de requêtes",
+  "authRequired": "Authentification requise",
+  "sessionExpired": "Votre session a expiré",
+  "sessionExpiredDescription": "Veuillez vous reconnecter pour continuer.",
+  "tryAgain": "Réessayer",
+  "goHome": "Aller à l'accueil",
+  "goBack": "Retourner",
+  "contactSupport": "Contacter le support"
+}

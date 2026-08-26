@@ -1,0 +1,1 @@
+# Supported Languages\n\n- English (en)\n- French (fr)\n- Arabic (ar) - RTL\n- Portuguese (pt)

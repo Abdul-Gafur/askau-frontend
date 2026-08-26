@@ -1,0 +1,1 @@
+# RTL Guidelines\n\nAlways use CSS logical properties (e.g., `margin-inline-start`, `padding-block`) instead of physical properties (`margin-left`, `padding-top`) to ensure correct rendering in Arabic.

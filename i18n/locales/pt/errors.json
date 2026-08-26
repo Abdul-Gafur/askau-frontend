@@ -1,0 +1,18 @@
+{
+  "generic": "Ocorreu um erro inesperado. Por favor, tente novamente.",
+  "notFound": "Página não encontrada",
+  "notFoundDescription": "A página que você procura não existe ou foi movida.",
+  "unauthorized": "Acesso negado",
+  "serverError": "Erro no servidor",
+  "networkError": "Erro de rede",
+  "networkErrorDescription": "Não foi possível conectar. Verifique sua conexão com a internet.",
+  "timeout": "Tempo limite da solicitação esgotado",
+  "rateLimited": "Muitas solicitações",
+  "authRequired": "Autenticação necessária",
+  "sessionExpired": "Sua sessão expirou",
+  "sessionExpiredDescription": "Por favor, faça login novamente para continuar.",
+  "tryAgain": "Tentar novamente",
+  "goHome": "Ir para o início",
+  "goBack": "Voltar",
+  "contactSupport": "Contactar suporte"
+}

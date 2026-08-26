@@ -1,0 +1,1 @@
+# Translation Guidelines\n\nNever hardcode user-facing strings. Always use the `useTranslations` hook from `next-intl`.

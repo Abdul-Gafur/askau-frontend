@@ -1,0 +1,31 @@
+{
+  "title": "AskAU Chat",
+  "placeholder": "Ask a question about AU policies, procedures, or documents...",
+  "send": "Send",
+  "sending": "Sending...",
+  "newChat": "New chat",
+  "clearChat": "Clear chat",
+  "stopGenerating": "Stop generating",
+  "regenerate": "Regenerate response",
+  "copyMessage": "Copy message",
+  "copiedMessage": "Message copied",
+  "thinking": "AskAU is thinking...",
+  "typing": "AskAU is typing...",
+  "welcomeTitle": "Welcome to AskAU",
+  "welcomeSubtitle": "Your AI-powered knowledge assistant for the African Union Commission",
+  "welcomeDescription": "Ask questions about AU policies, procedures, and official documents. All answers are grounded in approved AU knowledge sources.",
+  "emptyChatHint": "Start by asking a question below.",
+  "disclaimer": "AskAU provides answers based on approved AU documents. Always verify important information with the original source.",
+  "comingSoon": "Chat experience coming soon",
+  "comingSoonDescription": "The AskAU Chat interface will be implemented in Phase 2.",
+  "messageRole": {
+    "user": "You",
+    "assistant": "AskAU",
+    "system": "System"
+  },
+  "feedback": {
+    "helpful": "This was helpful",
+    "notHelpful": "This was not helpful",
+    "submitted": "Thank you for your feedback"
+  }
+}

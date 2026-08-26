@@ -1,0 +1,30 @@
+{
+  "title": "Navegação",
+  "mainMenu": "Menu principal",
+  "openMenu": "Abrir menu",
+  "closeMenu": "Fechar menu",
+  "skipToContent": "Ir para o conteúdo principal",
+  "items": {
+    "chat": "Chat",
+    "conversations": "Conversas",
+    "settings": "Configurações",
+    "admin": "Administração",
+    "help": "Ajuda"
+  },
+  "userMenu": {
+    "profile": "Perfil",
+    "settings": "Configurações",
+    "signOut": "Sair",
+    "signedInAs": "Conectado como"
+  },
+  "themeToggle": {
+    "label": "Alternar tema",
+    "light": "Claro",
+    "dark": "Escuro",
+    "system": "Sistema"
+  },
+  "languageSelector": {
+    "label": "Selecionar idioma",
+    "currentLanguage": "Idioma atual"
+  }
+}

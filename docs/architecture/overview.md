@@ -1,0 +1,1 @@
+# Architecture Overview\n\nAskAU is built on Next.js 15 (App Router). It acts purely as a UI layer, communicating with the AskAU Platform backend via REST APIs.

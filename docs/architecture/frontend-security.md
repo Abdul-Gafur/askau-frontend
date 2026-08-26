@@ -1,0 +1,1 @@
+# Frontend Security\n\nThe frontend handles UX-level security. The backend is the authoritative source for all authorization and data access controls.

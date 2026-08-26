@@ -1,0 +1,39 @@
+name: Build Verification
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build-verify:
+    name: Production Build Verification
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: "9"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
+      - run: pnpm install --frozen-lockfile
+      - name: Build (production)
+        run: pnpm build
+        env:
+          NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET || 'ci-placeholder-secret-min-32-chars-long' }}
+          ENTRA_CLIENT_ID: ${{ secrets.ENTRA_CLIENT_ID || 'ci-placeholder-client-id' }}
+          ENTRA_CLIENT_SECRET: ${{ secrets.ENTRA_CLIENT_SECRET || 'ci-placeholder-secret' }}
+          ENTRA_TENANT_ID: ${{ secrets.ENTRA_TENANT_ID || 'ci-placeholder-tenant' }}
+          NEXTAUTH_URL: "http://localhost:3000"
+          NEXT_PUBLIC_USE_MOCK_API: "false"
+      - name: Verify build output exists
+        run: |
+          test -d .next && echo "Build output found" || exit 1
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-${{ github.sha }}
+          path: .next/
+          retention-days: 3

@@ -1,0 +1,24 @@
+{
+  "title": "الإعدادات",
+  "sections": {
+    "appearance": "المظهر",
+    "language": "اللغة والمنطقة",
+    "notifications": "الإشعارات",
+    "privacy": "الخصوصية",
+    "accessibility": "إمكانية الوصول",
+    "about": "حول"
+  },
+  "theme": {
+    "label": "المظهر",
+    "description": "اختر نمط الألوان المفضل لديك",
+    "light": "فاتح",
+    "dark": "داكن",
+    "system": "النظام (اتباع الجهاز)"
+  },
+  "language": {
+    "label": "لغة الواجهة",
+    "description": "اختر لغة واجهة AskAU"
+  },
+  "saved": "تم حفظ الإعدادات",
+  "saveError": "فشل حفظ الإعدادات"
+}

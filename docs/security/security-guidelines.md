@@ -1,0 +1,1 @@
+# Security Guidelines\n\n- No secrets in client code\n- Sanitize all user inputs\n- Use CSP headers\n- Backend is the source of truth for authorization

@@ -1,0 +1,1 @@
+# Deployment\n\nAskAU is deployed as a Node.js application. Ensure all `NEXT_PUBLIC_` env vars are available at build time, and server secrets are available at runtime.

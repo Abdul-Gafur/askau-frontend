@@ -1,0 +1,1 @@
+# AskAU Documentation\n\nWelcome to the AskAU Frontend documentation. Please navigate through the folders for detailed architectural, security, and development guidelines.

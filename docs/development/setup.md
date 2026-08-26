@@ -1,0 +1,1 @@
+# Development Setup\n\n1. Clone repo\n2. `pnpm install`\n3. Copy `.env.example` to `.env.local`\n4. `pnpm dev`

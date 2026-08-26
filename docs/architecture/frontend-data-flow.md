@@ -1,0 +1,1 @@
+# Data Flow\n\nData flows from the Backend API -> `lib/api/client.ts` -> React Server Components / TanStack Query -> UI Components.

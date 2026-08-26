@@ -1,0 +1,1 @@
+# API Integration\n\nAll API calls are made through the central `ApiClient` which handles timeouts, retries, and token injection.

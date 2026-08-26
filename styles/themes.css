@@ -1,0 +1,114 @@
+/*
+ * AskAU Themes
+ * Light and dark color palettes
+ */
+
+:root {
+  /* --- Color: Background --- */
+  --background: oklch(0.99 0 0);
+  --background-subtle: oklch(0.97 0.005 250);
+  --foreground: oklch(0.15 0.02 260);
+
+  /* --- Color: Surface (cards, panels) --- */
+  --surface: oklch(1 0 0);
+  --surface-raised: oklch(0.98 0.005 250);
+  --surface-overlay: oklch(0.96 0.005 250);
+
+  /* --- Color: Primary (AU Blue-Green) --- */
+  --primary: oklch(0.45 0.18 205);
+  --primary-foreground: oklch(0.99 0 0);
+  --primary-hover: oklch(0.40 0.18 205);
+
+  /* --- Color: Secondary --- */
+  --secondary: oklch(0.92 0.01 250);
+  --secondary-foreground: oklch(0.25 0.02 260);
+
+  /* --- Color: Accent (AU Gold) --- */
+  --accent: oklch(0.72 0.14 75);
+  --accent-foreground: oklch(0.15 0.02 260);
+
+  /* --- Color: Muted --- */
+  --muted: oklch(0.94 0.008 250);
+  --muted-foreground: oklch(0.50 0.02 260);
+
+  /* --- Color: Destructive / Error --- */
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.99 0 0);
+
+  /* --- Color: Success --- */
+  --success: oklch(0.50 0.16 150);
+  --success-foreground: oklch(0.99 0 0);
+
+  /* --- Color: Warning --- */
+  --warning: oklch(0.72 0.14 75);
+  --warning-foreground: oklch(0.15 0.02 260);
+
+  /* --- Color: Info --- */
+  --info: oklch(0.55 0.14 240);
+  --info-foreground: oklch(0.99 0 0);
+
+  /* --- Color: Border / Ring --- */
+  --border: oklch(0.88 0.01 250);
+  --border-strong: oklch(0.75 0.02 250);
+  --input: oklch(0.88 0.01 250);
+  --ring: oklch(0.45 0.18 205);
+
+  /* --- Color: Sidebar --- */
+  --sidebar: oklch(0.22 0.04 220);
+  --sidebar-foreground: oklch(0.92 0.01 220);
+  --sidebar-border: oklch(0.30 0.04 220);
+  --sidebar-accent: oklch(0.30 0.04 220);
+  --sidebar-accent-foreground: oklch(0.98 0 0);
+  --sidebar-primary: oklch(0.45 0.18 205);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-muted-foreground: oklch(0.65 0.02 220);
+}
+
+.dark {
+  --background: oklch(0.12 0.02 260);
+  --background-subtle: oklch(0.15 0.02 260);
+  --foreground: oklch(0.95 0.01 260);
+
+  --surface: oklch(0.16 0.02 260);
+  --surface-raised: oklch(0.19 0.02 260);
+  --surface-overlay: oklch(0.22 0.02 260);
+
+  --primary: oklch(0.60 0.18 205);
+  --primary-foreground: oklch(0.12 0.02 260);
+  --primary-hover: oklch(0.65 0.18 205);
+
+  --secondary: oklch(0.22 0.02 260);
+  --secondary-foreground: oklch(0.90 0.01 260);
+
+  --accent: oklch(0.72 0.14 75);
+  --accent-foreground: oklch(0.12 0.02 260);
+
+  --muted: oklch(0.22 0.02 260);
+  --muted-foreground: oklch(0.60 0.02 260);
+
+  --destructive: oklch(0.65 0.22 25);
+  --destructive-foreground: oklch(0.12 0.02 260);
+
+  --success: oklch(0.60 0.16 150);
+  --success-foreground: oklch(0.12 0.02 260);
+
+  --warning: oklch(0.72 0.14 75);
+  --warning-foreground: oklch(0.12 0.02 260);
+
+  --info: oklch(0.65 0.14 240);
+  --info-foreground: oklch(0.12 0.02 260);
+
+  --border: oklch(0.28 0.02 260);
+  --border-strong: oklch(0.40 0.02 260);
+  --input: oklch(0.28 0.02 260);
+  --ring: oklch(0.60 0.18 205);
+
+  --sidebar: oklch(0.10 0.02 220);
+  --sidebar-foreground: oklch(0.90 0.01 220);
+  --sidebar-border: oklch(0.20 0.03 220);
+  --sidebar-accent: oklch(0.20 0.03 220);
+  --sidebar-accent-foreground: oklch(0.95 0 0);
+  --sidebar-primary: oklch(0.60 0.18 205);
+  --sidebar-primary-foreground: oklch(0.12 0.02 260);
+  --sidebar-muted-foreground: oklch(0.55 0.02 220);
+}

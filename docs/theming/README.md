@@ -1,0 +1,1 @@
+# Theming\n\nTheming is handled by Tailwind CSS v4 and `next-themes`.

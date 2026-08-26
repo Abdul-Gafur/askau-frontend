@@ -1,0 +1,24 @@
+{
+  "title": "Paramètres",
+  "sections": {
+    "appearance": "Apparence",
+    "language": "Langue et région",
+    "notifications": "Notifications",
+    "privacy": "Confidentialité",
+    "accessibility": "Accessibilité",
+    "about": "À propos"
+  },
+  "theme": {
+    "label": "Thème",
+    "description": "Choisissez votre thème de couleur préféré",
+    "light": "Clair",
+    "dark": "Sombre",
+    "system": "Système (suivre l'appareil)"
+  },
+  "language": {
+    "label": "Langue de l'interface",
+    "description": "Choisissez la langue de l'interface AskAU"
+  },
+  "saved": "Paramètres enregistrés",
+  "saveError": "Échec de l'enregistrement des paramètres"
+}

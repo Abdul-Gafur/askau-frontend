@@ -1,0 +1,1 @@
+# Dark Mode\n\nAll UI components must be tested in both light and dark modes. Use semantic color tokens (e.g., `bg-background`, `text-foreground`).

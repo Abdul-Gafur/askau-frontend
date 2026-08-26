@@ -1,0 +1,31 @@
+{
+  "title": "Chat AskAU",
+  "placeholder": "Faça uma pergunta sobre políticas, procedimentos ou documentos da UA...",
+  "send": "Enviar",
+  "sending": "Enviando...",
+  "newChat": "Novo chat",
+  "clearChat": "Limpar chat",
+  "stopGenerating": "Parar geração",
+  "regenerate": "Regenerar resposta",
+  "copyMessage": "Copiar mensagem",
+  "copiedMessage": "Mensagem copiada",
+  "thinking": "AskAU está pensando...",
+  "typing": "AskAU está digitando...",
+  "welcomeTitle": "Bem-vindo ao AskAU",
+  "welcomeSubtitle": "O seu assistente de conhecimento com IA para a Comissão da União Africana",
+  "welcomeDescription": "Faça perguntas sobre políticas, procedimentos e documentos oficiais da UA.",
+  "emptyChatHint": "Comece fazendo uma pergunta abaixo.",
+  "disclaimer": "O AskAU fornece respostas baseadas em documentos oficiais da UA. Sempre verifique informações importantes com a fonte original.",
+  "comingSoon": "Interface de chat em breve",
+  "comingSoonDescription": "A interface de chat do AskAU será implementada na Fase 2.",
+  "messageRole": {
+    "user": "Você",
+    "assistant": "AskAU",
+    "system": "Sistema"
+  },
+  "feedback": {
+    "helpful": "Isso foi útil",
+    "notHelpful": "Isso não foi útil",
+    "submitted": "Obrigado pelo seu feedback"
+  }
+}

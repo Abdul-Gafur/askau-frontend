@@ -1,0 +1,24 @@
+{
+  "title": "Configurações",
+  "sections": {
+    "appearance": "Aparência",
+    "language": "Idioma e Região",
+    "notifications": "Notificações",
+    "privacy": "Privacidade",
+    "accessibility": "Acessibilidade",
+    "about": "Sobre"
+  },
+  "theme": {
+    "label": "Tema",
+    "description": "Escolha o seu tema de cor preferido",
+    "light": "Claro",
+    "dark": "Escuro",
+    "system": "Sistema (seguir dispositivo)"
+  },
+  "language": {
+    "label": "Idioma da interface",
+    "description": "Escolha o idioma da interface do AskAU"
+  },
+  "saved": "Configurações salvas",
+  "saveError": "Falha ao salvar configurações"
+}

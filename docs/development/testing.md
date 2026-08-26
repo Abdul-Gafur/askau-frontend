@@ -1,0 +1,1 @@
+# Testing Strategy\n\n- Unit tests: Vitest\n- Integration tests: React Testing Library\n- E2E / Smoke tests: Playwright

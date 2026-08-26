@@ -1,0 +1,1 @@
+# Microsoft Entra ID Integration\n\nAuthentication is implemented using NextAuth.js configured with the Microsoft Entra ID (Azure AD) provider for the African Union Commission tenant.

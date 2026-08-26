@@ -1,0 +1,1 @@
+# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n## [Unreleased]\n- Initial project foundation setup

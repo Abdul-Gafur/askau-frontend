@@ -1,0 +1,20 @@
+{
+  "generic": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.",
+  "notFound": "الصفحة غير موجودة",
+  "notFoundDescription": "الصفحة التي تبحث عنها غير موجودة أو تم نقلها.",
+  "unauthorized": "تم رفض الوصول",
+  "unauthorizedDescription": "ليس لديك صلاحية الوصول إلى هذا المورد.",
+  "serverError": "خطأ في الخادم",
+  "serverErrorDescription": "حدث خطأ من جانبنا. يرجى المحاولة لاحقاً.",
+  "networkError": "خطأ في الشبكة",
+  "networkErrorDescription": "تعذّر الاتصال. تحقق من اتصالك بالإنترنت.",
+  "timeout": "انتهت مهلة الطلب",
+  "rateLimited": "طلبات كثيرة جداً",
+  "authRequired": "التحقق مطلوب",
+  "sessionExpired": "انتهت جلستك",
+  "sessionExpiredDescription": "يرجى تسجيل الدخول مرة أخرى للمتابعة.",
+  "tryAgain": "المحاولة مرة أخرى",
+  "goHome": "الذهاب إلى الصفحة الرئيسية",
+  "goBack": "الرجوع",
+  "contactSupport": "التواصل مع الدعم الفني"
+}

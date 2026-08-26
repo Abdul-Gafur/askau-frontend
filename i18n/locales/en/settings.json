@@ -1,0 +1,33 @@
+{
+  "title": "Settings",
+  "sections": {
+    "appearance": "Appearance",
+    "language": "Language & Region",
+    "notifications": "Notifications",
+    "privacy": "Privacy",
+    "accessibility": "Accessibility",
+    "about": "About"
+  },
+  "theme": {
+    "label": "Theme",
+    "description": "Choose your preferred color theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System (follow device)"
+  },
+  "language": {
+    "label": "Interface language",
+    "description": "Choose the language for the AskAU interface"
+  },
+  "accessibility": {
+    "reducedMotion": "Reduce motion",
+    "reducedMotionDescription": "Minimize animations and transitions"
+  },
+  "about": {
+    "version": "Version",
+    "buildDate": "Build date",
+    "environment": "Environment"
+  },
+  "saved": "Settings saved",
+  "saveError": "Failed to save settings"
+}

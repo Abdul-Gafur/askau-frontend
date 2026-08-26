@@ -1,0 +1,1 @@
+# Design Tokens\n\nColors, spacing, and typography are defined as CSS variables in `globals.css` and mapped to Tailwind utilities.

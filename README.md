@@ -53,7 +53,7 @@ This phase establishes:
 
 ## Prerequisites
 
-- Node.js 20+
+- Node.js 24+
 - pnpm 9+
 - A Microsoft Entra ID App Registration (for auth — optional in dev with mock mode)
 

@@ -5,7 +5,7 @@ This document outlines the workflow and requirements for contributing to the Ask
 ## 1. Repository Setup
 
 1. Clone the repository locally.
-2. Ensure you have **Node.js 20+** and **pnpm 9+** installed.
+2. Ensure you have **Node.js 24+** and **pnpm 9+** installed.
 3. Run `pnpm install` to install all dependencies.
 4. Duplicate `.env.example` to `.env.local` and configure your local variables. (Do not commit `.env.local`).
 
@@ -18,15 +18,6 @@ We use a **Git Flow** approach built around pull requests. Direct pushes to core
 - `feature/*`: New features or components (e.g., `feature/chat-input`). Include issue IDs when applicable (e.g., `feat/john/ASK-12-chat`).
 - `fix/*`: Bug fixes (e.g., `fix/sidebar-overflow`).
 - `docs/*`: Documentation updates.
-
-### Enforcing Branch Protection (Repository Admins)
-To strictly enforce this workflow on GitHub:
-1. Go to your repository **Settings** > **Branches**.
-2. Click **Add branch protection rule**.
-3. Set the **Branch name pattern** to `main` (and create a second rule for `develop`).
-4. Check **Require a pull request before merging**.
-5. Check **Require status checks to pass before merging** and require your CI checks (e.g., `typecheck`, `lint`, `test`, `build`).
-6. Check **Do not allow bypassing the above settings**.
 
 **Important Guidelines**:
 - **One screen/feature per branch, one branch per pull request.** Do not bundle multiple unrelated features into a single PR.

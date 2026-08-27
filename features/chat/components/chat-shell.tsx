@@ -62,6 +62,7 @@ export function ChatShell({ session, initialConvId }: ChatShellProps) {
     if (initialConvId) {
       const conv = SAMPLE_CONVERSATIONS.find((c) => c.id === initialConvId);
       if (conv) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setActiveConvId(initialConvId);
         setView("conversation");
         // Mock loading messages for this conversation

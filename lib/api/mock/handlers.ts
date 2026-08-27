@@ -3,7 +3,7 @@
  *
  * DEVELOPMENT AND TESTING ONLY.
  *
- * ⚠️  WARNING: This file is NEVER loaded in production.
+ * WARNING: This file is NEVER loaded in production.
  *   - isMockMode() returns false when NODE_ENV=production.
  *   - The API client lazy-loads this file only in dev/test.
  *   - Do NOT import this file directly from production code paths.

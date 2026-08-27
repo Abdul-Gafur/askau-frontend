@@ -34,6 +34,7 @@ export default function LoginPage() {
       id="main-content"
       className="flex min-h-screen flex-col items-center justify-center bg-background p-6"
     >
+    
 
       {/* Maira, Please design the login page here. Use the Dev-only Mock below to bypass the login page to access the chat interface*/}
 

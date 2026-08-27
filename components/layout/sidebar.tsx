@@ -134,7 +134,7 @@ export function AppSidebar({ open, onClose, session }: AppSidebarProps) {
                 <p className="mb-1 px-3 text-xs font-medium text-black dark:text-white">
                     {t("conversations.recents")}
                 </p>
-                <ul className="space-y-0.5" role="list">
+                <ul className="space-y-0.5">
                     {filtered.map((c) => (
                         <li key={c.id} className="group relative flex">
                             <Link
@@ -170,6 +170,12 @@ export function AppSidebar({ open, onClose, session }: AppSidebarProps) {
                                 <div
                                     className="absolute end-0 top-full z-20 mt-0.5 w-36 overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 py-1 text-xs shadow-lg"
                                     onClick={(e) => e.stopPropagation()}
+                                    onKeyDown={(e) => {
+                                        if (e.key === 'Enter' || e.key === ' ') {
+                                            e.stopPropagation();
+                                        }
+                                    }}
+                                    role="presentation"
                                 >
                                     {(["rename", "archive", "delete"] as const).map((action) => (
                                         <button

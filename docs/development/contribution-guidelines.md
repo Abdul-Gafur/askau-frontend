@@ -51,9 +51,8 @@ All changes must go through a Pull Request.
 
 1. **Create the PR** against the `develop` branch (or `main` for hotfixes). Push your branch early — even half-finished — and open it as a **draft PR**.
 2. **Title the PR**: Include the issue ID or wireframe ID in the title (e.g., `feat(chat): ASK-12 Chat interface`).
-3. **Fill out the PR Template**: Ensure every checkbox in the PR template is addressed.
+3. **Provide summary of changes in the PR Description**.
 4. **Visual Changes**: If your PR includes UI changes, include screenshots of the screen in the description for both **light and dark modes**.
-5. **Link Issues**: Reference Jira or GitHub issues (e.g., `Closes #123`).
 
 ## 5. Code Review Requirements
 

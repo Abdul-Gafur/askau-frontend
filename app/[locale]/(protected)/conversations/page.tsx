@@ -17,7 +17,7 @@ export default function ConversationsPage() {
       <div className="mx-auto w-full max-w-2xl">
         <h1 className="mb-6 text-xl font-bold text-foreground">Conversations</h1>
 
-        <ul className="space-y-2" role="list">
+        <ul className="space-y-2">
           {SAMPLE_CONVERSATIONS.map((conv) => (
             <li key={conv.id}>
               <a

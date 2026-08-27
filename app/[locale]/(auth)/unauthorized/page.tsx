@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
+import { Lock } from "lucide-react";
 
 /**
  * Unauthorized page — shown when a user is authenticated
@@ -15,8 +16,8 @@ export default function UnauthorizedPage() {
       className="flex min-h-screen flex-col items-center justify-center bg-background p-6"
     >
       <div className="w-full max-w-md text-center">
-        <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-destructive/10 text-3xl">
-          🔒
+        <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-destructive/10 text-destructive">
+          <Lock className="h-8 w-8" />
         </div>
         <h1 className="mb-2 text-2xl font-bold">Access Denied</h1>
         <p className="mb-2 text-muted-foreground">

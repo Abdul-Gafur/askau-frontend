@@ -69,8 +69,8 @@ export default auth(async function proxy(
 });
 
 export const config = {
-  // Match all pathnames except static files, _next internals, and favicon
+  // Match all pathnames except API routes, static files, _next internals, and favicon
   matcher: [
-    "/((?!_next/static|_next/image|favicon.ico|icons|images|fonts|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|css|js)).*)",
+    "/((?!api|_next/static|_next/image|favicon.ico|icons|images|fonts|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|css|js)).*)",
   ],
 };

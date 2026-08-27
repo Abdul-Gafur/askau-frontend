@@ -1,23 +1,73 @@
 {
   "title": "الإعدادات",
   "sections": {
-    "appearance": "المظهر",
-    "language": "اللغة والمنطقة",
+    "general": "عام",
+    "knowledge": "قاعدة المعرفة",
     "notifications": "الإشعارات",
-    "privacy": "الخصوصية",
-    "accessibility": "إمكانية الوصول",
-    "about": "حول"
+    "privacy": "البيانات والخصوصية",
+    "security": "الأمان وتسجيل الدخول",
+    "account": "الحساب"
   },
-  "theme": {
+  "search": "بحث في الإعدادات",
+  "appearance": {
     "label": "المظهر",
-    "description": "اختر نمط الألوان المفضل لديك",
     "light": "فاتح",
     "dark": "داكن",
-    "system": "النظام (اتباع الجهاز)"
+    "system": "النظام"
   },
   "language": {
-    "label": "لغة الواجهة",
+    "label": "اللغة",
     "description": "اختر لغة واجهة AskAU"
+  },
+  "sessionTimeout": {
+    "label": "مهلة الجلسة",
+    "options": {
+      "15min": "15 دقيقة",
+      "30min": "30 دقيقة",
+      "1hr": "ساعة واحدة",
+      "4hr": "4 ساعات"
+    }
+  },
+  "higherIntelligence": {
+    "label": "ذكاء أعلى",
+    "description": "يمكن لـ AskAU استخدام استرجاع أكثر شمولاً تلقائيًا عند الإجابة على أسئلة معقدة."
+  },
+  "security": {
+    "mfa": {
+      "title": "المصادقة متعددة العوامل",
+      "notEnabled": "المصادقة متعددة العوامل غير ممكّنة حاليًا.",
+      "setup": "إعداد المصادقة متعددة العوامل",
+      "description": "أضف المصادقة متعددة العوامل (MFA) للمساعدة في حماية حسابك عند تسجيل الدخول."
+    },
+    "activeSessions": "الجلسات النشطة",
+    "lastSeen": "آخر ظهور: الآن",
+    "signOutOthers": "تسجيل الخروج من جميع الجلسات الأخرى"
+  },
+  "privacy": {
+    "saveHistory": "حفظ سجل المحادثة",
+    "saveHistoryDescription": "احتفظ بسجل محادثاتك للرجوع إليها مستقبلاً.",
+    "shareAnalytics": "مشاركة إحصاءات الاستخدام",
+    "shareAnalyticsDescription": "ساعد في تحسين AskAU من خلال مشاركة بيانات الاستخدام المجهولة.",
+    "deleteHistory": "حذف جميع سجلات المحادثة"
+  },
+  "notifications": {
+    "email": "إشعارات البريد الإلكتروني",
+    "emailDescription": "تلقي ملخصات عبر البريد الإلكتروني لاستعلامات المعرفة الخاصة بك.",
+    "knowledgeUpdates": "تحديثات قاعدة المعرفة",
+    "knowledgeUpdatesDescription": "أعلمني عند تحديث المستندات المعتمدة.",
+    "sessionExpiry": "تنبيهات انتهاء الجلسة",
+    "sessionExpiryDescription": "حذرني قبل انتهاء جلستي."
+  },
+  "knowledge": {
+    "description": "AskAU يجيب فقط من مصادر المعرفة التنظيمية المعتمدة أدناه.",
+    "active": "نشط",
+    "inactive": "غير نشط"
+  },
+  "account": {
+    "staffId": "رقم الموظف",
+    "email": "البريد الإلكتروني",
+    "role": "الدور",
+    "department": "القسم"
   },
   "saved": "تم حفظ الإعدادات",
   "saveError": "فشل حفظ الإعدادات"

@@ -1,31 +1,114 @@
 {
   "title": "Chat AskAU",
-  "placeholder": "Posez une question sur les politiques, procédures ou documents de l'UA...",
+  "placeholder": "Posez une question sur les politiques, procédures ou documents de l'UA…",
   "send": "Envoyer",
-  "sending": "Envoi en cours...",
+  "sending": "Envoi en cours…",
+  "attach": "Joindre un fichier",
   "newChat": "Nouveau chat",
+  "searchChats": "Rechercher des chats",
+  "searchChatsPlaceholder": "Rechercher…",
   "clearChat": "Effacer le chat",
   "stopGenerating": "Arrêter la génération",
   "regenerate": "Régénérer la réponse",
   "copyMessage": "Copier le message",
   "copiedMessage": "Message copié",
-  "thinking": "AskAU réfléchit...",
-  "typing": "AskAU tape...",
-  "welcomeTitle": "Bienvenue sur AskAU",
-  "welcomeSubtitle": "Votre assistant de connaissances IA pour la Commission de l'Union africaine",
-  "welcomeDescription": "Posez des questions sur les politiques, procédures et documents officiels de l'UA.",
-  "emptyChatHint": "Commencez par poser une question ci-dessous.",
-  "disclaimer": "AskAU fournit des réponses basées sur les documents officiels de l'UA. Vérifiez toujours les informations importantes avec la source originale.",
-  "comingSoon": "Interface de chat bientôt disponible",
-  "comingSoonDescription": "L'interface de chat AskAU sera implémentée en Phase 2.",
+  "welcomeTitle": "Comment puis-je vous aider aujourd'hui ?",
+  "welcomeSubtitle": "Je peux vous aider à trouver les politiques, procédures et directives officielles approuvées à partir de la base de connaissances organisationnelle.",
+  "greeting": "Bonjour, {name}",
+  "disclaimer": "Les réponses sont exclusivement basées sur les sources de connaissance approuvées de l'UA.",
+  "suggestedPrompts": {
+    "leavePolicy": "Quelle est la politique officielle de congés ?",
+    "procurementProcess": "Quel est le processus d'approbation des marchés ?",
+    "travelPolicy": "Montrez-moi les exigences de la politique de voyage.",
+    "annualLeaveSteps": "Quelles sont les étapes pour demander un congé annuel ?"
+  },
+  "loading": {
+    "searching": "Recherche dans les sources de connaissances approuvées…",
+    "reviewing": "Examen des sources pertinentes…",
+    "preparing": "Préparation d'une réponse fondée…"
+  },
   "messageRole": {
     "user": "Vous",
     "assistant": "AskAU",
     "system": "Système"
   },
   "feedback": {
-    "helpful": "C'était utile",
-    "notHelpful": "Ce n'était pas utile",
-    "submitted": "Merci pour votre retour"
-  }
+    "helpful": "Utile",
+    "notHelpful": "Pas utile",
+    "retry": "Réessayer",
+    "copy": "Copier",
+    "more": "Plus d'options",
+    "submitted": "Avis enregistré",
+    "reasons": {
+      "incorrect": "Incorrect",
+      "irrelevant": "Non pertinent",
+      "missingSource": "Source manquante",
+      "outdated": "Obsolète",
+      "other": "Autre"
+    }
+  },
+  "grounding": {
+    "groundedIn": "Fondé sur {count} source approuvée",
+    "groundedInPlural": "Fondé sur {count} sources approuvées",
+    "sourcesRetrieved": "Sources récupérées",
+    "retrieved": "Récupéré",
+    "knowledgeBase": "Base de connaissances",
+    "documents": "{count} documents"
+  },
+  "states": {
+    "grounded": {
+      "sources": "Sources"
+    },
+    "insufficient": {
+      "title": "Je n'ai pas trouvé suffisamment de preuves pour répondre de manière fiable.",
+      "description": "J'ai recherché dans les sources approuvées mais n'ai pas trouvé suffisamment d'informations.",
+      "suggestedSteps": "Étapes suggérées",
+      "steps": {
+        "refine": "Affinez votre question avec des termes plus spécifiques",
+        "related": "Recherchez des sujets connexes dans la base de connaissances",
+        "contact": "Contactez le département responsable",
+        "browse": "Consulter les sources de connaissances disponibles"
+      },
+      "tryAsking": "Essayez de demander :"
+    },
+    "conflicting": {
+      "title": "Informations contradictoires trouvées",
+      "description": "Plusieurs documents approuvés contiennent des informations différentes. Veuillez vous référer à la version la plus récente.",
+      "sources": "Sources contradictoires"
+    },
+    "outdated": {
+      "title": "Basé sur un document approuvé plus ancien"
+    },
+    "error": {
+      "title": "Une erreur s'est produite",
+      "description": "AskAU n'a pas pu compléter cette demande.",
+      "tryAgain": "Réessayer",
+      "newConversation": "Nouvelle conversation"
+    }
+  },
+  "sourceCard": {
+    "preview": "Aperçu",
+    "download": "Télécharger",
+    "downloading": "Téléchargement…",
+    "downloaded": "Téléchargé"
+  },
+  "docPreview": {
+    "documentType": "Type de document",
+    "ownerDepartment": "Propriétaire / Département",
+    "section": "Section",
+    "page": "Page",
+    "version": "Version",
+    "published": "Publié",
+    "effectiveDate": "Date d'entrée en vigueur",
+    "status": "Statut",
+    "documentExtract": "Extrait du document",
+    "downloadOriginal": "Télécharger le document original"
+  },
+  "conversations": {
+    "recents": "Récents",
+    "rename": "Renommer",
+    "archive": "Archiver",
+    "delete": "Supprimer"
+  },
+  "welcomeHeading": "Salut {name}, allons-y."
 }

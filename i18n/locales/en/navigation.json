@@ -21,7 +21,9 @@
     "label": "Toggle theme",
     "light": "Light",
     "dark": "Dark",
-    "system": "System"
+    "system": "System",
+    "lightMode": "Light mode",
+    "darkMode": "Dark mode"
   },
   "languageSelector": {
     "label": "Select language",

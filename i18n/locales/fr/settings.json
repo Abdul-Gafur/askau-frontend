@@ -1,23 +1,73 @@
 {
   "title": "Paramètres",
   "sections": {
-    "appearance": "Apparence",
-    "language": "Langue et région",
+    "general": "Général",
+    "knowledge": "Base de connaissances",
     "notifications": "Notifications",
-    "privacy": "Confidentialité",
-    "accessibility": "Accessibilité",
-    "about": "À propos"
+    "privacy": "Données et confidentialité",
+    "security": "Sécurité et connexion",
+    "account": "Compte"
   },
-  "theme": {
-    "label": "Thème",
-    "description": "Choisissez votre thème de couleur préféré",
+  "search": "Rechercher des paramètres",
+  "appearance": {
+    "label": "Apparence",
     "light": "Clair",
     "dark": "Sombre",
-    "system": "Système (suivre l'appareil)"
+    "system": "Système"
   },
   "language": {
-    "label": "Langue de l'interface",
+    "label": "Langue",
     "description": "Choisissez la langue de l'interface AskAU"
+  },
+  "sessionTimeout": {
+    "label": "Expiration de la session",
+    "options": {
+      "15min": "15 minutes",
+      "30min": "30 minutes",
+      "1hr": "1 heure",
+      "4hr": "4 heures"
+    }
+  },
+  "higherIntelligence": {
+    "label": "Intelligence supérieure",
+    "description": "AskAU peut utiliser automatiquement une recherche plus approfondie pour répondre aux questions complexes."
+  },
+  "security": {
+    "mfa": {
+      "title": "Authentification multifacteur",
+      "notEnabled": "L'AMF n'est pas activée actuellement.",
+      "setup": "Configurer l'AMF",
+      "description": "Ajoutez l'authentification multifacteur (AMF) pour aider à protéger votre compte lors de la connexion."
+    },
+    "activeSessions": "Sessions actives",
+    "lastSeen": "Dernière vue : à l'instant",
+    "signOutOthers": "Se déconnecter de toutes les autres sessions"
+  },
+  "privacy": {
+    "saveHistory": "Enregistrer l'historique des conversations",
+    "saveHistoryDescription": "Conservez un historique de vos conversations pour référence future.",
+    "shareAnalytics": "Partager les analyses d'utilisation",
+    "shareAnalyticsDescription": "Aidez à améliorer AskAU en partageant des données d'utilisation anonymisées.",
+    "deleteHistory": "Supprimer tout l'historique des conversations"
+  },
+  "notifications": {
+    "email": "Notifications par e-mail",
+    "emailDescription": "Recevez des résumés par e-mail de vos requêtes de connaissances.",
+    "knowledgeUpdates": "Mises à jour de la base de connaissances",
+    "knowledgeUpdatesDescription": "Informez-moi lorsque des documents approuvés sont mis à jour.",
+    "sessionExpiry": "Alertes d'expiration de session",
+    "sessionExpiryDescription": "Avertissez-moi avant l'expiration de ma session."
+  },
+  "knowledge": {
+    "description": "AskAU ne répond qu'à partir des sources de connaissances organisationnelles approuvées ci-dessous.",
+    "active": "Actif",
+    "inactive": "Inactif"
+  },
+  "account": {
+    "staffId": "ID du personnel",
+    "email": "E-mail",
+    "role": "Rôle",
+    "department": "Département"
   },
   "saved": "Paramètres enregistrés",
   "saveError": "Échec de l'enregistrement des paramètres"

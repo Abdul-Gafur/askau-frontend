@@ -21,7 +21,9 @@
     "label": "تبديل المظهر",
     "light": "فاتح",
     "dark": "داكن",
-    "system": "النظام"
+    "system": "النظام",
+    "lightMode": "الوضع الفاتح",
+    "darkMode": "الوضع الداكن"
   },
   "languageSelector": {
     "label": "اختيار اللغة",

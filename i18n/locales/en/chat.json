@@ -1,31 +1,114 @@
 {
   "title": "AskAU Chat",
-  "placeholder": "Ask a question about AU policies, procedures, or documents...",
+  "placeholder": "Ask about AU policies, procedures, or documents…",
   "send": "Send",
-  "sending": "Sending...",
+  "sending": "Sending…",
+  "attach": "Attach file",
   "newChat": "New chat",
+  "searchChats": "Search chats",
+  "searchChatsPlaceholder": "Search…",
   "clearChat": "Clear chat",
   "stopGenerating": "Stop generating",
   "regenerate": "Regenerate response",
   "copyMessage": "Copy message",
   "copiedMessage": "Message copied",
-  "thinking": "AskAU is thinking...",
-  "typing": "AskAU is typing...",
-  "welcomeTitle": "Welcome to AskAU",
-  "welcomeSubtitle": "Your AI-powered knowledge assistant for the African Union Commission",
-  "welcomeDescription": "Ask questions about AU policies, procedures, and official documents. All answers are grounded in approved AU knowledge sources.",
-  "emptyChatHint": "Start by asking a question below.",
-  "disclaimer": "AskAU provides answers based on approved AU documents. Always verify important information with the original source.",
-  "comingSoon": "Chat experience coming soon",
-  "comingSoonDescription": "The AskAU Chat interface will be implemented in Phase 2.",
+  "welcomeTitle": "How can I help you today?",
+  "welcomeSubtitle": "I can help you find approved policies, procedures, and official guidelines from the organizational knowledge base.",
+  "greeting": "Hello, {name}",
+  "disclaimer": "Answers are grounded exclusively in approved AU knowledge sources.",
+  "suggestedPrompts": {
+    "leavePolicy": "What is the official leave policy?",
+    "procurementProcess": "What is the procurement approval process?",
+    "travelPolicy": "Show me the travel policy requirements.",
+    "annualLeaveSteps": "What are the steps for requesting annual leave?"
+  },
+  "loading": {
+    "searching": "Searching approved knowledge sources…",
+    "reviewing": "Reviewing relevant sources…",
+    "preparing": "Preparing grounded answer…"
+  },
   "messageRole": {
     "user": "You",
     "assistant": "AskAU",
     "system": "System"
   },
   "feedback": {
-    "helpful": "This was helpful",
-    "notHelpful": "This was not helpful",
-    "submitted": "Thank you for your feedback"
-  }
+    "helpful": "Helpful",
+    "notHelpful": "Not helpful",
+    "retry": "Retry",
+    "copy": "Copy",
+    "more": "More options",
+    "submitted": "Feedback recorded",
+    "reasons": {
+      "incorrect": "Incorrect",
+      "irrelevant": "Not relevant",
+      "missingSource": "Missing source",
+      "outdated": "Outdated",
+      "other": "Other"
+    }
+  },
+  "grounding": {
+    "groundedIn": "Grounded in {count} approved source",
+    "groundedInPlural": "Grounded in {count} approved sources",
+    "sourcesRetrieved": "Sources retrieved",
+    "retrieved": "Retrieved",
+    "knowledgeBase": "Knowledge base",
+    "documents": "{count} documents"
+  },
+  "states": {
+    "grounded": {
+      "sources": "Sources"
+    },
+    "insufficient": {
+      "title": "I couldn't find enough evidence to answer this reliably.",
+      "description": "I searched the approved organisational knowledge sources but could not find sufficient information to provide a reliable answer.",
+      "suggestedSteps": "Suggested next steps",
+      "steps": {
+        "refine": "Refine your question with more specific terms",
+        "related": "Search related topics in the knowledge base",
+        "contact": "Contact the responsible department",
+        "browse": "View available knowledge sources"
+      },
+      "tryAsking": "Try asking:"
+    },
+    "conflicting": {
+      "title": "Conflicting information found",
+      "description": "Multiple approved documents contain different information. Please refer to the most recent version.",
+      "sources": "Conflicting sources"
+    },
+    "outdated": {
+      "title": "Based on an older approved document"
+    },
+    "error": {
+      "title": "Something went wrong",
+      "description": "AskAU couldn't complete this request.",
+      "tryAgain": "Try again",
+      "newConversation": "New conversation"
+    }
+  },
+  "sourceCard": {
+    "preview": "Preview",
+    "download": "Download",
+    "downloading": "Downloading…",
+    "downloaded": "Downloaded"
+  },
+  "docPreview": {
+    "documentType": "Document type",
+    "ownerDepartment": "Owner / Department",
+    "section": "Section",
+    "page": "Page",
+    "version": "Version",
+    "published": "Published",
+    "effectiveDate": "Effective date",
+    "status": "Status",
+    "documentExtract": "Document extract",
+    "downloadOriginal": "Download original document"
+  },
+  "conversations": {
+    "recents": "Recents",
+    "rename": "Rename",
+    "archive": "Archive",
+    "delete": "Delete"
+  },
+  "welcomeHeading": "Hi {name} let's get into it."
 }

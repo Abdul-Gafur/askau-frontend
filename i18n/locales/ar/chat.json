@@ -1,31 +1,114 @@
 {
   "title": "محادثة AskAU",
-  "placeholder": "اطرح سؤالاً حول سياسات وإجراءات ووثائق الاتحاد الأفريقي...",
+  "placeholder": "اطرح سؤالاً حول سياسات وإجراءات ووثائق الاتحاد الأفريقي…",
   "send": "إرسال",
-  "sending": "جارٍ الإرسال...",
+  "sending": "جارٍ الإرسال…",
+  "attach": "إرفاق ملف",
   "newChat": "محادثة جديدة",
+  "searchChats": "بحث في المحادثات",
+  "searchChatsPlaceholder": "بحث…",
   "clearChat": "مسح المحادثة",
   "stopGenerating": "إيقاف الإنشاء",
   "regenerate": "إعادة إنشاء الرد",
   "copyMessage": "نسخ الرسالة",
   "copiedMessage": "تم نسخ الرسالة",
-  "thinking": "AskAU يفكر...",
-  "typing": "AskAU يكتب...",
-  "welcomeTitle": "مرحباً بك في AskAU",
-  "welcomeSubtitle": "مساعدك الذكي للمعرفة في مفوضية الاتحاد الأفريقي",
-  "welcomeDescription": "اطرح أسئلة حول السياسات والإجراءات والوثائق الرسمية للاتحاد الأفريقي.",
-  "emptyChatHint": "ابدأ بطرح سؤال أدناه.",
-  "disclaimer": "يقدم AskAU إجابات مستندة إلى وثائق الاتحاد الأفريقي الرسمية. تحقق دائماً من المعلومات المهمة مع المصدر الأصلي.",
-  "comingSoon": "واجهة المحادثة قريباً",
-  "comingSoonDescription": "ستُنفَّذ واجهة محادثة AskAU في المرحلة الثانية.",
+  "welcomeTitle": "كيف يمكنني مساعدتك اليوم؟",
+  "welcomeSubtitle": "يمكنني مساعدتك في العثور على السياسات والإجراءات والإرشادات الرسمية المعتمدة من قاعدة المعرفة التنظيمية.",
+  "greeting": "أهلاً، {name}",
+  "disclaimer": "الإجابات مستندة حصراً إلى مصادر معرفة الاتحاد الأفريقي الموثوقة.",
+  "suggestedPrompts": {
+    "leavePolicy": "ما هي سياسة الإجازات الرسمية؟",
+    "procurementProcess": "ما هي عملية الموافقة على المشتريات؟",
+    "travelPolicy": "أرني متطلبات سياسة السفر.",
+    "annualLeaveSteps": "ما هي خطوات طلب الإجازة السنوية؟"
+  },
+  "loading": {
+    "searching": "البحث في مصادر المعرفة الموثوقة…",
+    "reviewing": "مراجعة المصادر ذات الصلة…",
+    "preparing": "إعداد إجابة موثوقة…"
+  },
   "messageRole": {
     "user": "أنت",
     "assistant": "AskAU",
     "system": "النظام"
   },
   "feedback": {
-    "helpful": "كان هذا مفيداً",
-    "notHelpful": "لم يكن هذا مفيداً",
-    "submitted": "شكراً على ملاحظاتك"
-  }
+    "helpful": "مفيد",
+    "notHelpful": "غير مفيد",
+    "retry": "إعادة المحاولة",
+    "copy": "نسخ",
+    "more": "خيارات أخرى",
+    "submitted": "تم تسجيل الملاحظة",
+    "reasons": {
+      "incorrect": "غير صحيح",
+      "irrelevant": "غير ذي صلة",
+      "missingSource": "مصدر مفقود",
+      "outdated": "قديم",
+      "other": "أخرى"
+    }
+  },
+  "grounding": {
+    "groundedIn": "مستند إلى {count} مصدر موثوق",
+    "groundedInPlural": "مستند إلى {count} مصادر موثوقة",
+    "sourcesRetrieved": "المصادر المسترجعة",
+    "retrieved": "تم الاسترجاع",
+    "knowledgeBase": "قاعدة المعرفة",
+    "documents": "{count} وثائق"
+  },
+  "states": {
+    "grounded": {
+      "sources": "المصادر"
+    },
+    "insufficient": {
+      "title": "لم أتمكن من إيجاد أدلة كافية للإجابة بشكل موثوق.",
+      "description": "بحثت في مصادر المعرفة الموثوقة لكن لم أجد معلومات كافية لتقديم إجابة موثوقة.",
+      "suggestedSteps": "خطوات مقترحة",
+      "steps": {
+        "refine": "صِغ سؤالك بمصطلحات أكثر تحديداً",
+        "related": "ابحث في موضوعات ذات صلة في قاعدة المعرفة",
+        "contact": "تواصل مع الجهة المختصة",
+        "browse": "عرض مصادر المعرفة المتاحة"
+      },
+      "tryAsking": "حاول السؤال:"
+    },
+    "conflicting": {
+      "title": "معلومات متضاربة",
+      "description": "تحتوي وثائق موثوقة متعددة على معلومات مختلفة. يرجى الرجوع إلى أحدث إصدار.",
+      "sources": "المصادر المتضاربة"
+    },
+    "outdated": {
+      "title": "مستند إلى وثيقة موثوقة أقدم"
+    },
+    "error": {
+      "title": "حدث خطأ ما",
+      "description": "تعذّر على AskAU إكمال هذا الطلب.",
+      "tryAgain": "حاول مجدداً",
+      "newConversation": "محادثة جديدة"
+    }
+  },
+  "sourceCard": {
+    "preview": "معاينة",
+    "download": "تحميل",
+    "downloading": "جارٍ التحميل…",
+    "downloaded": "تم التحميل"
+  },
+  "docPreview": {
+    "documentType": "نوع الوثيقة",
+    "ownerDepartment": "المالك / القسم",
+    "section": "القسم",
+    "page": "الصفحة",
+    "version": "الإصدار",
+    "published": "تاريخ النشر",
+    "effectiveDate": "تاريخ النفاذ",
+    "status": "الحالة",
+    "documentExtract": "مقتطف من الوثيقة",
+    "downloadOriginal": "تحميل الوثيقة الأصلية"
+  },
+  "conversations": {
+    "recents": "الأخيرة",
+    "rename": "إعادة تسمية",
+    "archive": "أرشفة",
+    "delete": "حذف"
+  },
+  "welcomeHeading": "مرحباً {name}، لنبدأ."
 }

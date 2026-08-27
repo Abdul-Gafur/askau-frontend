@@ -1,23 +1,73 @@
 {
   "title": "Configurações",
   "sections": {
-    "appearance": "Aparência",
-    "language": "Idioma e Região",
+    "general": "Geral",
+    "knowledge": "Base de conhecimento",
     "notifications": "Notificações",
-    "privacy": "Privacidade",
-    "accessibility": "Acessibilidade",
-    "about": "Sobre"
+    "privacy": "Dados e privacidade",
+    "security": "Segurança e login",
+    "account": "Conta"
   },
-  "theme": {
-    "label": "Tema",
-    "description": "Escolha o seu tema de cor preferido",
+  "search": "Pesquisar configurações",
+  "appearance": {
+    "label": "Aparência",
     "light": "Claro",
     "dark": "Escuro",
-    "system": "Sistema (seguir dispositivo)"
+    "system": "Sistema"
   },
   "language": {
-    "label": "Idioma da interface",
+    "label": "Idioma",
     "description": "Escolha o idioma da interface do AskAU"
+  },
+  "sessionTimeout": {
+    "label": "Tempo limite da sessão",
+    "options": {
+      "15min": "15 minutos",
+      "30min": "30 minutos",
+      "1hr": "1 hora",
+      "4hr": "4 horas"
+    }
+  },
+  "higherIntelligence": {
+    "label": "Inteligência superior",
+    "description": "AskAU pode usar automaticamente uma recuperação mais aprofundada ao responder perguntas complexas."
+  },
+  "security": {
+    "mfa": {
+      "title": "Autenticação multifator",
+      "notEnabled": "AMF não está ativada no momento.",
+      "setup": "Configurar AMF",
+      "description": "Adicione autenticação multifator (AMF) para ajudar a proteger sua conta ao fazer login."
+    },
+    "activeSessions": "Sessões ativas",
+    "lastSeen": "Visto pela última vez: agora",
+    "signOutOthers": "Sair de todas as outras sessões"
+  },
+  "privacy": {
+    "saveHistory": "Salvar histórico de conversas",
+    "saveHistoryDescription": "Mantenha um histórico de suas conversas para referência futura.",
+    "shareAnalytics": "Compartilhar análises de uso",
+    "shareAnalyticsDescription": "Ajude a melhorar o AskAU compartilhando dados de uso anonimizados.",
+    "deleteHistory": "Excluir todo o histórico de conversas"
+  },
+  "notifications": {
+    "email": "Notificações por e-mail",
+    "emailDescription": "Receba resumos por e-mail de suas consultas de conhecimento.",
+    "knowledgeUpdates": "Atualizações da base de conhecimento",
+    "knowledgeUpdatesDescription": "Notifique-me quando os documentos aprovados forem atualizados.",
+    "sessionExpiry": "Alertes de expiração de sessão",
+    "sessionExpiryDescription": "Avise-me antes de minha sessão expirar."
+  },
+  "knowledge": {
+    "description": "O AskAU responde apenas a partir das fontes de conhecimento organizacional aprovadas abaixo.",
+    "active": "Ativo",
+    "inactive": "Inativo"
+  },
+  "account": {
+    "staffId": "ID do funcionário",
+    "email": "E-mail",
+    "role": "Função",
+    "department": "Departamento"
   },
   "saved": "Configurações salvas",
   "saveError": "Falha ao salvar configurações"

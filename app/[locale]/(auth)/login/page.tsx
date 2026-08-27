@@ -3,7 +3,6 @@
 import { signIn } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
-import { siteConfig } from "@/config/site";
 
 /**
  * Login page.
@@ -18,10 +17,10 @@ import { siteConfig } from "@/config/site";
 export default function LoginPage() {
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl") ?? "/chat";
-  const error = searchParams.get("error");
+  const _error = searchParams.get("error");
   const [isSigningIn, setIsSigningIn] = useState(false);
 
-  async function handleSignIn() {
+  async function _handleSignIn() {
     setIsSigningIn(true);
     try {
       await signIn("microsoft-entra-id", { callbackUrl });

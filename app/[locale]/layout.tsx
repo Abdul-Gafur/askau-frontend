@@ -69,7 +69,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
           rel="stylesheet"
         />
       </head>
-      <body>
+      <body className="text-sm">
         {/* Skip to content — accessibility */}
         <a href="#main-content" className="skip-to-content">
           Skip to main content

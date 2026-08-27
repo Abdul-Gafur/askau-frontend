@@ -21,7 +21,9 @@
     "label": "Changer de thème",
     "light": "Clair",
     "dark": "Sombre",
-    "system": "Système"
+    "system": "Système",
+    "lightMode": "Mode clair",
+    "darkMode": "Mode sombre"
   },
   "languageSelector": {
     "label": "Sélectionner la langue",

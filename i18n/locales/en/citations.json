@@ -6,6 +6,12 @@
   "openDocument": "Open document",
   "noSources": "No sources cited",
   "citationNumber": "Citation {number}",
+  "classLevel": {
+    "PUBLIC": "Public",
+    "INTERNAL": "Internal",
+    "CONFIDENTIAL": "Confidential",
+    "HIGHLY_RESTRICTED": "Highly Restricted"
+  },
   "documentType": {
     "policy": "Policy",
     "procedure": "Procedure",

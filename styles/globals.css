@@ -2,6 +2,9 @@
 @import "./tokens.css";
 @import "./themes.css";
 
+/* Fix for Tailwind v4 dark mode class variant with next-themes */
+@custom-variant dark (&:is(.dark, .dark *));
+
 /*
  * AskAU Design System — Global Stylesheet
  *

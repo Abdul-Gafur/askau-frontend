@@ -1,32 +1,73 @@
 {
   "title": "Settings",
   "sections": {
-    "appearance": "Appearance",
-    "language": "Language & Region",
+    "general": "General",
+    "knowledge": "Knowledge base",
     "notifications": "Notifications",
-    "privacy": "Privacy",
-    "accessibility": "Accessibility",
-    "about": "About"
+    "privacy": "Data & privacy",
+    "security": "Security & login",
+    "account": "Account"
   },
-  "theme": {
-    "label": "Theme",
-    "description": "Choose your preferred color theme",
+  "search": "Search settings",
+  "appearance": {
+    "label": "Appearance",
     "light": "Light",
     "dark": "Dark",
-    "system": "System (follow device)"
+    "system": "System"
   },
   "language": {
-    "label": "Interface language",
+    "label": "Language",
     "description": "Choose the language for the AskAU interface"
   },
-  "accessibility": {
-    "reducedMotion": "Reduce motion",
-    "reducedMotionDescription": "Minimize animations and transitions"
+  "sessionTimeout": {
+    "label": "Session timeout",
+    "options": {
+      "15min": "15 minutes",
+      "30min": "30 minutes",
+      "1hr": "1 hour",
+      "4hr": "4 hours"
+    }
   },
-  "about": {
-    "version": "Version",
-    "buildDate": "Build date",
-    "environment": "Environment"
+  "higherIntelligence": {
+    "label": "Higher intelligence",
+    "description": "AskAU can automatically use more thorough retrieval when answering complex questions."
+  },
+  "security": {
+    "mfa": {
+      "title": "Multi-factor authentication",
+      "notEnabled": "MFA is not currently enabled.",
+      "setup": "Set up MFA",
+      "description": "Add multi-factor authentication (MFA) to help protect your account when logging in."
+    },
+    "activeSessions": "Active sessions",
+    "lastSeen": "Last seen: now",
+    "signOutOthers": "Sign out all other sessions"
+  },
+  "privacy": {
+    "saveHistory": "Save conversation history",
+    "saveHistoryDescription": "Keep a history of your conversations for future reference.",
+    "shareAnalytics": "Share usage analytics",
+    "shareAnalyticsDescription": "Help improve AskAU by sharing anonymised usage data.",
+    "deleteHistory": "Delete all conversation history"
+  },
+  "notifications": {
+    "email": "Email notifications",
+    "emailDescription": "Receive email summaries of your knowledge queries.",
+    "knowledgeUpdates": "Knowledge base updates",
+    "knowledgeUpdatesDescription": "Notify me when approved documents are updated.",
+    "sessionExpiry": "Session expiry alerts",
+    "sessionExpiryDescription": "Warn me before my session expires."
+  },
+  "knowledge": {
+    "description": "AskAU only answers from the approved organisational knowledge sources below.",
+    "active": "Active",
+    "inactive": "Inactive"
+  },
+  "account": {
+    "staffId": "Staff ID",
+    "email": "Email",
+    "role": "Role",
+    "department": "Department"
   },
   "saved": "Settings saved",
   "saveError": "Failed to save settings"

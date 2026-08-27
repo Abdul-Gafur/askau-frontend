@@ -1,31 +1,114 @@
 {
   "title": "Chat AskAU",
-  "placeholder": "Faça uma pergunta sobre políticas, procedimentos ou documentos da UA...",
+  "placeholder": "Faça uma pergunta sobre políticas, procedimentos ou documentos da UA…",
   "send": "Enviar",
-  "sending": "Enviando...",
+  "sending": "Enviando…",
+  "attach": "Anexar ficheiro",
   "newChat": "Novo chat",
+  "searchChats": "Pesquisar chats",
+  "searchChatsPlaceholder": "Pesquisar…",
   "clearChat": "Limpar chat",
   "stopGenerating": "Parar geração",
   "regenerate": "Regenerar resposta",
   "copyMessage": "Copiar mensagem",
   "copiedMessage": "Mensagem copiada",
-  "thinking": "AskAU está pensando...",
-  "typing": "AskAU está digitando...",
-  "welcomeTitle": "Bem-vindo ao AskAU",
-  "welcomeSubtitle": "O seu assistente de conhecimento com IA para a Comissão da União Africana",
-  "welcomeDescription": "Faça perguntas sobre políticas, procedimentos e documentos oficiais da UA.",
-  "emptyChatHint": "Comece fazendo uma pergunta abaixo.",
-  "disclaimer": "O AskAU fornece respostas baseadas em documentos oficiais da UA. Sempre verifique informações importantes com a fonte original.",
-  "comingSoon": "Interface de chat em breve",
-  "comingSoonDescription": "A interface de chat do AskAU será implementada na Fase 2.",
+  "welcomeTitle": "Como posso ajudá-lo hoje?",
+  "welcomeSubtitle": "Posso ajudá-lo a encontrar políticas, procedimentos e diretrizes oficiais aprovadas na base de conhecimento organizacional.",
+  "greeting": "Olá, {name}",
+  "disclaimer": "As respostas são baseadas exclusivamente em fontes de conhecimento aprovadas da UA.",
+  "suggestedPrompts": {
+    "leavePolicy": "Qual é a política oficial de licenças?",
+    "procurementProcess": "Qual é o processo de aprovação de aquisições?",
+    "travelPolicy": "Mostre-me os requisitos da política de viagens.",
+    "annualLeaveSteps": "Quais são os passos para solicitar licença anual?"
+  },
+  "loading": {
+    "searching": "Pesquisando fontes de conhecimento aprovadas…",
+    "reviewing": "Analisando fontes relevantes…",
+    "preparing": "Preparando resposta fundamentada…"
+  },
   "messageRole": {
     "user": "Você",
     "assistant": "AskAU",
     "system": "Sistema"
   },
   "feedback": {
-    "helpful": "Isso foi útil",
-    "notHelpful": "Isso não foi útil",
-    "submitted": "Obrigado pelo seu feedback"
-  }
+    "helpful": "Útil",
+    "notHelpful": "Não útil",
+    "retry": "Tentar novamente",
+    "copy": "Copiar",
+    "more": "Mais opções",
+    "submitted": "Feedback registado",
+    "reasons": {
+      "incorrect": "Incorreto",
+      "irrelevant": "Não relevante",
+      "missingSource": "Fonte em falta",
+      "outdated": "Desatualizado",
+      "other": "Outro"
+    }
+  },
+  "grounding": {
+    "groundedIn": "Fundamentado em {count} fonte aprovada",
+    "groundedInPlural": "Fundamentado em {count} fontes aprovadas",
+    "sourcesRetrieved": "Fontes recuperadas",
+    "retrieved": "Recuperado",
+    "knowledgeBase": "Base de conhecimento",
+    "documents": "{count} documentos"
+  },
+  "states": {
+    "grounded": {
+      "sources": "Fontes"
+    },
+    "insufficient": {
+      "title": "Não encontrei evidências suficientes para responder de forma confiável.",
+      "description": "Pesquisei nas fontes aprovadas mas não encontrei informações suficientes.",
+      "suggestedSteps": "Próximos passos sugeridos",
+      "steps": {
+        "refine": "Refine a sua pergunta com termos mais específicos",
+        "related": "Pesquise tópicos relacionados na base de conhecimento",
+        "contact": "Contacte o departamento responsável",
+        "browse": "Ver fontes de conhecimento disponíveis"
+      },
+      "tryAsking": "Tente perguntar:"
+    },
+    "conflicting": {
+      "title": "Informações contraditórias encontradas",
+      "description": "Vários documentos aprovados contêm informações diferentes. Consulte a versão mais recente.",
+      "sources": "Fontes contraditórias"
+    },
+    "outdated": {
+      "title": "Baseado num documento aprovado mais antigo"
+    },
+    "error": {
+      "title": "Algo correu mal",
+      "description": "O AskAU não conseguiu completar este pedido.",
+      "tryAgain": "Tentar novamente",
+      "newConversation": "Nova conversa"
+    }
+  },
+  "sourceCard": {
+    "preview": "Pré-visualizar",
+    "download": "Descarregar",
+    "downloading": "A descarregar…",
+    "downloaded": "Descarregado"
+  },
+  "docPreview": {
+    "documentType": "Tipo de documento",
+    "ownerDepartment": "Proprietário / Departamento",
+    "section": "Secção",
+    "page": "Página",
+    "version": "Versão",
+    "published": "Publicado",
+    "effectiveDate": "Data de vigência",
+    "status": "Estado",
+    "documentExtract": "Extrato do documento",
+    "downloadOriginal": "Descarregar documento original"
+  },
+  "conversations": {
+    "recents": "Recentes",
+    "rename": "Renomear",
+    "archive": "Arquivar",
+    "delete": "Eliminar"
+  },
+  "welcomeHeading": "Olá {name}, vamos começar."
 }

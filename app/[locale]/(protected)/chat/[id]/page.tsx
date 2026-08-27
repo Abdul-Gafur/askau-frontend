@@ -9,15 +9,14 @@ export const metadata: Metadata = {
     "Ask questions about AU Commission policies, procedures, and documents.",
 };
 
-/**
- * Chat page — renders the full chat interface.
- *
- * Stays as a server component; all interactivity is in ChatShell ("use client").
- * Auth is checked server-side; unauthenticated users are redirected to /login.
- */
-export default async function ChatPage() {
+interface ChatIdPageProps {
+  params: Promise<{ id: string }>;
+}
+
+export default async function ChatIdPage(props: ChatIdPageProps) {
+  const params = await props.params;
   const session = await auth();
   if (!session) redirect("/login");
 
-  return <ChatShell session={session} />;
+  return <ChatShell session={session} initialConvId={params.id} />;
 }

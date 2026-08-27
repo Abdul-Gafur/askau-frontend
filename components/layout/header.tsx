@@ -1,9 +1,10 @@
 "use client";
 
-import { signOut } from "next-auth/react";
-import { useTheme } from "next-themes";
-import type { Session } from "next-auth";
+import * as React from "react";
 import Link from "next/link";
+import { useTheme } from "next-themes";
+import { useLocale } from "next-intl";
+import type { Session } from "next-auth";
 import { siteConfig } from "@/config/site";
 
 interface AppHeaderProps {
@@ -13,86 +14,111 @@ interface AppHeaderProps {
 }
 
 /**
- * Application Header.
+ * AppHeader — mobile-only compact top bar.
  *
- * Contains:
- * - Hamburger menu toggle (mobile)
- * - AskAU logo / wordmark
- * - Theme toggle (Light/Dark/System)
- * - User menu (avatar, sign-out)
+ * On desktop (md+): hidden. The sidebar handles all chrome.
+ * On mobile: hamburger → logo → theme toggle.
  *
- * Uses logical CSS properties for RTL support.
+ * Uses CSS logical properties for RTL compatibility.
  */
-export function AppHeader({ session, sidebarOpen, onSidebarToggle }: AppHeaderProps) {
-  const { theme, setTheme } = useTheme();
+export function AppHeader({
+  session: _session,
+  sidebarOpen,
+  onSidebarToggle,
+}: AppHeaderProps) {
+  const { theme, setTheme, resolvedTheme } = useTheme();
+  const locale = useLocale();
+  const [mounted, setMounted] = React.useState(false);
 
-  const nextTheme = theme === "dark" ? "light" : theme === "light" ? "system" : "dark";
-  const themeLabel =
-    theme === "dark" ? "Switch to light" : theme === "light" ? "Switch to system" : "Switch to dark";
-  const themeEmoji = theme === "dark" ? "☀️" : theme === "light" ? "💻" : "🌙";
+  React.useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+  }, []);
+
+  const isDark = mounted && (theme === "dark" || resolvedTheme === "dark");
+
+  const toggleTheme = () => {
+    setTheme(isDark ? "light" : "dark");
+  };
+
+  const themeLabel = isDark
+    ? "Switch to light mode"
+    : "Switch to dark mode";
 
   return (
-    <header className="flex h-14 shrink-0 items-center justify-between border-b border-border bg-surface px-4 shadow-sm">
-      <div className="flex items-center gap-3">
-        {/* Mobile: hamburger menu */}
-        <button
-          type="button"
-          onClick={onSidebarToggle}
-          aria-expanded={sidebarOpen}
-          aria-controls="sidebar"
-          aria-label={sidebarOpen ? "Close navigation menu" : "Open navigation menu"}
-          className="flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:bg-muted md:hidden"
-        >
-          <span aria-hidden="true" className="text-xl">
-            {sidebarOpen ? "✕" : "☰"}
-          </span>
-        </button>
+    <header className="flex h-12 flex-shrink-0 items-center justify-between border-b border-neutral-100 dark:border-neutral-800 bg-white dark:bg-black px-4 md:hidden">
+      {/* Hamburger */}
+      <button
+        type="button"
+        onClick={onSidebarToggle}
+        aria-expanded={sidebarOpen}
+        aria-controls="sidebar"
+        aria-label={sidebarOpen ? "Close navigation menu" : "Open navigation menu"}
+        className="flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800"
+      >
+        <MenuIcon className="h-5 w-5 text-black dark:text-white" />
+      </button>
 
-        {/* Logo */}
-        <Link
-          href="/chat"
-          className="flex items-center gap-2 rounded-md px-1 py-1 focus-visible:ring-2 focus-visible:ring-ring"
-          aria-label={`${siteConfig.name} — Home`}
-        >
-          <span className="flex h-7 w-7 items-center justify-center rounded-md bg-primary text-xs font-bold text-primary-foreground">
-            AU
-          </span>
-          <span className="hidden font-semibold sm:inline">{siteConfig.name}</span>
-        </Link>
-      </div>
+      {/* Logo */}
+      <Link
+        href={`/${locale}/chat`}
+        className="flex items-center gap-1.5 rounded-md px-1 py-1 focus-visible:ring-2 focus-visible:ring-ring"
+        aria-label={`${siteConfig.name} — Home`}
+      >
+        <span className="flex h-5 w-5 items-center justify-center rounded-md bg-neutral-800 dark:bg-neutral-200 text-[11px] font-bold text-white dark:text-neutral-900">
+          AU
+        </span>
+        <span className="text-sm font-semibold text-black dark:text-white">
+          {siteConfig.name}
+        </span>
+      </Link>
 
-      {/* Right side actions */}
-      <div className="flex items-center gap-2">
-        {/* Theme toggle */}
-        <button
-          type="button"
-          onClick={() => setTheme(nextTheme)}
-          aria-label={themeLabel}
-          title={themeLabel}
-          className="flex h-9 w-9 items-center justify-center rounded-lg text-sm transition-colors hover:bg-muted"
-        >
-          <span aria-hidden="true">{themeEmoji}</span>
-        </button>
-
-        {/* User menu */}
-        <div className="relative">
-          <button
-            type="button"
-            aria-label={`User menu — ${session.user?.name ?? "User"}`}
-            className="flex items-center gap-2 rounded-lg px-2 py-1 transition-colors hover:bg-muted"
-            onClick={() => signOut({ callbackUrl: "/login" })}
-            title="Sign out"
-          >
-            {/* Avatar */}
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/10 text-xs font-semibold text-primary">
-              {(session.user?.name ?? "U").charAt(0).toUpperCase()}
-            </span>
-            <span className="hidden max-w-32 truncate text-sm md:inline">
-              {session.user?.name}
-            </span>
-          </button>
-        </div>
-      </div>
+      {/* Theme toggle */}
+      <button
+        type="button"
+        onClick={toggleTheme}
+        aria-label={themeLabel}
+        title={themeLabel}
+        className="flex h-9 w-9 items-center justify-center rounded-lg text-sm transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800 text-black dark:text-white"
+      >
+        {isDark ? (
+          <SunIcon className="h-5 w-5" />
+        ) : (
+          <MoonIcon className="h-5 w-5" />
+        )}
+      </button>
     </header>
+  );
+}
+
+function MenuIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <line x1="3" y1="12" x2="21" y2="12" />
+      <line x1="3" y1="6" x2="21" y2="6" />
+      <line x1="3" y1="18" x2="21" y2="18" />
+    </svg>
+  );
+}
+function MoonIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+    </svg>
+  );
+}
+function SunIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <circle cx="12" cy="12" r="5" />
+      <line x1="12" y1="1" x2="12" y2="3" />
+      <line x1="12" y1="21" x2="12" y2="23" />
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+      <line x1="1" y1="12" x2="3" y2="12" />
+      <line x1="21" y1="12" x2="23" y2="12" />
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+    </svg>
   );
 }

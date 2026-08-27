@@ -159,7 +159,7 @@ Full documentation is in the [`docs/`](docs/) directory.
 
 ## Contributing
 
-See [`docs/development/contribution-guidelines.md`](docs/development/contribution-guidelines.md).
+For contribution, please read this carefully before writting any single line of code. See [`docs/development/contribution-guidelines.md`](docs/development/contribution-guidelines.md).
 
 ## License
 

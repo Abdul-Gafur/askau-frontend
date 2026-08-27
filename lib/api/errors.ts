@@ -61,11 +61,7 @@ export class NotFoundError extends AskAUApiError {
 
 /** HTTP 422 — Validation error */
 export class ValidationError extends AskAUApiError {
-  constructor(
-    message: string,
-    fieldErrors?: Record<string, string[]>,
-    correlationId?: string,
-  ) {
+  constructor(message: string, fieldErrors?: Record<string, string[]>, correlationId?: string) {
     super("VALIDATION_ERROR", message, 422, correlationId, fieldErrors);
     this.name = "ValidationError";
   }
@@ -139,7 +135,12 @@ export function isApiError(error: unknown): error is AskAUApiError {
  */
 export function createApiErrorFromStatus(
   statusCode: number,
-  body: { message?: string; code?: ApiErrorCode; correlationId?: string; fieldErrors?: Record<string, string[]> },
+  body: {
+    message?: string;
+    code?: ApiErrorCode;
+    correlationId?: string;
+    fieldErrors?: Record<string, string[]>;
+  },
 ): AskAUApiError {
   const { message, correlationId, fieldErrors } = body;
 
@@ -151,11 +152,7 @@ export function createApiErrorFromStatus(
     case 404:
       return new NotFoundError(undefined, correlationId);
     case 422:
-      return new ValidationError(
-        message ?? "Validation failed",
-        fieldErrors,
-        correlationId,
-      );
+      return new ValidationError(message ?? "Validation failed", fieldErrors, correlationId);
     case 429:
       return new RateLimitedError(undefined, correlationId);
     default:

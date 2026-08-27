@@ -4,11 +4,7 @@ interface LoadingMessageProps {
   step: number;
 }
 
-const STEP_KEYS = [
-  "loading.searching",
-  "loading.reviewing",
-  "loading.preparing",
-] as const;
+const STEP_KEYS = ["loading.searching", "loading.reviewing", "loading.preparing"] as const;
 
 export function LoadingMessage({ step }: LoadingMessageProps) {
   const t = useTranslations("chat");

@@ -5,6 +5,7 @@ Writing clean, maintainable components is essential for the long-term health of 
 ## 1. Server vs Client Components
 
 Next.js 15 defaults all components to **Server Components**.
+
 - **Use Server Components** for static content, fetching data securely, and rendering initial HTML.
 - **Use Client Components** (`"use client"`) only when necessary:
   - When using React hooks (`useState`, `useEffect`, etc.).
@@ -23,8 +24,8 @@ A typical component file should follow this structure:
 4. **Export:** Default export at the bottom.
 
 ```tsx
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
 
 interface ChatInputProps {
   onSubmit: (text: string) => void;
@@ -33,26 +34,27 @@ interface ChatInputProps {
 
 export function ChatInput({ onSubmit, isLoading }: ChatInputProps) {
   // Component logic
-  return (
-    <div>...</div>
-  );
+  return <div>...</div>;
 }
 ```
 
 ## 3. Keep Components Small
 
 If a component grows beyond 200-300 lines, consider breaking it down.
+
 - Extract complex UI into sub-components.
 - Extract complex logic into custom hooks.
 
 ## 4. Business Logic Separation
 
 UI components should be "dumb". They should receive data via props and emit events via callbacks.
+
 - **Do not** fetch data directly inside a low-level UI component.
 - **Do not** write heavy data transformation logic inside a component. Move it to a utility function or a hook.
 
 ## 5. Using shadcn/ui
 
 We use `shadcn/ui` for primitive components.
+
 - Do not modify the primitive components in `components/ui/` unless adding global capabilities.
 - Compose them together in your feature folders or `components/common/`.

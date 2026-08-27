@@ -33,14 +33,15 @@ const PROTECTED_PATTERNS = ["/chat", "/conversations", "/settings", "/admin"];
 
 function isPublicPath(pathname: string): boolean {
   return PUBLIC_PATHS.some(
-    (p) => pathname === p || pathname.startsWith(`${p}/`) || pathname.startsWith(`/${pathname.split("/")[1] ?? ""}${p}`),
+    (p) =>
+      pathname === p ||
+      pathname.startsWith(`${p}/`) ||
+      pathname.startsWith(`/${pathname.split("/")[1] ?? ""}${p}`),
   );
 }
 
 function isProtectedPath(pathname: string): boolean {
-  return PROTECTED_PATTERNS.some(
-    (p) => pathname.includes(p),
-  );
+  return PROTECTED_PATTERNS.some((p) => pathname.includes(p));
 }
 
 export default auth(async function proxy(

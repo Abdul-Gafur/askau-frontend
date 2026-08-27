@@ -13,14 +13,14 @@ This is a wrapper around native `fetch` configured with:
 
 ## Do Not Use Raw `fetch`
 
-Never use raw `fetch()` in a component or server action to call the backend API. 
+Never use raw `fetch()` in a component or server action to call the backend API.
 
 ```tsx
 // WRONG
-const res = await fetch('https://api.askau.int/users');
+const res = await fetch("https://api.askau.int/users");
 
 // CORRECT
-const res = await apiClient.get('/users');
+const res = await apiClient.get("/users");
 ```
 
 ## TanStack Query Integration
@@ -29,14 +29,14 @@ The `ApiClient` is used inside TanStack Query fetcher functions.
 
 ```tsx
 // features/users/api/use-users.ts
-import { useQuery } from '@tanstack/react-query';
-import { apiClient } from '@/lib/api/client';
+import { useQuery } from "@tanstack/react-query";
+import { apiClient } from "@/lib/api/client";
 
 export function useUsers() {
   return useQuery({
-    queryKey: ['users'],
+    queryKey: ["users"],
     queryFn: async () => {
-      const { data } = await apiClient.get('/users');
+      const { data } = await apiClient.get("/users");
       return data;
     },
   });

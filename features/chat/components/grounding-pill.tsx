@@ -30,7 +30,7 @@ export function GroundingPill({ count, retrievedAt }: GroundingPillProps) {
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="inline-flex items-center gap-1.5 text-xs font-medium text-green-600 dark:text-green-500 transition-opacity hover:opacity-80"
+        className="inline-flex items-center gap-1.5 text-xs font-medium text-green-600 transition-opacity hover:opacity-80 dark:text-green-500"
         aria-expanded={open}
       >
         {/* Check icon */}
@@ -66,7 +66,7 @@ export function GroundingPill({ count, retrievedAt }: GroundingPillProps) {
       </button>
 
       {open && (
-        <div className="absolute start-0 top-full z-20 mt-1.5 w-64 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 p-3 shadow-lg">
+        <div className="absolute start-0 top-full z-20 mt-1.5 w-64 rounded-xl border border-neutral-200 bg-white p-3 shadow-lg dark:border-neutral-700 dark:bg-neutral-900">
           <div className="space-y-1.5 text-xs">
             <div className="flex justify-between text-neutral-500 dark:text-neutral-400">
               <span>{t("sourcesRetrieved")}</span>

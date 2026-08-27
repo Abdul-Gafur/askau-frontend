@@ -4,7 +4,7 @@ The AskAU Frontend fully supports Dark Mode to improve accessibility and user ex
 
 ## Implementation
 
-We use `next-themes` to toggle a `.dark` class on the root HTML element. 
+We use `next-themes` to toggle a `.dark` class on the root HTML element.
 
 When the `.dark` class is present, the CSS variables defined in `globals.css` under the `.dark` selector override the default (light) variables.
 

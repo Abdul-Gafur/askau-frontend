@@ -33,7 +33,7 @@ export function SourceCard({ source, onPreview, onDownload }: SourceCardProps) {
   };
 
   return (
-    <div className="group flex items-start gap-3 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 px-3 py-2.5 transition-colors hover:border-neutral-300 dark:hover:border-neutral-600">
+    <div className="group flex items-start gap-3 rounded-xl border border-neutral-200 bg-white px-3 py-2.5 transition-colors hover:border-neutral-300 dark:border-neutral-700 dark:bg-neutral-900 dark:hover:border-neutral-600">
       {/* Icon */}
       <div className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-lg bg-neutral-100 dark:bg-neutral-800">
         <svg
@@ -57,7 +57,7 @@ export function SourceCard({ source, onPreview, onDownload }: SourceCardProps) {
       {/* Content */}
       <div className="min-w-0 flex-1">
         <div className="flex items-start justify-between gap-2">
-          <p className="text-sm font-medium leading-snug text-black dark:text-white">
+          <p className="text-sm leading-snug font-medium text-black dark:text-white">
             {source.title}
           </p>
           <ClassBadge level={source.classification} />
@@ -71,7 +71,7 @@ export function SourceCard({ source, onPreview, onDownload }: SourceCardProps) {
           <button
             type="button"
             onClick={() => onPreview(source)}
-            className="flex items-center gap-1 text-xs font-medium text-blue-600 dark:text-blue-400 transition-opacity hover:opacity-75"
+            className="flex items-center gap-1 text-xs font-medium text-blue-600 transition-opacity hover:opacity-75 dark:text-blue-400"
           >
             <svg
               width={12}
@@ -94,11 +94,11 @@ export function SourceCard({ source, onPreview, onDownload }: SourceCardProps) {
             type="button"
             onClick={handleDownload}
             disabled={downloading}
-            className="flex items-center gap-1 text-xs text-neutral-500 dark:text-neutral-400 transition-colors hover:text-neutral-900 dark:hover:text-neutral-100 disabled:opacity-50"
+            className="flex items-center gap-1 text-xs text-neutral-500 transition-colors hover:text-neutral-900 disabled:opacity-50 dark:text-neutral-400 dark:hover:text-neutral-100"
           >
             {downloading ? (
               <>
-                <span className="inline-block h-3 w-3 animate-spin rounded-full border border-neutral-500 dark:border-neutral-400 border-t-transparent" />
+                <span className="inline-block h-3 w-3 animate-spin rounded-full border border-neutral-500 border-t-transparent dark:border-neutral-400" />
                 {t("downloading")}
               </>
             ) : downloaded ? (

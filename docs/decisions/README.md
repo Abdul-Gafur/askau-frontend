@@ -9,6 +9,7 @@ An Architecture Decision Record (ADR) is a short text file that captures an impo
 ## When to write an ADR
 
 Write a new ADR when you are making a decision that will significantly impact:
+
 - The structure of the codebase.
 - The technologies or libraries being used.
 - Security or authentication flows.
@@ -24,14 +25,18 @@ Write a new ADR when you are making a decision that will significantly impact:
 # ADR [Number]: [Title]
 
 ## Status
+
 [Proposed | Accepted | Rejected | Deprecated | Superseded]
 
 ## Context
+
 What is the issue that we're seeing that is motivating this decision or change?
 
 ## Decision
+
 What is the change that we're proposing and/or doing?
 
 ## Consequences
+
 What becomes easier or more difficult to do because of this change?
 ```

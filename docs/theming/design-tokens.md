@@ -6,21 +6,21 @@ Our design system is tokenized into CSS variables within `src/app/globals.css`. 
 
 We use HSL color values for flexibility (e.g., easily applying opacity with `bg-primary/50`).
 
-| Variable | Description |
-|---|---|
-| `--background` | Default page background |
-| `--foreground` | Default text color |
-| `--card` | Background for cards and containers |
-| `--card-foreground` | Text inside cards |
-| `--popover` | Background for dropdowns, popovers, tooltips |
-| `--primary` | Primary brand color (buttons, active states) |
-| `--secondary` | Secondary / muted brand color |
-| `--muted` | Muted backgrounds (e.g., disabled states) |
-| `--accent` | Highlighted elements |
-| `--destructive` | Error states, delete buttons |
-| `--border` | Default border color |
-| `--input` | Border color for inputs |
-| `--ring` | Focus ring color for accessibility |
+| Variable            | Description                                  |
+| ------------------- | -------------------------------------------- |
+| `--background`      | Default page background                      |
+| `--foreground`      | Default text color                           |
+| `--card`            | Background for cards and containers          |
+| `--card-foreground` | Text inside cards                            |
+| `--popover`         | Background for dropdowns, popovers, tooltips |
+| `--primary`         | Primary brand color (buttons, active states) |
+| `--secondary`       | Secondary / muted brand color                |
+| `--muted`           | Muted backgrounds (e.g., disabled states)    |
+| `--accent`          | Highlighted elements                         |
+| `--destructive`     | Error states, delete buttons                 |
+| `--border`          | Default border color                         |
+| `--input`           | Border color for inputs                      |
+| `--ring`            | Focus ring color for accessibility           |
 
 ## Radius Tokens
 

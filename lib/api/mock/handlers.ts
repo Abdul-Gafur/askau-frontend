@@ -54,7 +54,13 @@ export async function handleMockRequest<T>(
 
   // Conversations list
   if (method === "GET" && cleanPath === "/conversations") {
-    return { items: MOCK_CONVERSATIONS, total: MOCK_CONVERSATIONS.length, page: 1, pageSize: 20, hasMore: false } as T;
+    return {
+      items: MOCK_CONVERSATIONS,
+      total: MOCK_CONVERSATIONS.length,
+      page: 1,
+      pageSize: 20,
+      hasMore: false,
+    } as T;
   }
 
   // Single conversation
@@ -74,7 +80,13 @@ export async function handleMockRequest<T>(
     const id = messagesMatch[1];
     if (method === "GET") {
       const messages = MOCK_MESSAGES.filter((m) => m.conversationId === id);
-      return { items: messages, total: messages.length, page: 1, pageSize: 50, hasMore: false } as T;
+      return {
+        items: messages,
+        total: messages.length,
+        page: 1,
+        pageSize: 50,
+        hasMore: false,
+      } as T;
     }
     if (method === "POST") {
       // Simulate chat response

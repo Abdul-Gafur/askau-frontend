@@ -21,11 +21,7 @@ interface AppHeaderProps {
  *
  * Uses CSS logical properties for RTL compatibility.
  */
-export function AppHeader({
-  session: _session,
-  sidebarOpen,
-  onSidebarToggle,
-}: AppHeaderProps) {
+export function AppHeader({ session: _session, sidebarOpen, onSidebarToggle }: AppHeaderProps) {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const locale = useLocale();
   const [mounted, setMounted] = React.useState(false);
@@ -41,12 +37,10 @@ export function AppHeader({
     setTheme(isDark ? "light" : "dark");
   };
 
-  const themeLabel = isDark
-    ? "Switch to light mode"
-    : "Switch to dark mode";
+  const themeLabel = isDark ? "Switch to light mode" : "Switch to dark mode";
 
   return (
-    <header className="flex h-12 flex-shrink-0 items-center justify-between border-b border-neutral-100 dark:border-neutral-800 bg-white dark:bg-black px-4 md:hidden">
+    <header className="flex h-12 flex-shrink-0 items-center justify-between border-b border-neutral-100 bg-white px-4 md:hidden dark:border-neutral-800 dark:bg-black">
       {/* Hamburger */}
       <button
         type="button"
@@ -62,15 +56,13 @@ export function AppHeader({
       {/* Logo */}
       <Link
         href={`/${locale}/chat`}
-        className="flex items-center gap-1.5 rounded-md px-1 py-1 focus-visible:ring-2 focus-visible:ring-ring"
+        className="focus-visible:ring-ring flex items-center gap-1.5 rounded-md px-1 py-1 focus-visible:ring-2"
         aria-label={`${siteConfig.name} — Home`}
       >
-        <span className="flex h-5 w-5 items-center justify-center rounded-md bg-neutral-800 dark:bg-neutral-200 text-[11px] font-bold text-white dark:text-neutral-900">
+        <span className="flex h-5 w-5 items-center justify-center rounded-md bg-neutral-800 text-[11px] font-bold text-white dark:bg-neutral-200 dark:text-neutral-900">
           AU
         </span>
-        <span className="text-sm font-semibold text-black dark:text-white">
-          {siteConfig.name}
-        </span>
+        <span className="text-sm font-semibold text-black dark:text-white">{siteConfig.name}</span>
       </Link>
 
       {/* Theme toggle */}
@@ -79,13 +71,9 @@ export function AppHeader({
         onClick={toggleTheme}
         aria-label={themeLabel}
         title={themeLabel}
-        className="flex h-9 w-9 items-center justify-center rounded-lg text-sm transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800 text-black dark:text-white"
+        className="flex h-9 w-9 items-center justify-center rounded-lg text-sm text-black transition-colors hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-800"
       >
-        {isDark ? (
-          <SunIcon className="h-5 w-5" />
-        ) : (
-          <MoonIcon className="h-5 w-5" />
-        )}
+        {isDark ? <SunIcon className="h-5 w-5" /> : <MoonIcon className="h-5 w-5" />}
       </button>
     </header>
   );
@@ -93,7 +81,16 @@ export function AppHeader({
 
 function MenuIcon({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.8}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
       <line x1="3" y1="12" x2="21" y2="12" />
       <line x1="3" y1="6" x2="21" y2="6" />
       <line x1="3" y1="18" x2="21" y2="18" />
@@ -102,14 +99,32 @@ function MenuIcon({ className }: { className?: string }) {
 }
 function MoonIcon({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.8}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
       <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
     </svg>
   );
 }
 function SunIcon({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.8}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
       <circle cx="12" cy="12" r="5" />
       <line x1="12" y1="1" x2="12" y2="3" />
       <line x1="12" y1="21" x2="12" y2="23" />

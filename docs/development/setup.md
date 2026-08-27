@@ -5,6 +5,7 @@ This guide walks you through setting up the AskAU Frontend on your local machine
 ## Prerequisites
 
 Ensure you have the following installed on your machine:
+
 - **Node.js**: v20 or higher (We recommend using `nvm` or `fnm`).
 - **Package Manager**: `pnpm` v9 or higher.
 - **Git**: For version control.

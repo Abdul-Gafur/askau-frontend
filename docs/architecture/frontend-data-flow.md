@@ -18,6 +18,7 @@ We use **TanStack Query** (React Query) as our primary state management and data
 ## API Client Responsibilities
 
 The centralized `ApiClient` is responsible for:
+
 - Standardizing Request/Response formats.
 - Injecting the Bearer token for authenticated routes.
 - Handling global errors (e.g., redirecting on 401 Unauthorized).

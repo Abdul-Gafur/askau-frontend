@@ -71,11 +71,7 @@ export interface FeedbackRequest {
  * @future Phase 2+
  */
 export type AgentActionType =
-  | "search_documents"
-  | "retrieve_policy"
-  | "create_request"
-  | "submit_workflow"
-  | "query_mis";
+  "search_documents" | "retrieve_policy" | "create_request" | "submit_workflow" | "query_mis";
 
 /**
  * Agent action — represents a tool call or enterprise system operation.

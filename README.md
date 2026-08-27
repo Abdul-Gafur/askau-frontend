@@ -22,6 +22,7 @@ The frontend is maintained as a **separate repository** from the AskAU backend/p
 **Phase 1 — Foundation**
 
 This phase establishes:
+
 - Project architecture and folder structure
 - TypeScript + ESLint + Prettier configuration
 - Design system (Tailwind CSS v4 + custom tokens)
@@ -37,19 +38,19 @@ This phase establishes:
 
 ## Technology Stack
 
-| Category | Technology |
-|---|---|
-| Framework | Next.js 16 (App Router) |
-| Language | TypeScript 5 (strict) |
-| UI | React 19 |
-| Styling | Tailwind CSS v4 |
-| Auth | NextAuth.js v5 + Microsoft Entra ID |
-| i18n | next-intl |
-| Server State | TanStack Query v5 |
-| Forms | React Hook Form + Zod |
-| Theme | next-themes |
-| Package Manager | pnpm |
-| Testing | Vitest + React Testing Library + Playwright |
+| Category        | Technology                                  |
+| --------------- | ------------------------------------------- |
+| Framework       | Next.js 16 (App Router)                     |
+| Language        | TypeScript 5 (strict)                       |
+| UI              | React 19                                    |
+| Styling         | Tailwind CSS v4                             |
+| Auth            | NextAuth.js v5 + Microsoft Entra ID         |
+| i18n            | next-intl                                   |
+| Server State    | TanStack Query v5                           |
+| Forms           | React Hook Form + Zod                       |
+| Theme           | next-themes                                 |
+| Package Manager | pnpm                                        |
+| Testing         | Vitest + React Testing Library + Playwright |
 
 ## Prerequisites
 
@@ -69,9 +70,9 @@ pnpm install
 ```
 
 > **Important**: Install the **complete** dependency set. Do not use flags like `--production`, `--omit=dev`, `--no-optional` or `--ignore-scripts`. The development dependencies (TypeScript, ESLint, Prettier, Tailwind, Next.js toolchain) are required for the app to build properly and for your editor to provide accurate intellisense.
-> 
+>
 > If an installation fails partway, delete `node_modules` and run `pnpm install` again. Do not hand-install the one package that errored to ensure your dependency tree matches everyone else's.
-> 
+>
 > Always commit any changes to `pnpm-lock.yaml` in the same commit when adding new dependencies.
 
 ```bash
@@ -85,6 +86,7 @@ cp .env.example .env.local
 See [`.env.example`](.env.example) for all required variables.
 
 **For development without a real backend**, set:
+
 ```env
 NEXT_PUBLIC_USE_MOCK_API=true
 NEXTAUTH_SECRET=any-32-char-random-string

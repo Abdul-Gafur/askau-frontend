@@ -5,8 +5,7 @@ import { ChatShell } from "@/features/chat/components/chat-shell";
 
 export const metadata: Metadata = {
   title: "Chat",
-  description:
-    "Ask questions about AU Commission policies, procedures, and documents.",
+  description: "Ask questions about AU Commission policies, procedures, and documents.",
 };
 
 interface ChatIdPageProps {

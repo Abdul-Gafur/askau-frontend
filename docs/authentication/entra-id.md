@@ -31,6 +31,6 @@ To run authentication locally, you need the following variables in `.env.local`:
 
 ## Security Considerations
 
-- Access Tokens have short lifespans. 
+- Access Tokens have short lifespans.
 - Refresh tokens (if configured) are handled server-side to prevent leakage to the client.
 - We do not store sensitive Microsoft credentials on the client.

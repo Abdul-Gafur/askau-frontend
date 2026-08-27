@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+
 - Initial project foundation and architecture setup.
 - Next.js 15 App Router configuration with React 19.
 - Tailwind CSS v4 and `next-themes` integration for Light/Dark modes.
@@ -19,7 +20,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Comprehensive documentation directory.
 
 ### Changed
+
 - Refactored UI components to use Tailwind v4 standards.
 
 ### Fixed
+
 - Localization routing and middleware configurations.

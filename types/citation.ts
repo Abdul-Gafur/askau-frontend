@@ -16,15 +16,7 @@ import type { ID, ISODateTime } from "./common";
 
 /** Type of source document */
 export type DocumentType =
-  | "policy"
-  | "procedure"
-  | "sop"
-  | "guideline"
-  | "manual"
-  | "circular"
-  | "faq"
-  | "report"
-  | "other";
+  "policy" | "procedure" | "sop" | "guideline" | "manual" | "circular" | "faq" | "report" | "other";
 
 /** A citation / source reference */
 export interface Citation {

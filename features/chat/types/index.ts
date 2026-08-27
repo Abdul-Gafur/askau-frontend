@@ -6,30 +6,16 @@
  * a common location — for now they are co-located here and re-exported.
  */
 
-export type ClassLevel =
-  | "PUBLIC"
-  | "INTERNAL"
-  | "CONFIDENTIAL"
-  | "HIGHLY_RESTRICTED";
+export type ClassLevel = "PUBLIC" | "INTERNAL" | "CONFIDENTIAL" | "HIGHLY_RESTRICTED";
 
-export type MessageState =
-  | "grounded"
-  | "insufficient"
-  | "outdated"
-  | "conflicting"
-  | "error";
+export type MessageState = "grounded" | "insufficient" | "outdated" | "conflicting" | "error";
 
 export type AppView = "welcome" | "conversation" | "loading";
 
 export type FeedbackType = "helpful" | "not-helpful";
 
 export type NotHelpfulReason =
-  | "incorrect"
-  | "irrelevant"
-  | "missing-source"
-  | "outdated"
-  | "other"
-  | null;
+  "incorrect" | "irrelevant" | "missing-source" | "outdated" | "other" | null;
 
 export interface Source {
   id: string;

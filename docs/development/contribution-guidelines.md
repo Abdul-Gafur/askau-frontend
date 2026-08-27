@@ -22,6 +22,7 @@ We use a **Git Flow** approach built around pull requests. Direct pushes to core
 - `docs/*`: Documentation updates.
 
 **Important Guidelines**:
+
 - **One screen/feature per branch, one branch per pull request.** Do not bundle multiple unrelated features into a single PR.
 
 ## 3. Commit Conventions
@@ -31,6 +32,7 @@ We strictly follow [Conventional Commits](https://www.conventionalcommits.org/).
 **Format**: `<type>: <description>`
 
 **Allowed Types**:
+
 - `feat:` A new feature.
 - `fix:` A bug fix.
 - `docs:` Documentation only changes.
@@ -41,6 +43,7 @@ We strictly follow [Conventional Commits](https://www.conventionalcommits.org/).
 - `chore:` Changes to the build process or auxiliary tools and libraries.
 
 **Examples**:
+
 - `feat: add chat feature`
 - `fix: correct mobile navigation`
 - `refactor: simplify API client`
@@ -50,8 +53,10 @@ We strictly follow [Conventional Commits](https://www.conventionalcommits.org/).
 ## 4. Pull Requests (PRs)
 
 **Pre-Push Checks:** Before pushing your branch to GitHub, you **must** run the following commands locally and fix any errors. This prevents broken builds and CI pipeline failures:
+
 - `pnpm lint` (Checks code style and formatting)
 - `pnpm typecheck` (Ensures TypeScript compiles)
+- `pnpm format:check` (Checks code formatting)
 - `pnpm test` (Runs the test suite)
 - `pnpm build` (Verifies the production build succeeds)
 
@@ -67,6 +72,7 @@ All changes must go through a Pull Request.
 Every PR requires at least **one approval** from a core maintainer before merging.
 
 Reviewers will check for:
+
 - Adherence to the feature-oriented architecture.
 - Proper use of server vs. client components.
 - Avoidance of business logic in UI components.
@@ -75,12 +81,15 @@ Reviewers will check for:
 ## 6. Development Guidelines
 
 ### Server and Client Components
+
 - Pages should remain **server components**.
 - All interactivity (filters, search, tabs, dialogs) lives one level down, in `"use client"` components inside your feature folder. This keeps routes statically renderable across locales.
 - Anything time-dependent (like relative timestamps) must be resolved on the server and passed down as a formatted string to avoid hydration mismatches.
 
 ### Component Boundaries
+
 Respect the following import hierarchy. Imports run downwards only:
+
 1. `features/`: Feature-specific domain code.
 2. `layout/`: Application shell.
 3. `common/`: App-wide blocks composed from `ui/`.
@@ -89,6 +98,7 @@ Respect the following import hierarchy. Imports run downwards only:
 **No feature folder imports from another feature folder.** If you find yourself wanting something from someone else's folder, that is a signal the piece belongs in `common/`.
 
 ### Data Fetching
+
 - Create a `<feature>-data.ts` module in your feature folder that returns the real domain types with placeholder values (until the API is ready).
 - Filter client-side over a list the server has already sent (when applicable).
 

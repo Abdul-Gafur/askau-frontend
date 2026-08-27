@@ -9,6 +9,7 @@ Never use physical directional CSS properties (like `left`, `right`, `margin-lef
 Tailwind CSS supports logical properties natively.
 
 ### DO NOT USE (Physical Properties)
+
 - `ml-4` (margin-left)
 - `pr-2` (padding-right)
 - `border-l` (border-left)
@@ -16,6 +17,7 @@ Tailwind CSS supports logical properties natively.
 - `text-left` (text-align: left)
 
 ### DO USE (Logical Properties)
+
 - `ms-4` (margin-inline-start) - Applies to the left in LTR, right in RTL.
 - `pe-2` (padding-inline-end) - Applies to the right in LTR, left in RTL.
 - `border-s` (border-inline-start)
@@ -25,12 +27,14 @@ Tailwind CSS supports logical properties natively.
 ## Flexbox and Grid are your friends
 
 Flexbox and CSS Grid are naturally direction-aware.
+
 - `flex-row` will automatically lay items out Left-to-Right in English, and Right-to-Left in Arabic.
 - You do not need to change flex-direction for RTL unless you specifically want to reverse the natural order.
 
 ## Icons and Arrows
 
 Directional icons (like a "back" arrow pointing left) often need to flip in RTL.
+
 - Use the `rtl:scale-x-[-1]` Tailwind class to horizontally flip an SVG icon when in RTL mode.
 
 ```tsx

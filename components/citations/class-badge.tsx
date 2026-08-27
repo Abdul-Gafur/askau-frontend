@@ -7,10 +7,8 @@ interface ClassBadgeProps {
 }
 
 const BADGE_STYLES: Record<ClassLevel, string> = {
-  PUBLIC:
-    "bg-neutral-100 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400",
-  INTERNAL:
-    "bg-neutral-100 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400",
+  PUBLIC: "bg-neutral-100 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400",
+  INTERNAL: "bg-neutral-100 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400",
   CONFIDENTIAL:
     "bg-orange-100 text-orange-800 border border-orange-200 dark:bg-orange-900/30 dark:text-orange-300 dark:border-orange-800",
   HIGHLY_RESTRICTED:

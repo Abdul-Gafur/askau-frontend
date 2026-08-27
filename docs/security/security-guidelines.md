@@ -21,6 +21,7 @@ React protects against XSS by default by escaping string variables.
 ## 4. Input Sanitization
 
 While the backend validates all inputs, the frontend should:
+
 - Use strict types (TypeScript).
 - Use runtime validation (e.g., `zod`) to catch invalid inputs immediately and provide a good user experience.
 

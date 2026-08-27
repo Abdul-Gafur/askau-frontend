@@ -19,7 +19,7 @@ graph TD
     Frontend[AskAU Frontend\nNext.js Server]
     Backend[AskAU Platform API]
     Entra[Microsoft Entra ID]
-    
+
     Client -->|HTTPS| Frontend
     Frontend -->|REST APIs| Backend
     Client -->|OAuth2/OIDC| Entra

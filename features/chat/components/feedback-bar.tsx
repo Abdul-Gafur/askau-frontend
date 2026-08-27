@@ -34,8 +34,7 @@ export function FeedbackBar({
 
   const isHelpful = feedback === "helpful";
   const isNotHelpful = feedback === "not-helpful";
-  const confirmed =
-    (isHelpful) || (isNotHelpful && notHelpfulReason !== null);
+  const confirmed = isHelpful || (isNotHelpful && notHelpfulReason !== null);
 
   return (
     <div className="mt-3 space-y-2">
@@ -68,7 +67,7 @@ export function FeedbackBar({
             className={`rounded-lg p-1.5 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800 ${
               isHelpful
                 ? "text-green-600 dark:text-green-500"
-                : "text-neutral-400 dark:text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300"
+                : "text-neutral-400 hover:text-neutral-700 dark:text-neutral-500 dark:hover:text-neutral-300"
             }`}
           >
             <svg
@@ -95,7 +94,7 @@ export function FeedbackBar({
             className={`rounded-lg p-1.5 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800 ${
               isNotHelpful
                 ? "text-red-500 dark:text-red-400"
-                : "text-neutral-400 dark:text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300"
+                : "text-neutral-400 hover:text-neutral-700 dark:text-neutral-500 dark:hover:text-neutral-300"
             }`}
           >
             <svg
@@ -118,7 +117,7 @@ export function FeedbackBar({
             type="button"
             title={t("retry")}
             aria-label={t("retry")}
-            className="rounded-lg p-1.5 text-neutral-400 dark:text-neutral-500 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-neutral-700 dark:hover:text-neutral-300"
+            className="rounded-lg p-1.5 text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-neutral-700 dark:text-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-neutral-300"
           >
             <svg
               width={15}
@@ -142,7 +141,7 @@ export function FeedbackBar({
             type="button"
             title={t("copy")}
             aria-label={t("copy")}
-            className="rounded-lg p-1.5 text-neutral-400 dark:text-neutral-500 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-neutral-700 dark:hover:text-neutral-300"
+            className="rounded-lg p-1.5 text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-neutral-700 dark:text-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-neutral-300"
           >
             <svg
               width={15}
@@ -165,7 +164,7 @@ export function FeedbackBar({
             type="button"
             title={t("more")}
             aria-label={t("more")}
-            className="rounded-lg p-1.5 text-neutral-400 dark:text-neutral-500 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-neutral-700 dark:hover:text-neutral-300"
+            className="rounded-lg p-1.5 text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-neutral-700 dark:text-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-neutral-300"
           >
             <svg
               width={15}
@@ -194,7 +193,7 @@ export function FeedbackBar({
               key={r.id}
               type="button"
               onClick={() => onReason(r.id)}
-              className="rounded-full border border-neutral-200 dark:border-neutral-700 px-2.5 py-1 text-xs text-neutral-600 dark:text-neutral-400 transition-colors hover:border-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 dark:hover:border-neutral-500"
+              className="rounded-full border border-neutral-200 px-2.5 py-1 text-xs text-neutral-600 transition-colors hover:border-neutral-400 hover:text-neutral-700 dark:border-neutral-700 dark:text-neutral-400 dark:hover:border-neutral-500 dark:hover:text-neutral-200"
             >
               {t(r.key)}
             </button>

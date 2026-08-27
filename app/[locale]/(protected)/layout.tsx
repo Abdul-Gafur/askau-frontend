@@ -14,11 +14,7 @@ import { AppShell } from "@/components/layout/app-shell";
  * independently validates authentication and authorization
  * for every request. Never rely solely on this check.
  */
-export default async function ProtectedLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default async function ProtectedLayout({ children }: { children: React.ReactNode }) {
   const session = await auth();
 
   if (!session) {

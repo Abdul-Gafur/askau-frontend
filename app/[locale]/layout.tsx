@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   other: {
     // Prevent MS Edge and Chrome from offering translation of internal AU content
-    "google": "notranslate",
+    google: "notranslate",
   },
 };
 
@@ -83,9 +83,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
         >
           <NextIntlClientProvider messages={messages}>
             <QueryProvider>
-              <TooltipProvider>
-                {children}
-              </TooltipProvider>
+              <TooltipProvider>{children}</TooltipProvider>
               <Toaster richColors closeButton position="top-right" />
             </QueryProvider>
           </NextIntlClientProvider>

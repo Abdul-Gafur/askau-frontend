@@ -27,9 +27,9 @@
   --font-arabic: "Noto Sans Arabic", "Segoe UI", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
   --font-size-xs: 0.625rem; /* 10px */
-  --font-size-sm: 0.75rem;  /* 12px */
+  --font-size-sm: 0.75rem; /* 12px */
   --font-size-base: 0.875rem; /* 14px */
-  --font-size-lg: 1rem;     /* 16px */
+  --font-size-lg: 1rem; /* 16px */
   --font-size-xl: 1.25rem;
   --font-size-2xl: 1.5rem;
   --font-size-3xl: 1.875rem;

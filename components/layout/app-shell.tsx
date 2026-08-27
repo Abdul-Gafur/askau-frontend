@@ -43,7 +43,7 @@ export function AppShell({ children, session }: AppShellProps) {
   }, []);
 
   return (
-    <div className="flex h-screen flex-col overflow-hidden bg-white dark:bg-[#0d1117] text-black dark:text-white">
+    <div className="flex h-screen flex-col overflow-hidden bg-white text-black dark:bg-[#0d1117] dark:text-white">
       {/* Mobile-only header */}
       <AppHeader
         session={session}
@@ -53,26 +53,31 @@ export function AppShell({ children, session }: AppShellProps) {
 
       {/* Body: sidebar + main content */}
       <div className="flex flex-1 overflow-hidden">
-        <AppSidebar
-          open={sidebarOpen}
-          onClose={() => setSidebarOpen(false)}
-          session={session}
-        />
+        <AppSidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} session={session} />
 
         {/* Main content */}
         <main
           id="main-content"
           tabIndex={-1}
-          className="flex flex-1 flex-col overflow-hidden focus:outline-none relative"
+          className="relative flex flex-1 flex-col overflow-hidden focus:outline-none"
         >
           {/* Desktop sidebar toggle (when closed) */}
           {!sidebarOpen && (
             <button
               onClick={() => setSidebarOpen(true)}
-              className="absolute top-3 start-3 z-10 hidden md:flex items-center justify-center rounded-lg p-2 text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+              className="absolute start-3 top-3 z-10 hidden items-center justify-center rounded-lg p-2 text-neutral-500 transition-colors hover:bg-neutral-100 md:flex dark:hover:bg-neutral-800"
               aria-label="Open sidebar"
             >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={1.8}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-5 w-5"
+                aria-hidden="true"
+              >
                 <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
                 <line x1="9" y1="3" x2="9" y2="21" />
                 <polyline points="11 16 15 12 11 8" />

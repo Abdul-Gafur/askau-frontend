@@ -27,6 +27,7 @@ The frontend is built on the principle of **Defense in Depth**, but it explicitl
 ## 5. Security Headers
 
 Next.js is configured (via `next.config.ts`) to inject secure HTTP headers, including:
+
 - **Content Security Policy (CSP)**
 - **Strict-Transport-Security (HSTS)**
 - **X-Frame-Options (DENY)**

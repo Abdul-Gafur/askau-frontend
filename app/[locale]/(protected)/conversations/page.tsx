@@ -15,22 +15,20 @@ export default function ConversationsPage() {
   return (
     <main id="main-content" className="flex flex-1 flex-col overflow-y-auto p-6">
       <div className="mx-auto w-full max-w-2xl">
-        <h1 className="mb-6 text-xl font-bold text-foreground">Conversations</h1>
+        <h1 className="text-foreground mb-6 text-xl font-bold">Conversations</h1>
 
         <ul className="space-y-2">
           {SAMPLE_CONVERSATIONS.map((conv) => (
             <li key={conv.id}>
               <a
                 href={`/chat/${conv.id}`}
-                className="block rounded-xl border border-border bg-surface px-4 py-3.5 transition-colors hover:border-border-strong hover:bg-surface-raised"
+                className="border-border bg-surface hover:border-border-strong hover:bg-surface-raised block rounded-xl border px-4 py-3.5 transition-colors"
               >
                 <div className="flex items-start justify-between gap-3">
-                  <p className="text-sm font-medium text-foreground">
-                    {conv.title}
-                  </p>
+                  <p className="text-foreground text-sm font-medium">{conv.title}</p>
                   <time
                     dateTime={conv.timestamp.toISOString()}
-                    className="flex-shrink-0 text-xs text-muted-foreground"
+                    className="text-muted-foreground flex-shrink-0 text-xs"
                   >
                     {conv.timestamp.toLocaleString("en-GB", {
                       day: "2-digit",
@@ -40,9 +38,7 @@ export default function ConversationsPage() {
                     })}
                   </time>
                 </div>
-                <p className="mt-1 line-clamp-1 text-xs text-muted-foreground">
-                  {conv.preview}
-                </p>
+                <p className="text-muted-foreground mt-1 line-clamp-1 text-xs">{conv.preview}</p>
               </a>
             </li>
           ))}

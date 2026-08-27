@@ -28,24 +28,22 @@ export default function GlobalError({ error, reset }: ErrorProps) {
     <div className="flex min-h-screen flex-col items-center justify-center gap-6 p-8">
       <div className="text-center">
         <h1 className="mb-2 text-2xl font-bold">Something went wrong</h1>
-        <p className="mb-6 text-muted-foreground">
+        <p className="text-muted-foreground mb-6">
           An unexpected error occurred. Please try again.
         </p>
         {error.digest && (
-          <p className="mb-4 font-mono text-xs text-muted-foreground">
-            Reference: {error.digest}
-          </p>
+          <p className="text-muted-foreground mb-4 font-mono text-xs">Reference: {error.digest}</p>
         )}
         <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
           <button
             onClick={reset}
-            className="rounded-md bg-primary px-4 py-2 text-sm text-primary-foreground hover:bg-primary/90"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-md px-4 py-2 text-sm"
           >
             Try again
           </button>
           <Link
             href="/"
-            className="rounded-md border border-border px-4 py-2 text-sm hover:bg-muted"
+            className="border-border hover:bg-muted rounded-md border px-4 py-2 text-sm"
           >
             Go to home
           </Link>

@@ -15,5 +15,6 @@ The AskAU frontend uses **Tailwind CSS v4** as its core styling engine, combined
 3. **Utilities:** We exclusively use semantic Tailwind utilities (e.g., `bg-background`, `text-primary`) rather than hardcoded colors (e.g., `bg-blue-500`). This ensures automatic theme switching.
 
 For more details, see:
+
 - [Design Tokens](./design-tokens.md)
 - [Dark Mode](./dark-mode.md)

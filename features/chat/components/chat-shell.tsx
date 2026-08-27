@@ -37,13 +37,10 @@ export function ChatShell({ session, initialConvId }: ChatShellProps) {
   const [view, setView] = useState<AppView>("welcome");
   const [messages, setMessages] = useState<Message[]>([]);
   const [loadingStep, setLoadingStep] = useState(0);
-  const [, setConversations] =
-    useState<Conversation[]>(SAMPLE_CONVERSATIONS);
+  const [, setConversations] = useState<Conversation[]>(SAMPLE_CONVERSATIONS);
   const [activeConvId, setActiveConvId] = useState<string | null>(null);
   const [previewSource, setPreviewSource] = useState<Source | null>(null);
   const scrollRef = useRef<HTMLDivElement | null>(null);
-
-
 
   // Handle new chat event
   useEffect(() => {
@@ -83,7 +80,7 @@ export function ChatShell({ session, initialConvId }: ChatShellProps) {
             retrievedAt: new Date(conv.timestamp.getTime() + 500),
             sources: SAMPLE_SOURCES.slice(0, 2),
             feedback: null,
-          }
+          },
         ]);
       }
     }
@@ -97,12 +94,8 @@ export function ChatShell({ session, initialConvId }: ChatShellProps) {
     }
   }, [messages, view]);
 
-
   const handleSend = useCallback(
-    (
-      text: string,
-      variant: "normal" | "insufficient" | "conflicting" | "error" = "normal",
-    ) => {
+    (text: string, variant: "normal" | "insufficient" | "conflicting" | "error" = "normal") => {
       const userMsg: Message = {
         id: `u-${Date.now()}`,
         role: "user",
@@ -185,27 +178,18 @@ export function ChatShell({ session, initialConvId }: ChatShellProps) {
   );
 
   const handleFeedback = useCallback((msgId: string, f: FeedbackType) => {
-    setMessages((prev) =>
-      prev.map((m) => (m.id === msgId ? { ...m, feedback: f } : m)),
-    );
+    setMessages((prev) => prev.map((m) => (m.id === msgId ? { ...m, feedback: f } : m)));
   }, []);
 
-  const handleReason = useCallback(
-    (msgId: string, r: NotHelpfulReason) => {
-      setMessages((prev) =>
-        prev.map((m) => (m.id === msgId ? { ...m, notHelpfulReason: r } : m)),
-      );
-    },
-    [],
-  );
+  const handleReason = useCallback((msgId: string, r: NotHelpfulReason) => {
+    setMessages((prev) => prev.map((m) => (m.id === msgId ? { ...m, notHelpfulReason: r } : m)));
+  }, []);
 
   return (
     <div className="flex h-full flex-1 overflow-hidden">
       {/* Conversation + composer area */}
-      <div className="flex min-w-0 flex-1 flex-col relative">
-        {view === "welcome" && (
-          <WelcomeScreen userName={session?.user?.name} onSend={handleSend} />
-        )}
+      <div className="relative flex min-w-0 flex-1 flex-col">
+        {view === "welcome" && <WelcomeScreen userName={session?.user?.name} onSend={handleSend} />}
 
         {(view === "conversation" || view === "loading") && (
           <>
@@ -220,7 +204,7 @@ export function ChatShell({ session, initialConvId }: ChatShellProps) {
             />
 
             {/* Sticky composer */}
-            <div className="flex-shrink-0 bg-gradient-to-t from-white via-white to-transparent dark:from-black dark:via-black dark:to-transparent px-4 pb-4 pt-6 md:px-6 absolute bottom-0 left-0 right-0 z-10">
+            <div className="absolute right-0 bottom-0 left-0 z-10 flex-shrink-0 bg-gradient-to-t from-white via-white to-transparent px-4 pt-6 pb-4 md:px-6 dark:from-black dark:via-black dark:to-transparent">
               <div className="mx-auto max-w-2xl space-y-2">
                 <MessageComposer onSend={handleSend} />
                 <p className="text-center text-[11px] text-black dark:text-white">
@@ -234,10 +218,7 @@ export function ChatShell({ session, initialConvId }: ChatShellProps) {
 
       {/* Document preview right pane */}
       {previewSource && (
-        <DocPreviewPane
-          source={previewSource}
-          onClose={() => setPreviewSource(null)}
-        />
+        <DocPreviewPane source={previewSource} onClose={() => setPreviewSource(null)} />
       )}
     </div>
   );

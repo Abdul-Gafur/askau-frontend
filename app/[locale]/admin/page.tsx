@@ -21,7 +21,7 @@ export default async function AdminPage() {
   if (!session) redirect("/login");
 
   // UX-only role check — backend is authoritative
-  const roles = ((session.user as { roles?: UserRole[] }).roles) ?? ["user"];
+  const roles = (session.user as { roles?: UserRole[] }).roles ?? ["user"];
   if (!isAdmin(roles)) {
     redirect("/unauthorized");
   }

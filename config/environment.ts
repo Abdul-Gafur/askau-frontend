@@ -42,12 +42,7 @@ export const env = {
 
 /** Validates that required environment variables are present. Server-side only. */
 export function validateServerEnv(): void {
-  const required = [
-    "NEXTAUTH_SECRET",
-    "ENTRA_CLIENT_ID",
-    "ENTRA_CLIENT_SECRET",
-    "ENTRA_TENANT_ID",
-  ];
+  const required = ["NEXTAUTH_SECRET", "ENTRA_CLIENT_ID", "ENTRA_CLIENT_SECRET", "ENTRA_TENANT_ID"];
 
   if (env.isProd) {
     const missing = required.filter((key) => !process.env[key]);

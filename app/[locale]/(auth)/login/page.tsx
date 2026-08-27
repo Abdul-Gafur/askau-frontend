@@ -32,18 +32,13 @@ export default function LoginPage() {
   return (
     <main
       id="main-content"
-      className="flex min-h-screen flex-col items-center justify-center bg-background p-6"
+      className="bg-background flex min-h-screen flex-col items-center justify-center p-6"
     >
-    
-
       {/* Maira, Please design the login page here. Use the Dev-only Mock below to bypass the login page to access the chat interface*/}
-
-
-
 
       {/* Dev-only Mock Login */}
       {process.env.NEXT_PUBLIC_USE_MOCK_API === "true" && (
-        <div className="mt-4 border border-border pt-4">
+        <div className="border-border mt-4 border pt-4">
           <button
             type="button"
             onClick={async () => {
@@ -55,7 +50,7 @@ export default function LoginPage() {
               }
             }}
             disabled={isSigningIn}
-            className="flex w-full items-center justify-center rounded-lg bg-secondary px-4 py-3 text-sm font-medium text-secondary-foreground transition-colors hover:bg-secondary/80 disabled:cursor-not-allowed disabled:opacity-60"
+            className="bg-secondary text-secondary-foreground hover:bg-secondary/80 flex w-full items-center justify-center rounded-lg px-4 py-3 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60"
           >
             Bypass Login (Dev Mode)
           </button>

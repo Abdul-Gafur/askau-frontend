@@ -22,12 +22,7 @@
  * ────────────────────────────────────────────────────────────────────
  */
 
-import {
-  NetworkError,
-  TimeoutError,
-  UnknownApiError,
-  createApiErrorFromStatus,
-} from "./errors";
+import { NetworkError, TimeoutError, UnknownApiError, createApiErrorFromStatus } from "./errors";
 import type { ApiErrorCode } from "@/types/api";
 import { logger } from "@/lib/logger";
 
@@ -65,10 +60,7 @@ const DEFAULT_MAX_RETRIES = 2;
  */
 function isMockMode(): boolean {
   if (process.env["NODE_ENV"] === "production") return false;
-  return (
-    process.env["NEXT_PUBLIC_USE_MOCK_API"] === "true" ||
-    process.env["VITEST"] === "true"
-  );
+  return process.env["NEXT_PUBLIC_USE_MOCK_API"] === "true" || process.env["VITEST"] === "true";
 }
 
 /**
@@ -217,8 +209,7 @@ function createApiClient(config: ApiClientConfig) {
   }
 
   return {
-    get: <T>(path: string, options?: RequestOptions) =>
-      request<T>("GET", path, undefined, options),
+    get: <T>(path: string, options?: RequestOptions) => request<T>("GET", path, undefined, options),
 
     post: <T>(path: string, body?: unknown, options?: RequestOptions) =>
       request<T>("POST", path, body, options),
@@ -237,7 +228,11 @@ function createApiClient(config: ApiClientConfig) {
      * Prepared for future chat streaming. Not implemented in Phase 1.
      * @future Phase 2
      */
-    stream: async (path: string, body: unknown, options?: RequestOptions): Promise<ReadableStream> => {
+    stream: async (
+      path: string,
+      body: unknown,
+      options?: RequestOptions,
+    ): Promise<ReadableStream> => {
       if (useMock) {
         logger.warn("Stream not available in mock mode");
         throw new Error("Streaming not supported in mock mode");

@@ -3,10 +3,7 @@ import { MessageComposer } from "./message-composer";
 
 interface WelcomeScreenProps {
   userName?: string | null;
-  onSend: (
-    text: string,
-    variant?: "normal" | "insufficient" | "conflicting" | "error",
-  ) => void;
+  onSend: (text: string, variant?: "normal" | "insufficient" | "conflicting" | "error") => void;
 }
 
 const SUGGESTED_PROMPT_KEYS = [
@@ -20,8 +17,7 @@ export function WelcomeScreen({ onSend, userName }: WelcomeScreenProps) {
   const t = useTranslations("chat");
 
   return (
-    <div className="flex h-full w-full max-w-3xl animate-fade-in flex-col items-center justify-center p-6 text-center mx-auto">
-
+    <div className="animate-fade-in mx-auto flex h-full w-full max-w-3xl flex-col items-center justify-center p-6 text-center">
       <h1 className="mb-3 text-3xl font-semibold tracking-tight text-black dark:text-white">
         {t("welcomeHeading", { name: userName || "User" })}
       </h1>

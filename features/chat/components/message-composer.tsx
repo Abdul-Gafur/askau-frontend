@@ -97,7 +97,7 @@ export function MessageComposer({
           }}
           placeholder={t("placeholder")}
           disabled={disabled}
-          className="min-h-[26px] flex-1 resize-none bg-transparent py-0.5 text-sm leading-relaxed text-black placeholder-neutral-400 focus:outline-none focus-visible:outline-none disabled:cursor-not-allowed dark:text-white dark:placeholder-neutral-500"
+          className="min-h-[26px] flex-1 resize-none bg-transparent py-0.5 text-sm leading-relaxed text-black placeholder-neutral-400 focus:outline-none focus-visible:outline-none focus:ring-0 focus-visible:ring-0 disabled:cursor-not-allowed dark:text-white dark:placeholder-neutral-500"
           aria-label={t("placeholder")}
         />
 

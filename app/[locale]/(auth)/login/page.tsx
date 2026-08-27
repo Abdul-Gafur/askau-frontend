@@ -35,31 +35,31 @@ export default function LoginPage() {
       className="flex min-h-screen flex-col items-center justify-center bg-background p-6"
     >
 
-          {/* Maira, Please design the login page here. Use the Dev-only Mock below to bypass the login page to access the chat interface*/}
+      {/* Maira, Please design the login page here. Use the Dev-only Mock below to bypass the login page to access the chat interface*/}
 
 
 
-          
-          {/* Dev-only Mock Login */}
-          {process.env.NEXT_PUBLIC_USE_MOCK_API === "true" && (
-            <div className="mt-4 border border-border pt-4">
-              <button
-                type="button"
-                onClick={async () => {
-                  setIsSigningIn(true);
-                  try {
-                    await signIn("credentials", { callbackUrl });
-                  } catch {
-                    setIsSigningIn(false);
-                  }
-                }}
-                disabled={isSigningIn}
-                className="flex w-full items-center justify-center rounded-lg bg-secondary px-4 py-3 text-sm font-medium text-secondary-foreground transition-colors hover:bg-secondary/80 disabled:cursor-not-allowed disabled:opacity-60"
-              >
-                Bypass Login (Dev Mode)
-              </button>
-            </div>
-          )}
+
+      {/* Dev-only Mock Login */}
+      {process.env.NEXT_PUBLIC_USE_MOCK_API === "true" && (
+        <div className="mt-4 border border-border pt-4">
+          <button
+            type="button"
+            onClick={async () => {
+              setIsSigningIn(true);
+              try {
+                await signIn("credentials", { callbackUrl });
+              } catch {
+                setIsSigningIn(false);
+              }
+            }}
+            disabled={isSigningIn}
+            className="flex w-full items-center justify-center rounded-lg bg-secondary px-4 py-3 text-sm font-medium text-secondary-foreground transition-colors hover:bg-secondary/80 disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            Bypass Login (Dev Mode)
+          </button>
+        </div>
+      )}
     </main>
   );
 }

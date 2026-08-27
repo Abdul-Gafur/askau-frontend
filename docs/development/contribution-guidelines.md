@@ -11,16 +11,25 @@ This document outlines the workflow and requirements for contributing to the Ask
 
 ## 2. Branching Strategy
 
-We use a feature-branch workflow.
+We use a **Git Flow** approach built around pull requests. Direct pushes to core branches are strictly prohibited.
 
-- `main`: Production-ready code. **Do not push directly to `main`.**
-- `develop`: Integration branch for the next release.
+- `main`: Production-ready code. **Direct pushes are restricted.** Code must be merged from `develop` via a Pull Request.
+- `develop`: The active integration branch for the next release. **Direct pushes are restricted.** All daily work must be merged here via a Pull Request from a feature branch.
 - `feature/*`: New features or components (e.g., `feature/chat-input`). Include issue IDs when applicable (e.g., `feat/john/ASK-12-chat`).
 - `fix/*`: Bug fixes (e.g., `fix/sidebar-overflow`).
 - `docs/*`: Documentation updates.
 
+### Enforcing Branch Protection (Repository Admins)
+To strictly enforce this workflow on GitHub:
+1. Go to your repository **Settings** > **Branches**.
+2. Click **Add branch protection rule**.
+3. Set the **Branch name pattern** to `main` (and create a second rule for `develop`).
+4. Check **Require a pull request before merging**.
+5. Check **Require status checks to pass before merging** and require your CI checks (e.g., `typecheck`, `lint`, `test`, `build`).
+6. Check **Do not allow bypassing the above settings**.
+
 **Important Guidelines**:
-- **One screen per branch, one branch per pull request.** Do not bundle multiple unrelated screens or features into a single PR.
+- **One screen/feature per branch, one branch per pull request.** Do not bundle multiple unrelated features into a single PR.
 
 ## 3. Commit Conventions
 

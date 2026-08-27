@@ -14,7 +14,9 @@ This document outlines the workflow and requirements for contributing to the Ask
 We use a **Git Flow** approach built around pull requests. Direct pushes to core branches are strictly prohibited.
 
 - `main`: Production-ready code. **Direct pushes are restricted.** Code must be merged from `develop` via a Pull Request.
+
 - `develop`: The active integration branch for the next release. **Direct pushes are restricted.** All daily work must be merged here via a Pull Request from a feature branch.
+
 - `feature/*`: New features or components (e.g., `feature/chat-input`). Include issue IDs when applicable (e.g., `feat/john/ASK-12-chat`).
 - `fix/*`: Bug fixes (e.g., `fix/sidebar-overflow`).
 - `docs/*`: Documentation updates.
@@ -46,6 +48,12 @@ We strictly follow [Conventional Commits](https://www.conventionalcommits.org/).
 - `test: add citation tests`
 
 ## 4. Pull Requests (PRs)
+
+**Pre-Push Checks:** Before pushing your branch to GitHub, you **must** run the following commands locally and fix any errors. This prevents broken builds and CI pipeline failures:
+- `pnpm lint` (Checks code style and formatting)
+- `pnpm typecheck` (Ensures TypeScript compiles)
+- `pnpm test` (Runs the test suite)
+- `pnpm build` (Verifies the production build succeeds)
 
 All changes must go through a Pull Request.
 

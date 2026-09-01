@@ -6,6 +6,86 @@
 @custom-variant dark (&:is(.dark, .dark *));
 
 /*
+ * Tailwind v4 theme bridge.
+ *
+ * tokens.css and themes.css declare our design tokens as plain :root custom
+ * properties. Tailwind v4 only generates a utility (bg-primary, text-foreground,
+ * border-input) for a colour registered in its theme - so without this block the
+ * entire palette is authored but never compiled, and every token class silently
+ * renders no colour.
+ *
+ * `inline` is load-bearing, not stylistic. With a plain @theme, Tailwind resolves
+ * each var() at build time and bakes the light-mode value into the utility, so the
+ * .dark overrides in themes.css would never apply. `inline` emits the utility as
+ * `var(--primary)` instead, resolved at runtime - which is what makes dark mode work.
+ *
+ * Radius is deliberately NOT mapped: our --radius-* scale is offset one step from
+ * Tailwind's, so mapping it would resize every rounded corner in the existing chat
+ * UI. That is a visual change to shipped work and belongs in its own commit.
+ */
+@theme inline {
+  --color-background: var(--background);
+  --color-background-subtle: var(--background-subtle);
+  --color-foreground: var(--foreground);
+
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-overlay: var(--surface-overlay);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-panel: var(--panel);
+  --color-panel-foreground: var(--panel-foreground);
+  --color-panel-muted-foreground: var(--panel-muted-foreground);
+  --color-panel-border: var(--panel-border);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-muted-foreground: var(--sidebar-muted-foreground);
+
+  --font-sans: var(--font-sans);
+  --font-arabic: var(--font-arabic);
+  --font-mono: var(--font-mono);
+}
+
+/*
  * AskAU Design System — Global Stylesheet
  *
  * Structure:

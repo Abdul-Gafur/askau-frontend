@@ -1,35 +1,59 @@
 /*
  * AskAU Themes
  * Light and dark color palettes - strictly hex codes
+ *
+ * SOURCE OF TRUTH: the shipped application chrome (app-shell, sidebar, chat).
+ * These tokens document the palette the app already uses, so token-driven pages
+ * (login, unauthorized, error, 404, admin, conversations) match it exactly.
+ *
+ * Scale: Tailwind `neutral` (zero chroma), NOT `gray` (carries blue chroma) -
+ * the app's components use neutral-*, so the tokens must too.
  */
 
 :root {
   /* --- Color: Background --- */
   --background: #ffffff;
-  --background-subtle: #f9fafb;
+  --background-subtle: #fafafa;
   --foreground: #000000;
 
   /* --- Color: Surface (cards, panels) --- */
   --surface: #ffffff;
-  --surface-raised: #f3f4f6;
+  --surface-raised: #f5f5f5;
   --surface-overlay: #ffffff;
 
-  /* --- Color: Primary (AU Blue-Green) --- */
-  --primary: #1e3a8a;
+  /* --- Color: Card / Popover (consumed by the shadcn primitives) --- */
+  --card: #ffffff;
+  --card-foreground: #000000;
+  --popover: #ffffff;
+  --popover-foreground: #000000;
+
+  /* --- Color: Primary (action blue) ---
+     The app's send button is bg-blue-500 (#2b7fff), but that is icon-only and
+     only has to clear the 3:1 non-text threshold. --primary also backs buttons
+     with text labels, where white on #2b7fff is 3.76:1 and fails WCAG AA.
+     blue-600 is the same family at 5.25:1. Mode-invariant, like the app. */
+  --primary: #155dfc;
   --primary-foreground: #ffffff;
-  --primary-hover: #1e40af;
+  --primary-hover: #1447e6;
 
   /* --- Color: Secondary --- */
-  --secondary: #f3f4f6;
-  --secondary-foreground: #111827;
+  --secondary: #f5f5f5;
+  --secondary-foreground: #171717;
 
-  /* --- Color: Accent (AU Gold) --- */
-  --accent: #d97706;
-  --accent-foreground: #ffffff;
+  /* --- Color: Accent (neutral hover / highlight tint) ---
+     Mirrors the app's `hover:bg-neutral-100 dark:hover:bg-neutral-800`.
+     shadcn primitives use --accent for hover, focus and skeleton states -
+     NOT as a brand colour. AU Gold lives in --brand below. */
+  --accent: #f5f5f5;
+  --accent-foreground: #171717;
+
+  /* --- Color: Brand accent (AU Gold) --- */
+  --brand: #d97706;
+  --brand-foreground: #ffffff;
 
   /* --- Color: Muted --- */
-  --muted: #f3f4f6;
-  --muted-foreground: #6b7280;
+  --muted: #f5f5f5;
+  --muted-foreground: #737373;
 
   /* --- Color: Destructive / Error --- */
   --destructive: #dc2626;
@@ -40,32 +64,43 @@
   --success-foreground: #ffffff;
 
   /* --- Color: Warning --- */
-  --warning: #d97706;
+  --warning: #c2410c;
   --warning-foreground: #ffffff;
 
   /* --- Color: Info --- */
-  --info: #2563eb;
+  --info: #155dfc;
   --info-foreground: #ffffff;
 
   /* --- Color: Border / Ring --- */
-  --border: #e5e7eb;
-  --border-strong: #d1d5db;
-  --input: #e5e7eb;
-  --ring: #1e3a8a;
+  --border: #e5e5e5;
+  --border-strong: #d4d4d4;
+  --input: #e5e5e5;
+  --ring: #155dfc;
 
-  /* --- Color: Sidebar --- */
-  --sidebar: #f9fafb;
-  --sidebar-foreground: #111827;
-  --sidebar-border: #e5e7eb;
-  --sidebar-accent: #f3f4f6;
-  --sidebar-accent-foreground: #111827;
-  --sidebar-primary: #1e3a8a;
+  /* --- Color: Panel (elevated side plane, e.g. the login brand panel) ---
+     One step off the page so it reads as a distinct plane. --sidebar sits only
+     1.04:1 from the page in light and 1.11:1 in dark, which is invisible.
+     --panel-muted-foreground is neutral-600, not the neutral-500 used on the
+     page: #737373 on #f5f5f5 is 4.35:1 and fails AA. */
+  --panel: #f5f5f5;
+  --panel-foreground: #000000;
+  --panel-muted-foreground: #525252;
+  --panel-border: #e5e5e5;
+
+  /* --- Color: Sidebar (the application's own side chrome) --- */
+  --sidebar: #fafafa;
+  --sidebar-foreground: #000000;
+  --sidebar-border: #e5e5e5;
+  --sidebar-accent: #f5f5f5;
+  --sidebar-accent-foreground: #171717;
+  --sidebar-primary: #155dfc;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-muted-foreground: #6b7280;
+  --sidebar-muted-foreground: #737373;
 }
 
 .dark {
-  --background: #000000;
+  /* Matches app-shell's dark:bg-[#0d1117] */
+  --background: #0d1117;
   --background-subtle: #0a0a0a;
   --foreground: #ffffff;
 
@@ -73,42 +108,57 @@
   --surface-raised: #262626;
   --surface-overlay: #171717;
 
-  --primary: #3b82f6;
+  --card: #171717;
+  --card-foreground: #ffffff;
+  --popover: #171717;
+  --popover-foreground: #ffffff;
+
+  --primary: #155dfc;
   --primary-foreground: #ffffff;
-  --primary-hover: #2563eb;
+  --primary-hover: #1447e6;
 
   --secondary: #262626;
-  --secondary-foreground: #f3f4f6;
+  --secondary-foreground: #f5f5f5;
 
-  --accent: #f59e0b;
-  --accent-foreground: #000000;
+  --accent: #262626;
+  --accent-foreground: #ffffff;
+
+  --brand: #f59e0b;
+  --brand-foreground: #000000;
 
   --muted: #262626;
-  --muted-foreground: #a3a3a3;
+  /* neutral-400: 7.32:1 on #0d1117. neutral-500 would be 3.99:1 and fail AA. */
+  --muted-foreground: #a1a1a1;
 
   --destructive: #ef4444;
-  --destructive-foreground: #000000;
+  --destructive-foreground: #ffffff;
 
   --success: #22c55e;
   --success-foreground: #000000;
 
-  --warning: #f59e0b;
+  --warning: #fb923c;
   --warning-foreground: #000000;
 
-  --info: #3b82f6;
+  --info: #2b7fff;
   --info-foreground: #000000;
 
   --border: #262626;
   --border-strong: #404040;
   --input: #262626;
-  --ring: #3b82f6;
+  --ring: #2b7fff;
 
-  --sidebar: #0a0a0a;
-  --sidebar-foreground: #d4d4d4;
+  --panel: #262626;
+  --panel-foreground: #ffffff;
+  --panel-muted-foreground: #a1a1a1;
+  --panel-border: #404040;
+
+  /* Matches the sidebar's dark:bg-black against the #0d1117 body */
+  --sidebar: #000000;
+  --sidebar-foreground: #ffffff;
   --sidebar-border: #262626;
   --sidebar-accent: #262626;
   --sidebar-accent-foreground: #ffffff;
-  --sidebar-primary: #3b82f6;
+  --sidebar-primary: #2b7fff;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-muted-foreground: #a3a3a3;
+  --sidebar-muted-foreground: #a1a1a1;
 }

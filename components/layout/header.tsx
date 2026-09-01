@@ -56,7 +56,7 @@ export function AppHeader({ session: _session, sidebarOpen, onSidebarToggle }: A
       {/* Logo */}
       <Link
         href={`/${locale}/chat`}
-        className="focus-visible:ring-ring flex items-center gap-1.5 rounded-md px-1 py-1 focus-visible:ring-2"
+        className="flex items-center gap-1.5 rounded-md px-1 py-1 focus-visible:ring-2 focus-visible:ring-ring"
         aria-label={`${siteConfig.name} — Home`}
       >
         <span className="flex h-5 w-5 items-center justify-center rounded-md bg-neutral-800 text-[11px] font-bold text-white dark:bg-neutral-200 dark:text-neutral-900">

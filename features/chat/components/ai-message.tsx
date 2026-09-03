@@ -17,6 +17,23 @@ interface AIMessageProps {
  * AIMessage — renders an AI response with state-conditional UI.
  * Matches reference UI styling.
  */
+/**
+ * Open a source's authoritative original.
+ *
+ * `accessUrl` is vended by the backend and points at
+ * `/api/v1/documents/{id}/open`, which redirects to the document in its own
+ * repository — AskAU never serves the file, so it does not become the system of
+ * record. The redirect is also audited, which is the point: opening a document
+ * is an access event and has to be recorded as one.
+ *
+ * Absent `accessUrl` means the reader may not open it (grounding and opening are
+ * separate permissions), so nothing happens rather than a broken link.
+ */
+function openSource(source: Source) {
+  if (!source.accessUrl) return;
+  window.open(source.accessUrl, "_blank", "noopener,noreferrer");
+}
+
 export function AIMessage({ message, onFeedback, onReason, onPreview }: AIMessageProps) {
   const t = useTranslations("chat.states");
 
@@ -104,7 +121,7 @@ export function AIMessage({ message, onFeedback, onReason, onPreview }: AIMessag
                 {t("conflicting.sources")}
               </p>
               {message.conflictingSources.map((s) => (
-                <SourceCard key={s.id} source={s} onPreview={onPreview} onDownload={() => {}} />
+                <SourceCard key={s.id} source={s} onPreview={onPreview} onDownload={openSource} />
               ))}
             </div>
           )}
@@ -147,7 +164,7 @@ export function AIMessage({ message, onFeedback, onReason, onPreview }: AIMessag
               </p>
               <div className="space-y-2">
                 {message.sources.map((s) => (
-                  <SourceCard key={s.id} source={s} onPreview={onPreview} onDownload={() => {}} />
+                  <SourceCard key={s.id} source={s} onPreview={onPreview} onDownload={openSource} />
                 ))}
               </div>
             </div>

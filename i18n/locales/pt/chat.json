@@ -90,7 +90,8 @@
     "preview": "Pré-visualizar",
     "download": "Descarregar",
     "downloading": "A descarregar…",
-    "downloaded": "Descarregado"
+    "downloaded": "Descarregado",
+    "noAccess": "Não pode abrir este documento, embora fundamente a resposta"
   },
   "docPreview": {
     "documentType": "Tipo de documento",
@@ -102,7 +103,8 @@
     "effectiveDate": "Data de vigência",
     "status": "Estado",
     "documentExtract": "Extrato do documento",
-    "downloadOriginal": "Descarregar documento original"
+    "downloadOriginal": "Descarregar documento original",
+    "noAccess": "Não pode abrir este documento"
   },
   "conversations": {
     "recents": "Recentes",

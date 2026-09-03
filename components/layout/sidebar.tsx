@@ -8,7 +8,7 @@ import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 import { SettingsModal } from "@/features/settings/components/settings-modal";
 import { SignOutButton } from "@/features/auth/components/sign-out-button";
-import { SAMPLE_CONVERSATIONS } from "@/features/chat/chat-data";
+import { listConversations } from "@/features/chat/lib/backend";
 import type { Conversation } from "@/features/chat/types";
 import type { Session } from "next-auth";
 
@@ -36,7 +36,27 @@ export function AppSidebar({ open, onClose, session }: AppSidebarProps) {
   const locale = useLocale();
   const pathname = usePathname();
   const { theme, setTheme, resolvedTheme } = useTheme();
-  const [conversations] = useState<Conversation[]>(SAMPLE_CONVERSATIONS);
+  // The reader's own conversations. This was `SAMPLE_CONVERSATIONS`, so every
+  // account saw the same six invented titles — including an account with
+  // "save conversation history" switched off, which is the case the list most
+  // needs to get right.
+  const [conversations, setConversations] = useState<Conversation[]>([]);
+
+  useEffect(() => {
+    const load = () =>
+      void listConversations()
+        .then(setConversations)
+        .catch(() => setConversations([]));
+    load();
+    // Reloaded on both events the chat shell emits: a new turn adds a
+    // conversation, and deleting all history empties the list.
+    window.addEventListener("history-deleted", load);
+    window.addEventListener("conversations-changed", load);
+    return () => {
+      window.removeEventListener("history-deleted", load);
+      window.removeEventListener("conversations-changed", load);
+    };
+  }, []);
   const [overflowId, setOverflowId] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [settingsOpen, setSettingsOpen] = useState(false);

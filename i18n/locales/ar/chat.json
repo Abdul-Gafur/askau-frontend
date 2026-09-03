@@ -90,7 +90,8 @@
     "preview": "معاينة",
     "download": "تحميل",
     "downloading": "جارٍ التحميل…",
-    "downloaded": "تم التحميل"
+    "downloaded": "تم التحميل",
+    "noAccess": "لا يمكنك فتح هذا المستند، وإن كان يدعم الإجابة"
   },
   "docPreview": {
     "documentType": "نوع الوثيقة",
@@ -102,7 +103,8 @@
     "effectiveDate": "تاريخ النفاذ",
     "status": "الحالة",
     "documentExtract": "مقتطف من الوثيقة",
-    "downloadOriginal": "تحميل الوثيقة الأصلية"
+    "downloadOriginal": "تحميل الوثيقة الأصلية",
+    "noAccess": "لا يمكنك فتح هذا المستند"
   },
   "conversations": {
     "recents": "الأخيرة",

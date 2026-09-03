@@ -112,7 +112,7 @@ export function AIMessage({ message, onFeedback, onReason, onPreview }: AIMessag
               </p>
             </div>
           </div>
-          <p className="text-[16px] leading-relaxed text-black dark:text-white">
+          <p className="text-[16px] leading-relaxed whitespace-pre-line text-black dark:text-white">
             {message.content}
           </p>
           {message.conflictingSources && (
@@ -139,7 +139,7 @@ export function AIMessage({ message, onFeedback, onReason, onPreview }: AIMessag
               </p>
             </div>
           </div>
-          <p className="text-[16px] leading-relaxed text-black dark:text-white">
+          <p className="text-[16px] leading-relaxed whitespace-pre-line text-black dark:text-white">
             {message.content}
           </p>
         </div>
@@ -148,7 +148,7 @@ export function AIMessage({ message, onFeedback, onReason, onPreview }: AIMessag
       {/* ── Grounded (standard) ── */}
       {message.state === "grounded" && (
         <div className="space-y-4">
-          <p className="text-[16px] leading-relaxed text-black dark:text-white">
+          <p className="text-[16px] leading-relaxed whitespace-pre-line text-black dark:text-white">
             {message.content}
           </p>
 

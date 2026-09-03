@@ -48,7 +48,11 @@
     "saveHistoryDescription": "Mantenha um histórico de suas conversas para referência futura.",
     "shareAnalytics": "Compartilhar análises de uso",
     "shareAnalyticsDescription": "Ajude a melhorar o AskAU compartilhando dados de uso anonimizados.",
-    "deleteHistory": "Excluir todo o histórico de conversas"
+    "deleteHistory": "Excluir todo o histórico de conversas",
+    "deleteHistoryConfirm": "Excluir todas as conversas do seu histórico? Esta ação não pode ser desfeita.",
+    "deleteHistoryAction": "Excluir tudo",
+    "deleteHistoryCancel": "Cancelar",
+    "deleteHistoryDone": "{count} conversa(s) excluída(s)."
   },
   "notifications": {
     "email": "Notificações por e-mail",

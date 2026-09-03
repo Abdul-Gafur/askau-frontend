@@ -90,7 +90,8 @@
     "preview": "Preview",
     "download": "Download",
     "downloading": "Downloading…",
-    "downloaded": "Downloaded"
+    "downloaded": "Downloaded",
+    "noAccess": "You may not open this document, though it supports the answer"
   },
   "docPreview": {
     "documentType": "Document type",
@@ -102,7 +103,8 @@
     "effectiveDate": "Effective date",
     "status": "Status",
     "documentExtract": "Document extract",
-    "downloadOriginal": "Download original document"
+    "downloadOriginal": "Download original document",
+    "noAccess": "You may not open this document"
   },
   "conversations": {
     "recents": "Recents",

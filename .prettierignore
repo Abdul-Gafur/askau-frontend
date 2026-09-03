@@ -3,5 +3,11 @@ node_modules
 out
 dist
 coverage
+test-results
+playwright-report
+blob-report
 .nyc_output
 *.log
+
+# Generated lockfile — owned by pnpm, not a file to format.
+pnpm-lock.yaml

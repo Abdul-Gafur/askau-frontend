@@ -2,12 +2,15 @@
 
 import { useTranslations } from "next-intl";
 import { SourceCard } from "@/components/citations/source-card";
+import { AnswerText } from "./answer-text";
 import { GroundingPill } from "./grounding-pill";
 import { FeedbackBar } from "./feedback-bar";
 import type { FeedbackType, Message, NotHelpfulReason, Source } from "@/features/chat/types";
 
 interface AIMessageProps {
   message: Message;
+  /** True while this message is still being written. Drives the caret only. */
+  streaming?: boolean;
   onFeedback: (id: string, f: FeedbackType) => void;
   onReason: (id: string, r: NotHelpfulReason) => void;
   onPreview: (source: Source) => void;
@@ -16,12 +19,79 @@ interface AIMessageProps {
 /**
  * AIMessage — renders an AI response with state-conditional UI.
  * Matches reference UI styling.
+ *
+ * Every branch below is keyed on `message.state`, and a message that is still
+ * streaming does not have one yet — the backend sends `state` in the `done`
+ * frame, after the tokens. Without a branch for that case the component
+ * rendered an empty bordered div for the whole of generation, so the answer
+ * appeared all at once at the end and the token stream was invisible. The
+ * absence of `state` is therefore treated as content to draw rather than as
+ * nothing to draw.
+ *
+ * Whether it is *live* is a separate question, and one this component cannot
+ * answer: a stored message can also come back without a state (the transcript
+ * endpoint types it as nullable), and that is history, not work in progress.
+ * So the caret is driven by the `streaming` prop, while the content renders
+ * either way.
  */
-export function AIMessage({ message, onFeedback, onReason, onPreview }: AIMessageProps) {
+/**
+ * Open a source's authoritative original.
+ *
+ * `accessUrl` is vended by the backend and points at
+ * `/api/v1/documents/{id}/open`, which redirects to the document in its own
+ * repository — AskAU never serves the file, so it does not become the system of
+ * record. The redirect is also audited, which is the point: opening a document
+ * is an access event and has to be recorded as one.
+ *
+ * Absent `accessUrl` means the reader may not open it (grounding and opening are
+ * separate permissions), so nothing happens rather than a broken link.
+ */
+function openSource(source: Source) {
+  if (!source.accessUrl) return;
+  window.open(source.accessUrl, "_blank", "noopener,noreferrer");
+}
+
+export function AIMessage({
+  message,
+  streaming = false,
+  onFeedback,
+  onReason,
+  onPreview,
+}: AIMessageProps) {
   const t = useTranslations("chat.states");
 
   return (
     <div className="border-b border-neutral-100 py-5 last:border-0 dark:border-neutral-800">
+      {/* ── Still being written ── */}
+      {!message.state && (
+        <div className="space-y-4" {...(streaming ? { "aria-busy": true } : {})}>
+          {/* `answer-caret` is defined in styles/globals.css — it draws the
+              caret as a pseudo-element on the answer's last block, which is
+              the only way to get it to sit where the writing has reached
+              rather than on a line of its own underneath. */}
+          <div aria-live="polite" className={streaming ? "answer-caret" : undefined}>
+            <AnswerText>{message.content}</AnswerText>
+          </div>
+
+          {/* Provenance arrives before the first token, and is shown straight
+              away: the reader gets to see what the answer is being built from
+              while it is still being written, which is the whole reason the
+              stream sends sources first. */}
+          {message.sources && message.sources.length > 0 && (
+            <div className="space-y-2">
+              <p className="text-xs font-semibold tracking-wide text-neutral-500 uppercase dark:text-neutral-400">
+                {t("grounded.sources")}
+              </p>
+              <div className="space-y-2">
+                {message.sources.map((s) => (
+                  <SourceCard key={s.id} source={s} onPreview={onPreview} onDownload={openSource} />
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
       {/* ── Insufficient evidence ── */}
       {message.state === "insufficient" && (
         <div className="space-y-4">
@@ -95,16 +165,14 @@ export function AIMessage({ message, onFeedback, onReason, onPreview }: AIMessag
               </p>
             </div>
           </div>
-          <p className="text-[16px] leading-relaxed text-black dark:text-white">
-            {message.content}
-          </p>
+          <AnswerText>{message.content}</AnswerText>
           {message.conflictingSources && (
             <div className="space-y-2">
               <p className="text-xs font-semibold tracking-wide text-neutral-500 uppercase dark:text-neutral-400">
                 {t("conflicting.sources")}
               </p>
               {message.conflictingSources.map((s) => (
-                <SourceCard key={s.id} source={s} onPreview={onPreview} onDownload={() => {}} />
+                <SourceCard key={s.id} source={s} onPreview={onPreview} onDownload={openSource} />
               ))}
             </div>
           )}
@@ -122,18 +190,14 @@ export function AIMessage({ message, onFeedback, onReason, onPreview }: AIMessag
               </p>
             </div>
           </div>
-          <p className="text-[16px] leading-relaxed text-black dark:text-white">
-            {message.content}
-          </p>
+          <AnswerText>{message.content}</AnswerText>
         </div>
       )}
 
       {/* ── Grounded (standard) ── */}
       {message.state === "grounded" && (
         <div className="space-y-4">
-          <p className="text-[16px] leading-relaxed text-black dark:text-white">
-            {message.content}
-          </p>
+          <AnswerText>{message.content}</AnswerText>
 
           <GroundingPill
             count={message.groundingCount ?? 0}
@@ -147,7 +211,7 @@ export function AIMessage({ message, onFeedback, onReason, onPreview }: AIMessag
               </p>
               <div className="space-y-2">
                 {message.sources.map((s) => (
-                  <SourceCard key={s.id} source={s} onPreview={onPreview} onDownload={() => {}} />
+                  <SourceCard key={s.id} source={s} onPreview={onPreview} onDownload={openSource} />
                 ))}
               </div>
             </div>

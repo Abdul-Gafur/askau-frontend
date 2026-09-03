@@ -48,7 +48,11 @@
     "saveHistoryDescription": "Keep a history of your conversations for future reference.",
     "shareAnalytics": "Share usage analytics",
     "shareAnalyticsDescription": "Help improve AskAU by sharing anonymised usage data.",
-    "deleteHistory": "Delete all conversation history"
+    "deleteHistory": "Delete all conversation history",
+    "deleteHistoryConfirm": "Delete every conversation in your history? This cannot be undone.",
+    "deleteHistoryAction": "Delete everything",
+    "deleteHistoryCancel": "Cancel",
+    "deleteHistoryDone": "{count} conversation(s) deleted."
   },
   "notifications": {
     "email": "Email notifications",

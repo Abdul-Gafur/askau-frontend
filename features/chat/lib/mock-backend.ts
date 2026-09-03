@@ -244,9 +244,10 @@ const APPRAISAL_SOURCE = source(
  * hold a few hundred words next to its source cards, and fixtures that were
  * two sentences long made the page look roomier than it will ever be in use.
  *
- * Paragraphs are separated by blank lines and enumerated points are prefixed
- * with a bullet character. There is no markdown here: AIMessage renders
- * `content` as text, so asterisks would show up literally.
+ * Written as Markdown, which AnswerText renders — lists, emphasis and
+ * paragraphs all come through. Composed answers carry that formatting anyway,
+ * so fixtures that avoided it were testing a case the real backend will not
+ * send.
  *
  * `state` is chosen per answer rather than fixed, so every branch the message
  * renderer has is reachable from the suggestion chips on the welcome screen.
@@ -263,28 +264,28 @@ const ANSWERS: {
     match: /leave|annual|vacation|holiday|time off/i,
     state: "grounded",
     sources: [LEAVE_SOURCE, CARRYOVER_SOURCE, SICK_LEAVE_SOURCE],
-    content: `Permanent staff of the AU Commission are entitled to 30 working days of annual leave per calendar year. Entitlement accrues at 2.5 days for each completed month of service, so a staff member joining mid-year accrues pro rata rather than receiving the full allowance on appointment.
+    content: `Permanent staff of the AU Commission are entitled to **30 working days** of annual leave per calendar year. Entitlement accrues at 2.5 days for each completed month of service, so a staff member joining mid-year accrues pro rata rather than receiving the full allowance on appointment.
 
-On carry-over, the ceiling is 60 days. Any balance above that lapses on 31 December and is not compensated, which in practice means a staff member holding a large balance should plan its use across two cycles rather than one.
+On carry-over, the ceiling is **60 days**. Any balance above that lapses on 31 December and is not compensated, which in practice means a staff member holding a large balance should plan its use across two cycles rather than one.
 
 The approval route is:
 
-• Submit the request through your immediate supervisor, who confirms operational cover for the period.
-• Human Resources records the absence against your entitlement before the leave is taken.
-• Leave taken without a recorded authorisation is treated as unauthorised absence, not as annual leave.
+- Submit the request through your immediate supervisor, who confirms operational cover for the period.
+- Human Resources records the absence against your entitlement before the leave is taken.
+- Leave taken without a recorded authorisation is treated as unauthorised absence, not as annual leave.
 
 Two interactions are worth knowing. Certified sick leave is not charged against annual leave, but an absence longer than three consecutive working days needs a medical certificate from a recognised practitioner. Official AU holidays falling inside a leave period are also not counted against the entitlement.
 
 The governing provisions are Staff Rule 6.1 for entitlement and accrual, HR Circular 2024/04 for the carry-over ceiling, and Staff Rule 6.4 for the sick-leave interaction. Where a fixed-term or short-term contract sets different terms, the contract prevails over the general rule, so check yours if you are not on a permanent appointment.`,
   },
   {
-    match: /procure|tender|purchas|supplier|quotation|vendor/i,
+    match: /procure|tender|purchas|supplier|quotation|vendor|single-source|waiver|award/i,
     state: "grounded",
     sources: [PROCUREMENT_SOURCE, PROCUREMENT_WAIVER_SOURCE],
     content: `Approval depends on the value of the procurement, and the threshold changes who authorises it rather than what the process requires.
 
-• Up to USD 100,000 — departmental authorisation is sufficient, provided three written quotations are on file.
-• Above USD 100,000 — the Tender Board must endorse the award before any commitment is made.
+- **Up to USD 100,000** — departmental authorisation is sufficient, provided three written quotations are on file.
+- **Above USD 100,000** — the Tender Board must endorse the award before any commitment is made.
 
 The requirement for three written quotations applies at every value. It is the approving authority that moves at the threshold, not the evidence you have to produce, and an award file without the quotations is incomplete regardless of how small the purchase was.
 
@@ -303,7 +304,7 @@ Practical sequence: confirm the budget line, define the specification before app
       "The only travel policy version available to you is marked superseded — its allowance table may no longer be in force.",
     content: `I can answer the authorisation half of this confidently, and I am flagging the allowance half rather than answering it.
 
-On authorisation, no duty travel may begin before a Travel Authorisation is approved. Requests are submitted not less than ten working days before departure, and travel undertaken without an approved authorisation is not reimbursable — the exposure sits with the traveller, not the department.
+On authorisation, no duty travel may begin before a Travel Authorisation is approved. Requests are submitted not less than **ten working days** before departure, and travel undertaken without an approved authorisation is not reimbursable — the exposure sits with the traveller, not the department.
 
 On Daily Subsistence Allowance, the policy sets the rate by duty station, at the figure published annually by the International Civil Service Commission, with the allowance covering accommodation, meals, and incidental expenses. Where accommodation is provided in kind, the applicable portion is deducted rather than paid.
 
@@ -315,15 +316,15 @@ What I would do instead is confirm the current Annex II with Finance before rely
     match: /medical|health|insurance|dependant|dependent/i,
     state: "grounded",
     sources: [MEDICAL_SOURCE],
-    content: `The Staff Medical Insurance Scheme covers the staff member, one spouse, and dependent children up to the age of 25 where the child is enrolled in full-time education. Beyond that age, or where full-time enrolment ends, cover lapses and the dependant must be removed from the scheme.
+    content: `The Staff Medical Insurance Scheme covers the staff member, one spouse, and dependent children up to the age of **25** where the child is enrolled in full-time education. Beyond that age, or where full-time enrolment ends, cover lapses and the dependant must be removed from the scheme.
 
-Contributions are shared, at 75 per cent from the Commission and 25 per cent from the staff member, deducted at source monthly.
+Contributions are shared, at **75 per cent** from the Commission and **25 per cent** from the staff member, deducted at source monthly.
 
 On enrolment and changes:
 
-• Enrolment is at appointment, and a dependant added later requires supporting documentation — a marriage certificate, birth certificate, or proof of enrolment as applicable.
-• A change in dependant status must be reported within 30 days. Late notification can mean recovery of contributions paid on an ineligible dependant.
-• Cover continues during approved leave, including maternity and certified sick leave.
+- Enrolment is at appointment, and a dependant added later requires supporting documentation — a marriage certificate, birth certificate, or proof of enrolment as applicable.
+- A change in dependant status must be reported within 30 days. Late notification can mean recovery of contributions paid on an ineligible dependant.
+- Cover continues during approved leave, including maternity and certified sick leave.
 
 The scheme is separate from the Commission's liability for service-incurred injury, which is handled under its own provisions rather than through the insurer, so a work-related injury should not be routed as an ordinary medical claim.
 
@@ -339,10 +340,10 @@ The first is equitable geographical distribution across the five regions. The se
 
 The sequence for a vacancy is:
 
-• The post is classified and the vacancy announcement cleared by Human Resources before publication.
-• Applications are screened against the published eligibility criteria only. Criteria not stated in the announcement cannot be introduced at screening.
-• A panel conducts the assessment, and its composition must itself reflect gender and regional balance.
-• The recommendation is documented with the reasons for the ranking, which is what makes the decision reviewable afterwards.
+- The post is classified and the vacancy announcement cleared by Human Resources before publication.
+- Applications are screened against the published eligibility criteria only. Criteria not stated in the announcement cannot be introduced at screening.
+- A panel conducts the assessment, and its composition must itself reflect gender and regional balance.
+- The recommendation is documented with the reasons for the ranking, which is what makes the decision reviewable afterwards.
 
 Internal candidates have no automatic preference, but where two candidates are assessed as substantially equal, the balance requirements above are applied as the deciding factor rather than seniority.
 
@@ -354,18 +355,18 @@ The provision quoted is Section 5, effective April 2023. Note that the policy se
     sources: [INFOSEC_SOURCE],
     content: `The Information Security Policy sets four classifications, and the handling obligation follows the classification rather than the document type.
 
-• Public — cleared for release outside the Commission.
-• Internal — for staff, but not for external circulation.
-• Confidential — restricted to those with a demonstrated need, and must not be transmitted through personal accounts or unmanaged devices.
-• Highly Restricted — access is individually authorised and logged.
+- **Public** — cleared for release outside the Commission.
+- **Internal** — for staff, but not for external circulation.
+- **Confidential** — restricted to those with a demonstrated need, and must not be transmitted through personal accounts or unmanaged devices.
+- **Highly Restricted** — access is individually authorised and logged.
 
 The prohibition at Confidential and above is the one most often breached in practice. Forwarding a Confidential attachment to a personal address to work on it at home is a reportable incident, even where there is no onward disclosure and no harm results.
 
 Some consequences worth being explicit about:
 
-• Classification is inherited. An extract from a Confidential document is Confidential, and a summary carrying the same substance does not become Internal by being shorter.
-• Storage on unmanaged cloud services is not permitted at Confidential and above, including services the staff member pays for personally.
-• Suspected exposure is reported immediately, and reporting promptly is treated as mitigation rather than as fault.
+- Classification is inherited. An extract from a Confidential document is Confidential, and a summary carrying the same substance does not become Internal by being shorter.
+- Storage on unmanaged cloud services is not permitted at Confidential and above, including services the staff member pays for personally.
+- Suspected exposure is reported immediately, and reporting promptly is treated as mitigation rather than as fault.
 
 This is Section 6 of the policy, effective June 2024. The document is itself classified Confidential, so the text above should stay within the Commission. Incident reporting procedure and the approved device list are in Sections 8 and 9.`,
   },
@@ -375,9 +376,9 @@ This is Section 6 of the policy, effective June 2024. The document is itself cla
     sources: [APPRAISAL_SOURCE],
     content: `The performance cycle runs to the calendar year and has three fixed points.
 
-• Objectives agreed by 31 January, between the staff member and the supervisor.
-• A documented mid-year review in July.
-• Final appraisal submitted by 31 January of the following year.
+- Objectives agreed by **31 January**, between the staff member and the supervisor.
+- A documented mid-year review in **July**.
+- Final appraisal submitted by 31 January of the following year.
 
 The mid-year review is the part most often skipped, and skipping it has a specific consequence: an objective cannot be assessed as unmet at final appraisal if it was never raised at mid-year. The framework treats the review as the point at which a supervisor is obliged to give notice that performance is off track.
 
@@ -486,6 +487,10 @@ const SEEDS: {
     hoursAgo: 74,
     question: "How do geographical and gender balance affect candidate selection?",
   },
+  // No fixture covers relocation or pensions, so these two resolve to the
+  // insufficient answer. That is deliberate: "I could not find approved
+  // material for this" is a state the recents list should contain, and it is
+  // only honest if some questions genuinely have no source behind them.
   {
     id: "conv-seed-relocation",
     title: "Relocation grant on reassignment",

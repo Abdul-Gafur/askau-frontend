@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { SourceCard } from "@/components/citations/source-card";
+import { AnswerText } from "./answer-text";
 import { GroundingPill } from "./grounding-pill";
 import { FeedbackBar } from "./feedback-bar";
 import type { FeedbackType, Message, NotHelpfulReason, Source } from "@/features/chat/types";
@@ -64,18 +65,13 @@ export function AIMessage({
       {/* ── Still being written ── */}
       {!message.state && (
         <div className="space-y-4" {...(streaming ? { "aria-busy": true } : {})}>
-          <p
-            aria-live="polite"
-            className="text-[16px] leading-relaxed whitespace-pre-line text-black dark:text-white"
-          >
-            {message.content}
-            {streaming && (
-              <span
-                className="ms-0.5 inline-block h-[1.1em] w-[2px] translate-y-[0.15em] animate-pulse bg-neutral-400 dark:bg-neutral-500"
-                aria-hidden="true"
-              />
-            )}
-          </p>
+          {/* `answer-caret` is defined in styles/globals.css — it draws the
+              caret as a pseudo-element on the answer's last block, which is
+              the only way to get it to sit where the writing has reached
+              rather than on a line of its own underneath. */}
+          <div aria-live="polite" className={streaming ? "answer-caret" : undefined}>
+            <AnswerText>{message.content}</AnswerText>
+          </div>
 
           {/* Provenance arrives before the first token, and is shown straight
               away: the reader gets to see what the answer is being built from
@@ -169,9 +165,7 @@ export function AIMessage({
               </p>
             </div>
           </div>
-          <p className="text-[16px] leading-relaxed whitespace-pre-line text-black dark:text-white">
-            {message.content}
-          </p>
+          <AnswerText>{message.content}</AnswerText>
           {message.conflictingSources && (
             <div className="space-y-2">
               <p className="text-xs font-semibold tracking-wide text-neutral-500 uppercase dark:text-neutral-400">
@@ -196,18 +190,14 @@ export function AIMessage({
               </p>
             </div>
           </div>
-          <p className="text-[16px] leading-relaxed whitespace-pre-line text-black dark:text-white">
-            {message.content}
-          </p>
+          <AnswerText>{message.content}</AnswerText>
         </div>
       )}
 
       {/* ── Grounded (standard) ── */}
       {message.state === "grounded" && (
         <div className="space-y-4">
-          <p className="text-[16px] leading-relaxed whitespace-pre-line text-black dark:text-white">
-            {message.content}
-          </p>
+          <AnswerText>{message.content}</AnswerText>
 
           <GroundingPill
             count={message.groundingCount ?? 0}

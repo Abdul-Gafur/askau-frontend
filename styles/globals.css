@@ -246,3 +246,30 @@ h6 {
 ::-webkit-scrollbar-thumb:hover {
   background-color: var(--muted-foreground);
 }
+
+/* ============================================================
+   8. STREAMING ANSWER CARET
+   ============================================================
+   The caret shown while an answer is being written.
+
+   A pseudo-element on the answer's last paragraph rather than a sibling
+   element: the answer body renders as block-level paragraphs, so a caret
+   placed after it drops onto a line of its own below the text instead of
+   sitting where the writing has got to. Applied by AIMessage's streaming
+   branch (features/chat/components/ai-message.tsx). */
+.answer-caret > div > *:last-child::after {
+  content: "";
+  display: inline-block;
+  width: 2px;
+  height: 1.05em;
+  margin-inline-start: 0.15em;
+  vertical-align: text-bottom;
+  background-color: var(--muted-foreground);
+  animation: answer-caret-blink 1s steps(2, start) infinite;
+}
+
+@keyframes answer-caret-blink {
+  to {
+    visibility: hidden;
+  }
+}

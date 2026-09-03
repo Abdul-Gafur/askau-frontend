@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 import { LocaleSwitcher } from "@/components/common/locale-switcher";
+import { ThemeToggle } from "@/components/common/theme-toggle";
 import { DevBypassButton } from "@/features/auth/components/dev-bypass-button";
 import { LoginBrandPanel } from "@/features/auth/components/login-brand-panel";
 import { LoginCard } from "@/features/auth/components/login-card";
@@ -54,7 +55,8 @@ export default async function LoginPage({ params, searchParams }: LoginPageProps
       <LoginBrandPanel />
 
       <main id="main-content" className="flex flex-1 flex-col px-6 py-6 sm:px-10">
-        <div className="flex justify-end">
+        <div className="flex items-center justify-end gap-1">
+          <ThemeToggle />
           <LocaleSwitcher />
         </div>
 

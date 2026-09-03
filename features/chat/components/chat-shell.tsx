@@ -43,6 +43,10 @@ export function ChatShell({ session, initialConvId }: ChatShellProps) {
   const [, setConversations] = useState<Conversation[]>([]);
   const [activeConvId, setActiveConvId] = useState<string | null>(null);
   const [previewSource, setPreviewSource] = useState<Source | null>(null);
+  // The message currently being written, if any. Kept here rather than
+  // inferred from a missing `state` in the renderer: a stored message can also
+  // arrive without one, and that is history, not work in progress.
+  const [streamingId, setStreamingId] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
   // Handle new chat event
@@ -141,6 +145,7 @@ export function ChatShell({ session, initialConvId }: ChatShellProps) {
             if (opened) return;
             opened = true;
             setView("conversation");
+            setStreamingId(draftId);
             setMessages((prev) => [
               ...prev,
               { id: draftId, role: "assistant", content: "", timestamp: new Date() },
@@ -174,12 +179,14 @@ export function ChatShell({ session, initialConvId }: ChatShellProps) {
               // here and replaces it, which is what makes the feedback bar work
               // on a streamed answer.
               setMessages((prev) => prev.map((m) => (m.id === draftId ? finished : m)));
+              setStreamingId(null);
               refreshConversations();
               window.dispatchEvent(new Event("conversations-changed"));
             },
             onError: (message) => {
               openDraft();
               patchDraft({ content: message, state: "error" });
+              setStreamingId(null);
             },
           });
         } catch (error) {
@@ -194,6 +201,10 @@ export function ChatShell({ session, initialConvId }: ChatShellProps) {
             },
           ]);
         } finally {
+          // Also cleared here: the catch path above appends its own error
+          // message and never reaches onDone, so nothing else would stop the
+          // caret from blinking on a draft that is no longer being written.
+          setStreamingId(null);
           setView("conversation");
         }
       })();
@@ -240,6 +251,7 @@ export function ChatShell({ session, initialConvId }: ChatShellProps) {
               messages={messages}
               view={view}
               loadingStep={loadingStep}
+              streamingId={streamingId}
               onFeedback={handleFeedback}
               onReason={handleReason}
               onPreview={setPreviewSource}

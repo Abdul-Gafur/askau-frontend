@@ -8,6 +8,8 @@ import type { FeedbackType, Message, NotHelpfulReason, Source } from "@/features
 
 interface AIMessageProps {
   message: Message;
+  /** True while this message is still being written. Drives the caret only. */
+  streaming?: boolean;
   onFeedback: (id: string, f: FeedbackType) => void;
   onReason: (id: string, r: NotHelpfulReason) => void;
   onPreview: (source: Source) => void;
@@ -16,6 +18,20 @@ interface AIMessageProps {
 /**
  * AIMessage — renders an AI response with state-conditional UI.
  * Matches reference UI styling.
+ *
+ * Every branch below is keyed on `message.state`, and a message that is still
+ * streaming does not have one yet — the backend sends `state` in the `done`
+ * frame, after the tokens. Without a branch for that case the component
+ * rendered an empty bordered div for the whole of generation, so the answer
+ * appeared all at once at the end and the token stream was invisible. The
+ * absence of `state` is therefore treated as content to draw rather than as
+ * nothing to draw.
+ *
+ * Whether it is *live* is a separate question, and one this component cannot
+ * answer: a stored message can also come back without a state (the transcript
+ * endpoint types it as nullable), and that is history, not work in progress.
+ * So the caret is driven by the `streaming` prop, while the content renders
+ * either way.
  */
 /**
  * Open a source's authoritative original.
@@ -34,11 +50,52 @@ function openSource(source: Source) {
   window.open(source.accessUrl, "_blank", "noopener,noreferrer");
 }
 
-export function AIMessage({ message, onFeedback, onReason, onPreview }: AIMessageProps) {
+export function AIMessage({
+  message,
+  streaming = false,
+  onFeedback,
+  onReason,
+  onPreview,
+}: AIMessageProps) {
   const t = useTranslations("chat.states");
 
   return (
     <div className="border-b border-neutral-100 py-5 last:border-0 dark:border-neutral-800">
+      {/* ── Still being written ── */}
+      {!message.state && (
+        <div className="space-y-4" {...(streaming ? { "aria-busy": true } : {})}>
+          <p
+            aria-live="polite"
+            className="text-[16px] leading-relaxed whitespace-pre-line text-black dark:text-white"
+          >
+            {message.content}
+            {streaming && (
+              <span
+                className="ms-0.5 inline-block h-[1.1em] w-[2px] translate-y-[0.15em] animate-pulse bg-neutral-400 dark:bg-neutral-500"
+                aria-hidden="true"
+              />
+            )}
+          </p>
+
+          {/* Provenance arrives before the first token, and is shown straight
+              away: the reader gets to see what the answer is being built from
+              while it is still being written, which is the whole reason the
+              stream sends sources first. */}
+          {message.sources && message.sources.length > 0 && (
+            <div className="space-y-2">
+              <p className="text-xs font-semibold tracking-wide text-neutral-500 uppercase dark:text-neutral-400">
+                {t("grounded.sources")}
+              </p>
+              <div className="space-y-2">
+                {message.sources.map((s) => (
+                  <SourceCard key={s.id} source={s} onPreview={onPreview} onDownload={openSource} />
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
       {/* ── Insufficient evidence ── */}
       {message.state === "insufficient" && (
         <div className="space-y-4">

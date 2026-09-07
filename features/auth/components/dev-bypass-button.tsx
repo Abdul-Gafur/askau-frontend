@@ -5,31 +5,11 @@ import { signIn } from "next-auth/react";
 import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
+import { DEV_IDENTITIES } from "@/lib/auth/dev-identities";
 
 interface DevBypassButtonProps {
   redirectTo: string;
 }
-
-/**
- * The seeded backend identities, with what makes each one worth signing in as.
- *
- * A picker rather than one fixed user, because the product's central claim is
- * that two people asking the same question get different answers. That is not
- * observable from a single identity — the whole authorization layer looks like
- * a no-op until you can switch between them.
- */
-const DEV_IDENTITIES = [
-  { username: "staff.finance", label: "sees confidential Finance material" },
-  { username: "staff.hr", label: "sees confidential HR material" },
-  { username: "staff.legal", label: "Legal Counsel" },
-  { username: "staff.peace", label: "Peace and Security" },
-  { username: "staff.dual", label: "two departments — widest staff access" },
-  { username: "staff.new", label: "new joiner — narrowest access" },
-  { username: "exec.office", label: "Executive Office — highly restricted" },
-  { username: "admin.knowledge", label: "knowledge administrator" },
-  { username: "admin.system", label: "system administrator" },
-  { username: "admin.security", label: "security administrator" },
-] satisfies { username: string; label: string }[];
 
 /**
  * DevBypassButton — signs in as a seeded backend user without touching Entra ID.
@@ -74,7 +54,7 @@ export function DevBypassButton({ redirectTo }: DevBypassButtonProps) {
       >
         {DEV_IDENTITIES.map((identity) => (
           <option key={identity.username} value={identity.username}>
-            {identity.username} — {identity.label}
+            {identity.name} — {identity.label}
           </option>
         ))}
       </select>

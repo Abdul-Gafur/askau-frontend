@@ -124,7 +124,7 @@ export function SettingsModal({ open, onOpenChange, session }: SettingsModalProp
     (n) => !searchQuery || n.label.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
-  const userInitials = (session.user?.name ?? "U")
+  const userInitials = (session.user?.displayName ?? session.user?.name ?? "U")
     .split(" ")
     .map((w) => w[0])
     .join("")
@@ -482,7 +482,7 @@ export function SettingsModal({ open, onOpenChange, session }: SettingsModalProp
                     </div>
                     <div>
                       <p className="text-sm font-semibold text-black dark:text-white">
-                        {session.user?.name ?? "—"}
+                        {session.user?.displayName ?? session.user?.name ?? "—"}
                       </p>
                       <p className="text-xs text-black dark:text-white">
                         {session.user?.email ?? "—"}

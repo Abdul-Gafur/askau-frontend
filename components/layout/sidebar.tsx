@@ -92,7 +92,7 @@ export function AppSidebar({ open, onClose, session }: AppSidebarProps) {
     (c) => !searchQuery || c.title.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
-  const userInitials = (session.user?.name ?? "U")
+  const userInitials = (session.user?.displayName ?? session.user?.name ?? "U")
     .split(" ")
     .map((w) => w[0])
     .join("")
@@ -266,7 +266,7 @@ export function AppSidebar({ open, onClose, session }: AppSidebarProps) {
             {/* Name + role */}
             <div className="min-w-0 flex-1">
               <p className="truncate text-sm font-medium text-black dark:text-white">
-                {session.user?.name ?? "User"}
+                {session.user?.displayName ?? session.user?.name ?? "User"}
               </p>
               <p className="truncate text-xs text-black dark:text-white">General Staff</p>
             </div>

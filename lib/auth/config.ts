@@ -33,6 +33,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import NextAuth from "next-auth";
 import type { Session } from "next-auth";
 import type { JWT } from "next-auth/jwt";
+import { devDisplayName } from "./dev-identities";
 
 /**
  * Extends NextAuth session types to include AskAU-specific fields.
@@ -42,16 +43,31 @@ declare module "next-auth" {
     user: {
       id: string;
       email: string;
+      /**
+       * The backend identity key, NOT a label.
+       *
+       * Under Entra this is the person's directory name, but in mock mode it
+       * is the seeded username, because app/api/[...path] uses it to look up
+       * that person's bearer token. Render `displayName` instead.
+       */
       name: string;
+      /** What to show a reader. Falls back to `name` when unset. */
+      displayName?: string;
       image?: string;
       /** Microsoft Entra Object ID */
       entraId?: string;
     };
   }
+
+  interface User {
+    displayName?: string;
+    entraId?: string;
+  }
 }
 
 declare module "next-auth/jwt" {
   interface JWT {
+    displayName?: string;
     entraId?: string;
     accessToken?: string;
     accessTokenExpires?: number;
@@ -98,7 +114,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
               const username = String(credentials?.username ?? "staff.finance").trim();
               return {
                 id: `mock-${username}`,
+                // `name` stays the username on purpose — the proxy keys the
+                // backend token off it. The person's actual name rides along
+                // in `displayName`, which is what the UI renders.
                 name: username,
+                displayName: devDisplayName(username),
                 email: `${username}@africanunion.org`,
                 entraId: `oid-${username}`,
               };
@@ -127,7 +147,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
      * SECURITY: Never add sensitive data (tokens, secrets) to the JWT
      * that will be exposed client-side via useSession().
      */
-    async jwt({ token, account, profile }) {
+    async jwt({ token, user, account, profile }) {
+      if (user?.displayName) {
+        token.displayName = user.displayName;
+      }
       if (account && profile) {
         // Store Entra Object ID for backend correlation
         token.entraId = (profile as { oid?: string }).oid;
@@ -155,6 +178,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async session({ session, token }: { session: Session; token: JWT }) {
       if (session.user) {
         session.user.id = token.sub ?? "";
+        session.user.displayName = token.displayName ?? session.user.name;
         session.user.entraId = token.entraId;
         // Do NOT add accessToken to session — keep it server-side only
       }

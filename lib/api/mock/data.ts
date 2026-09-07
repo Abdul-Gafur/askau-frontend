@@ -11,9 +11,9 @@ import type { Message } from "@/types/chat";
 
 export const MOCK_USER: User = {
   id: "usr-mock-001",
-  email: "staff.member@africaunion.org",
-  name: "Staff Member",
-  displayName: "Staff Member",
+  email: "musimenta.marieh@africaunion.org",
+  name: "Musimenta Marieh",
+  displayName: "Musimenta Marieh",
   roles: ["user"],
   department: "Department of Information Technology",
   jobTitle: "Information Technology Officer",
@@ -25,9 +25,9 @@ export const MOCK_USER: User = {
 export const MOCK_ADMIN_USER: User = {
   ...MOCK_USER,
   id: "usr-mock-admin-001",
-  email: "admin@africaunion.org",
-  name: "Admin User",
-  displayName: "Admin User",
+  email: "phiwa@africaunion.org",
+  name: "Phiwa",
+  displayName: "Phiwa",
   roles: ["admin"],
 };
 

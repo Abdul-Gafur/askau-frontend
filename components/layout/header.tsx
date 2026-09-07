@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { useLocale } from "next-intl";
@@ -59,9 +60,14 @@ export function AppHeader({ session: _session, sidebarOpen, onSidebarToggle }: A
         className="focus-visible:ring-ring flex items-center gap-1.5 rounded-md px-1 py-1 focus-visible:ring-2"
         aria-label={`${siteConfig.name} — Home`}
       >
-        <span className="flex h-5 w-5 items-center justify-center rounded-md bg-neutral-800 text-[11px] font-bold text-white dark:bg-neutral-200 dark:text-neutral-900">
-          AU
-        </span>
+        <Image
+          src="/au-emblem.png"
+          alt="African Union emblem"
+          width={250}
+          height={225}
+          priority
+          className="h-6 w-auto"
+        />
         <span className="text-sm font-semibold text-black dark:text-white">{siteConfig.name}</span>
       </Link>
 

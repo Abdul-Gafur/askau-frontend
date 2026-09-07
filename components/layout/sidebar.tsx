@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { usePathname } from "next/navigation";
@@ -87,6 +88,14 @@ export function AppSidebar({ open, onClose, session }: AppSidebarProps) {
       {/* Platform Logo and Toggle */}
       <div className="flex h-14 flex-shrink-0 items-center justify-between px-4">
         <Link href={`/${locale}/chat`} className="flex items-center gap-2">
+          <Image
+            src="/au-emblem.png"
+            alt="African Union emblem"
+            width={250}
+            height={225}
+            priority
+            className="h-7 w-auto"
+          />
           <span className="text-sm font-semibold text-black dark:text-white">AskAU</span>
         </Link>
         <button

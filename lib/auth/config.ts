@@ -15,8 +15,10 @@
  * SETUP INSTRUCTIONS:
  * 1. Register an App in Microsoft Entra ID (Azure AD).
  * 2. Set Redirect URI to: {NEXTAUTH_URL}/api/auth/callback/microsoft-entra-id
- * 3. Grant the following Microsoft Graph API permissions (Delegated):
- *    - User.Read (to read user profile)
+ * 3. Grant the AskAU API's `access_as_user` scope (Delegated), under
+ *    "My APIs", and grant admin consent. Set ENTRA_API_SCOPE to
+ *    api://<AskAU API client id>/access_as_user. A Microsoft Graph scope is
+ *    NOT sufficient: the backend validates `aud` against its own audience.
  * 4. Copy Application (client) ID → ENTRA_CLIENT_ID
  * 5. Copy Directory (tenant) ID  → ENTRA_TENANT_ID
  * 6. Create a client secret       → ENTRA_CLIENT_SECRET
@@ -31,6 +33,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import NextAuth from "next-auth";
 import type { Session } from "next-auth";
 import type { JWT } from "next-auth/jwt";
+import { devDisplayName } from "./dev-identities";
 
 /**
  * Extends NextAuth session types to include AskAU-specific fields.
@@ -40,16 +43,31 @@ declare module "next-auth" {
     user: {
       id: string;
       email: string;
+      /**
+       * The backend identity key, NOT a label.
+       *
+       * Under Entra this is the person's directory name, but in mock mode it
+       * is the seeded username, because app/api/[...path] uses it to look up
+       * that person's bearer token. Render `displayName` instead.
+       */
       name: string;
+      /** What to show a reader. Falls back to `name` when unset. */
+      displayName?: string;
       image?: string;
       /** Microsoft Entra Object ID */
       entraId?: string;
     };
   }
+
+  interface User {
+    displayName?: string;
+    entraId?: string;
+  }
 }
 
 declare module "next-auth/jwt" {
   interface JWT {
+    displayName?: string;
     entraId?: string;
     accessToken?: string;
     accessTokenExpires?: number;
@@ -64,7 +82,19 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       issuer: `https://login.microsoftonline.com/${process.env["ENTRA_TENANT_ID"] ?? "common"}/v2.0`,
       authorization: {
         params: {
-          scope: "openid profile email User.Read",
+          // `User.Read` is a *Microsoft Graph* scope. A token issued for Graph
+          // is rejected by the AskAU backend, which requires `aud` to equal
+          // ASKAU_ENTRA_AUDIENCE — so requesting only Graph scopes produced a
+          // successful sign-in followed by a 401 on every single API call.
+          //
+          // ENTRA_API_SCOPE is the API registration's exposed scope,
+          // `api://<AskAU API client id>/access_as_user`. Kept in the
+          // environment rather than hardcoded: it carries a tenant-specific
+          // GUID, and a wrong value here fails as an authorization error at
+          // runtime rather than anything a build would catch.
+          scope: `openid profile email offline_access ${
+            process.env["ENTRA_API_SCOPE"] ?? ""
+          }`.trim(),
         },
       },
     }),
@@ -76,12 +106,21 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
               username: { label: "Username (any)", type: "text", placeholder: "admin" },
               password: { label: "Password (any)", type: "password" },
             },
-            async authorize() {
+            async authorize(credentials) {
+              // The submitted username becomes the identity, so the dev proxy
+              // can look up that person's backend token. A fixed user made
+              // permission-aware retrieval impossible to see from the
+              // interface — every reader had the same access list.
+              const username = String(credentials?.username ?? "staff.finance").trim();
               return {
-                id: "mock-user-1",
-                name: "Mock Admin User",
-                email: "mockadmin@askau.org",
-                entraId: "mock-entra-oid",
+                id: `mock-${username}`,
+                // `name` stays the username on purpose — the proxy keys the
+                // backend token off it. The person's actual name rides along
+                // in `displayName`, which is what the UI renders.
+                name: username,
+                displayName: devDisplayName(username),
+                email: `${username}@africanunion.org`,
+                entraId: `oid-${username}`,
               };
             },
           }),
@@ -108,13 +147,26 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
      * SECURITY: Never add sensitive data (tokens, secrets) to the JWT
      * that will be exposed client-side via useSession().
      */
-    async jwt({ token, account, profile }) {
+    async jwt({ token, user, account, profile }) {
+      if (user?.displayName) {
+        token.displayName = user.displayName;
+      }
       if (account && profile) {
         // Store Entra Object ID for backend correlation
         token.entraId = (profile as { oid?: string }).oid;
-
-        // NOTE: Do NOT store access tokens in the client-accessible session.
-        // If the backend needs the Entra token, proxy it server-side only.
+      }
+      if (account?.access_token) {
+        // The API-scoped access token, kept HERE and nowhere else.
+        //
+        // This JWT is encrypted with NEXTAUTH_SECRET and only ever decrypted on
+        // the server. The `session` callback below deliberately does not copy
+        // this across: whatever the session callback returns is served to the
+        // browser by /api/auth/session, so a token placed there is a token in
+        // everyone's devtools. The proxy reads it from this token directly via
+        // `getToken`, which is the server-side path.
+        token.accessToken = account.access_token;
+        token.accessTokenExpires =
+          typeof account.expires_at === "number" ? account.expires_at * 1000 : undefined;
       }
       return token;
     },
@@ -126,6 +178,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async session({ session, token }: { session: Session; token: JWT }) {
       if (session.user) {
         session.user.id = token.sub ?? "";
+        session.user.displayName = token.displayName ?? session.user.name;
         session.user.entraId = token.entraId;
         // Do NOT add accessToken to session — keep it server-side only
       }

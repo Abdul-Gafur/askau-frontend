@@ -8,6 +8,8 @@ interface MessageThreadProps {
   messages: Message[];
   view: AppView;
   loadingStep: number;
+  /** Id of the message being written right now, or null. */
+  streamingId?: string | null;
   onFeedback: (id: string, f: FeedbackType) => void;
   onReason: (id: string, r: NotHelpfulReason) => void;
   onPreview: (source: Source) => void;
@@ -24,6 +26,7 @@ export function MessageThread({
   messages,
   view,
   loadingStep,
+  streamingId = null,
   onFeedback,
   onReason,
   onPreview,
@@ -39,6 +42,7 @@ export function MessageThread({
             <AIMessage
               key={msg.id}
               message={msg}
+              streaming={msg.id === streamingId}
               onFeedback={onFeedback}
               onReason={onReason}
               onPreview={onPreview}

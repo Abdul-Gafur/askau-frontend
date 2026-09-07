@@ -12,6 +12,10 @@
 
 # testing
 /coverage
+/test-results
+/playwright-report
+/blob-report
+/.playwright
 
 # next.js
 /.next/
@@ -32,6 +36,8 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+# ...but the template MUST be committed - it is the onboarding contract.
+!.env.example
 
 # vercel
 .vercel
@@ -39,3 +45,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+.idea
+.dev-tokens.json

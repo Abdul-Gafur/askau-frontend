@@ -7,25 +7,33 @@ interface WelcomeScreenProps {
 }
 
 const SUGGESTED_PROMPT_KEYS = [
-  "suggestedPrompts.leavePolicy",
-  "suggestedPrompts.procurementProcess",
-  "suggestedPrompts.travelPolicy",
-  "suggestedPrompts.annualLeaveSteps",
+  "suggestedPrompts.aspiration6",
+  "suggestedPrompts.chairperson",
+  "suggestedPrompts.cyberConvention",
+  "suggestedPrompts.aiStrategy",
 ] as const;
 
 export function WelcomeScreen({ onSend, userName }: WelcomeScreenProps) {
   const t = useTranslations("chat");
+  // No name resolves for identities missing from the seed, so each locale
+  // carries a nameless greeting rather than interpolating an English literal.
+  const name = userName?.trim();
 
   return (
     <div className="animate-fade-in mx-auto flex h-full w-full max-w-3xl flex-col items-center justify-center p-6 text-center">
       <h1 className="mb-3 text-3xl font-semibold tracking-tight text-black dark:text-white">
-        {t("welcomeHeading", { name: userName || "User" })}
+        {name ? t("welcomeHeading", { name }) : t("welcomeHeadingAnonymous")}
       </h1>
       <p className="mb-10 max-w-lg text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
         {t("welcomeSubtitle")}
       </p>
 
-      <MessageComposer onSend={onSend} floating />
+      <div className="au-chat-glow relative w-full max-w-2xl">
+        <span className="au-chat-glow__aura" aria-hidden="true" />
+        <div className="relative z-[1]">
+          <MessageComposer onSend={onSend} floating />
+        </div>
+      </div>
 
       <div className="mt-12 grid w-full grid-cols-1 gap-3 text-left sm:grid-cols-2">
         {SUGGESTED_PROMPT_KEYS.map((key) => {

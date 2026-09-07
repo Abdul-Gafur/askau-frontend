@@ -17,10 +17,10 @@
   "greeting": "Olá, {name}",
   "disclaimer": "As respostas são baseadas exclusivamente em fontes de conhecimento aprovadas da UA.",
   "suggestedPrompts": {
-    "leavePolicy": "Qual é a política oficial de licenças?",
-    "procurementProcess": "Qual é o processo de aprovação de aquisições?",
-    "travelPolicy": "Mostre-me os requisitos da política de viagens.",
-    "annualLeaveSteps": "Quais são os passos para solicitar licença anual?"
+    "aspiration6": "O que é a Aspiração 6 da Agenda 2063?",
+    "chairperson": "Quem é o atual Presidente da Comissão da UA?",
+    "cyberConvention": "O que é a Convenção da UA sobre Cibersegurança e Proteção de Dados Pessoais?",
+    "aiStrategy": "Qual quadro da UA orienta a inteligência artificial no continente?"
   },
   "loading": {
     "searching": "Pesquisando fontes de conhecimento aprovadas…",
@@ -90,7 +90,8 @@
     "preview": "Pré-visualizar",
     "download": "Descarregar",
     "downloading": "A descarregar…",
-    "downloaded": "Descarregado"
+    "downloaded": "Descarregado",
+    "noAccess": "Não pode abrir este documento, embora fundamente a resposta"
   },
   "docPreview": {
     "documentType": "Tipo de documento",
@@ -102,7 +103,8 @@
     "effectiveDate": "Data de vigência",
     "status": "Estado",
     "documentExtract": "Extrato do documento",
-    "downloadOriginal": "Descarregar documento original"
+    "downloadOriginal": "Descarregar documento original",
+    "noAccess": "Não pode abrir este documento"
   },
   "conversations": {
     "recents": "Recentes",
@@ -110,5 +112,6 @@
     "archive": "Arquivar",
     "delete": "Eliminar"
   },
-  "welcomeHeading": "Olá {name}, vamos começar."
+  "welcomeHeading": "Olá {name}, vamos começar.",
+  "welcomeHeadingAnonymous": "Olá, vamos começar."
 }

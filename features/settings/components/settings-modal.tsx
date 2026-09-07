@@ -1,6 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+
+import {
+  deleteAllHistory,
+  getPreferences,
+  listKnowledgeBases,
+  setPreferences,
+  type KnowledgeBase,
+} from "@/features/settings/lib/backend";
 import { useTheme } from "next-themes";
 import { useLocale, useTranslations } from "next-intl";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
@@ -26,29 +34,15 @@ interface SettingsModalProps {
 
 const LOCALES: Locale[] = ["en", "fr", "ar", "pt"];
 
-const KNOWLEDGE_BASES = [
-  {
-    name: "Organisational Policy Repository",
-    version: "v2.6",
-    docs: "1,842 documents",
-    updated: "26 Aug 2026",
-    enabled: true,
-  },
-  {
-    name: "HR Procedures & Circulars",
-    version: "v1.4",
-    docs: "438 documents",
-    updated: "12 Aug 2026",
-    enabled: true,
-  },
-  {
-    name: "Procurement Manuals",
-    version: "v3.0",
-    docs: "216 documents",
-    updated: "1 Jul 2026",
-    enabled: false,
-  },
-];
+// The knowledge bases were a fixture here — three invented repositories with
+// invented document counts and version numbers. They are now read from
+// `GET /api/v1/knowledge-bases`, which returns the sources this *reader* can be
+// answered from and their own count of reachable documents.
+//
+// No `version` field: `knowledge_sources` has no such column, because a
+// revision concept was never built. The fixture showed "v2.6" and that number
+// was displayed as provenance, which is the one thing this product cannot be
+// casual about. `lastSyncedAt` is shown instead.
 
 /**
  * SettingsModal — settings dialog matching the chatUI reference design.
@@ -63,9 +57,59 @@ export function SettingsModal({ open, onOpenChange, session }: SettingsModalProp
   const [notifications, setNotifications] = useState(true);
   const [knowledgeUpdates, setKnowledgeUpdates] = useState(true);
   const [sessionExpiry, setSessionExpiry] = useState(true);
-  const [saveHistory, setSaveHistory] = useState(true);
-  const [shareAnalytics, setShareAnalytics] = useState(false);
-  const [higherIntelligence, setHigherIntelligence] = useState(true);
+  // Loaded, not assumed. The defaults here were `true/false/true` and the
+  // backend's are `true/true/false` — a modal that renders its guess before the
+  // read lands shows the reader a setting they do not have.
+  const [saveHistory, setSaveHistory] = useState<boolean | null>(null);
+  const [shareAnalytics, setShareAnalytics] = useState<boolean | null>(null);
+  const [higherIntelligence, setHigherIntelligence] = useState<boolean | null>(null);
+  const [knowledgeBases, setKnowledgeBases] = useState<KnowledgeBase[] | null>(null);
+  const [busy, setBusy] = useState(false);
+  const [deleted, setDeleted] = useState<number | null>(null);
+  const [confirming, setConfirming] = useState(false);
+
+  useEffect(() => {
+    if (!open) return;
+    void getPreferences()
+      .then((p) => {
+        setSaveHistory(p.saveHistory);
+        setShareAnalytics(p.shareAnalytics);
+        setHigherIntelligence(p.higherIntelligence);
+      })
+      .catch(() => undefined);
+    void listKnowledgeBases()
+      .then(setKnowledgeBases)
+      .catch(() => setKnowledgeBases([]));
+  }, [open]);
+
+  /**
+   * Optimistic, then reconciled with what the backend actually stored.
+   *
+   * The reply is the authority rather than the click: a PATCH returns the whole
+   * preference set, so a value the server refused or normalised corrects itself
+   * instead of leaving the switch showing something untrue.
+   */
+  const save = useCallback(
+    (
+      patch: Partial<{
+        saveHistory: boolean;
+        shareAnalytics: boolean;
+        higherIntelligence: boolean;
+      }>,
+    ) => {
+      if (patch.saveHistory !== undefined) setSaveHistory(patch.saveHistory);
+      if (patch.shareAnalytics !== undefined) setShareAnalytics(patch.shareAnalytics);
+      if (patch.higherIntelligence !== undefined) setHigherIntelligence(patch.higherIntelligence);
+      void setPreferences(patch)
+        .then((p) => {
+          setSaveHistory(p.saveHistory);
+          setShareAnalytics(p.shareAnalytics);
+          setHigherIntelligence(p.higherIntelligence);
+        })
+        .catch(() => undefined);
+    },
+    [],
+  );
 
   const NAV_ITEMS = [
     { id: "general" as const, label: t("sections.general"), icon: Settings2Icon },
@@ -80,7 +124,7 @@ export function SettingsModal({ open, onOpenChange, session }: SettingsModalProp
     (n) => !searchQuery || n.label.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
-  const userInitials = (session.user?.name ?? "U")
+  const userInitials = (session.user?.displayName ?? session.user?.name ?? "U")
     .split(" ")
     .map((w) => w[0])
     .join("")
@@ -239,8 +283,8 @@ export function SettingsModal({ open, onOpenChange, session }: SettingsModalProp
                   <ToggleRow
                     label={t("higherIntelligence.label")}
                     description={t("higherIntelligence.description")}
-                    value={higherIntelligence}
-                    onChange={setHigherIntelligence}
+                    value={higherIntelligence ?? false}
+                    onChange={(v) => save({ higherIntelligence: v })}
                   />
                 </div>
               )}
@@ -251,26 +295,37 @@ export function SettingsModal({ open, onOpenChange, session }: SettingsModalProp
                   <p className="mb-4 text-xs text-black dark:text-white">
                     {t("knowledge.description")}
                   </p>
-                  {KNOWLEDGE_BASES.map((kb) => (
+                  {knowledgeBases === null && (
+                    <p className="py-3.5 text-xs text-black dark:text-white">Loading…</p>
+                  )}
+                  {knowledgeBases?.length === 0 && (
+                    <p className="py-3.5 text-xs text-black dark:text-white">
+                      No knowledge base currently holds a document you can read.
+                    </p>
+                  )}
+                  {(knowledgeBases ?? []).map((kb) => (
                     <div
-                      key={kb.name}
+                      key={kb.id}
                       className="flex items-start justify-between border-b border-neutral-100 py-3.5 last:border-0 dark:border-neutral-800"
                     >
                       <div>
                         <p className="text-sm font-medium text-black dark:text-white">{kb.name}</p>
                         <p className="mt-0.5 text-xs text-black dark:text-white">
-                          {kb.docs} · {kb.version} · Updated {kb.updated}
+                          {kb.documentCount} document(s) you can read · {kb.department} ·{" "}
+                          {kb.lastSyncedAt
+                            ? `Synced ${new Date(kb.lastSyncedAt).toLocaleDateString()}`
+                            : "Not yet synced"}
                         </p>
                       </div>
                       <span
                         className={cn(
                           "rounded-full px-2 py-0.5 text-xs font-medium",
-                          kb.enabled
+                          kb.status === "active"
                             ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
                             : "bg-neutral-100 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-400",
                         )}
                       >
-                        {kb.enabled ? t("knowledge.active") : t("knowledge.inactive")}
+                        {kb.status === "active" ? t("knowledge.active") : t("knowledge.inactive")}
                       </span>
                     </div>
                   ))}
@@ -307,22 +362,77 @@ export function SettingsModal({ open, onOpenChange, session }: SettingsModalProp
                   <ToggleRow
                     label={t("privacy.saveHistory")}
                     description={t("privacy.saveHistoryDescription")}
-                    value={saveHistory}
-                    onChange={setSaveHistory}
+                    value={saveHistory ?? true}
+                    onChange={(v) => save({ saveHistory: v })}
                   />
                   <ToggleRow
                     label={t("privacy.shareAnalytics")}
                     description={t("privacy.shareAnalyticsDescription")}
-                    value={shareAnalytics}
-                    onChange={setShareAnalytics}
+                    value={shareAnalytics ?? true}
+                    onChange={(v) => save({ shareAnalytics: v })}
                   />
                   <div className="mt-4">
-                    <button
-                      type="button"
-                      className="text-sm font-medium text-red-600 transition-opacity hover:opacity-75 dark:text-red-400"
-                    >
-                      {t("privacy.deleteHistory")}
-                    </button>
+                    {/*
+                      A two-step confirm rather than `window.confirm`. The
+                      native dialog is unstyled, blocking, ignores the app's
+                      design system, and its buttons are in the *browser's*
+                      language rather than the one the reader chose — which for
+                      a four-locale product is its own bug. It is also
+                      invisible to automation, so the most destructive control
+                      in the product was the one that could not be tested.
+                    */}
+                    {!confirming ? (
+                      <button
+                        type="button"
+                        onClick={() => setConfirming(true)}
+                        className="text-sm font-medium text-red-600 transition-opacity hover:opacity-75 dark:text-red-400"
+                      >
+                        {t("privacy.deleteHistory")}
+                      </button>
+                    ) : (
+                      <div className="space-y-2">
+                        <p className="text-sm text-black dark:text-white">
+                          {t("privacy.deleteHistoryConfirm")}
+                        </p>
+                        <div className="flex gap-2">
+                          <button
+                            type="button"
+                            disabled={busy}
+                            onClick={() => {
+                              setBusy(true);
+                              void deleteAllHistory()
+                                .then((r) => {
+                                  setDeleted(r.deleted);
+                                  // The sidebar is holding a list that no
+                                  // longer exists; the chat shell owns it.
+                                  window.dispatchEvent(new Event("history-deleted"));
+                                })
+                                .catch(() => setDeleted(null))
+                                .finally(() => {
+                                  setBusy(false);
+                                  setConfirming(false);
+                                });
+                            }}
+                            className="rounded-md bg-red-600 px-3 py-1.5 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-50"
+                          >
+                            {t("privacy.deleteHistoryAction")}
+                          </button>
+                          <button
+                            type="button"
+                            disabled={busy}
+                            onClick={() => setConfirming(false)}
+                            className="rounded-md border border-border px-3 py-1.5 text-sm font-medium text-black transition-opacity hover:opacity-75 dark:text-white"
+                          >
+                            {t("privacy.deleteHistoryCancel")}
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                    {deleted !== null && (
+                      <p className="mt-2 text-xs text-black dark:text-white">
+                        {t("privacy.deleteHistoryDone", { count: deleted })}
+                      </p>
+                    )}
                   </div>
                 </div>
               )}
@@ -372,7 +482,7 @@ export function SettingsModal({ open, onOpenChange, session }: SettingsModalProp
                     </div>
                     <div>
                       <p className="text-sm font-semibold text-black dark:text-white">
-                        {session.user?.name ?? "—"}
+                        {session.user?.displayName ?? session.user?.name ?? "—"}
                       </p>
                       <p className="text-xs text-black dark:text-white">
                         {session.user?.email ?? "—"}

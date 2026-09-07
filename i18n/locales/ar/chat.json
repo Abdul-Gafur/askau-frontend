@@ -17,10 +17,10 @@
   "greeting": "أهلاً، {name}",
   "disclaimer": "الإجابات مستندة حصراً إلى مصادر معرفة الاتحاد الأفريقي الموثوقة.",
   "suggestedPrompts": {
-    "leavePolicy": "ما هي سياسة الإجازات الرسمية؟",
-    "procurementProcess": "ما هي عملية الموافقة على المشتريات؟",
-    "travelPolicy": "أرني متطلبات سياسة السفر.",
-    "annualLeaveSteps": "ما هي خطوات طلب الإجازة السنوية؟"
+    "aspiration6": "ما هو الطموح السادس في أجندة 2063؟",
+    "chairperson": "من هو الرئيس الحالي لمفوضية الاتحاد الأفريقي؟",
+    "cyberConvention": "ما هي اتفاقية الاتحاد الأفريقي بشأن الأمن السيبراني وحماية البيانات الشخصية؟",
+    "aiStrategy": "ما هو إطار الاتحاد الأفريقي الذي يوجه الذكاء الاصطناعي في القارة؟"
   },
   "loading": {
     "searching": "البحث في مصادر المعرفة الموثوقة…",
@@ -90,7 +90,8 @@
     "preview": "معاينة",
     "download": "تحميل",
     "downloading": "جارٍ التحميل…",
-    "downloaded": "تم التحميل"
+    "downloaded": "تم التحميل",
+    "noAccess": "لا يمكنك فتح هذا المستند، وإن كان يدعم الإجابة"
   },
   "docPreview": {
     "documentType": "نوع الوثيقة",
@@ -102,7 +103,8 @@
     "effectiveDate": "تاريخ النفاذ",
     "status": "الحالة",
     "documentExtract": "مقتطف من الوثيقة",
-    "downloadOriginal": "تحميل الوثيقة الأصلية"
+    "downloadOriginal": "تحميل الوثيقة الأصلية",
+    "noAccess": "لا يمكنك فتح هذا المستند"
   },
   "conversations": {
     "recents": "الأخيرة",
@@ -110,5 +112,6 @@
     "archive": "أرشفة",
     "delete": "حذف"
   },
-  "welcomeHeading": "مرحباً {name}، لنبدأ."
+  "welcomeHeading": "مرحباً {name}، لنبدأ.",
+  "welcomeHeadingAnonymous": "مرحباً، لنبدأ."
 }

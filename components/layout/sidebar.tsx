@@ -8,7 +8,8 @@ import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 import { SettingsModal } from "@/features/settings/components/settings-modal";
-import { SAMPLE_CONVERSATIONS } from "@/features/chat/chat-data";
+import { SignOutButton } from "@/features/auth/components/sign-out-button";
+import { listConversations } from "@/features/chat/lib/backend";
 import type { Conversation } from "@/features/chat/types";
 import type { Session } from "next-auth";
 
@@ -36,7 +37,27 @@ export function AppSidebar({ open, onClose, session }: AppSidebarProps) {
   const locale = useLocale();
   const pathname = usePathname();
   const { theme, setTheme, resolvedTheme } = useTheme();
-  const [conversations] = useState<Conversation[]>(SAMPLE_CONVERSATIONS);
+  // The reader's own conversations. This was `SAMPLE_CONVERSATIONS`, so every
+  // account saw the same six invented titles — including an account with
+  // "save conversation history" switched off, which is the case the list most
+  // needs to get right.
+  const [conversations, setConversations] = useState<Conversation[]>([]);
+
+  useEffect(() => {
+    const load = () =>
+      void listConversations()
+        .then(setConversations)
+        .catch(() => setConversations([]));
+    load();
+    // Reloaded on both events the chat shell emits: a new turn adds a
+    // conversation, and deleting all history empties the list.
+    window.addEventListener("history-deleted", load);
+    window.addEventListener("conversations-changed", load);
+    return () => {
+      window.removeEventListener("history-deleted", load);
+      window.removeEventListener("conversations-changed", load);
+    };
+  }, []);
   const [overflowId, setOverflowId] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -72,7 +93,7 @@ export function AppSidebar({ open, onClose, session }: AppSidebarProps) {
     (c) => !searchQuery || c.title.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
-  const userInitials = (session.user?.name ?? "U")
+  const userInitials = (session.user?.displayName ?? session.user?.name ?? "U")
     .split(" ")
     .map((w) => w[0])
     .join("")
@@ -254,19 +275,13 @@ export function AppSidebar({ open, onClose, session }: AppSidebarProps) {
             {/* Name + role */}
             <div className="min-w-0 flex-1">
               <p className="truncate text-sm font-medium text-black dark:text-white">
-                {session.user?.name ?? "User"}
+                {session.user?.displayName ?? session.user?.name ?? "User"}
               </p>
               <p className="truncate text-xs text-black dark:text-white">General Staff</p>
             </div>
 
             {/* Sign out */}
-            <button
-              type="button"
-              title="Sign out"
-              className="flex-shrink-0 rounded-lg p-1.5 text-black transition-colors hover:bg-neutral-200 hover:text-neutral-700 dark:text-white dark:hover:bg-neutral-800 dark:hover:text-neutral-300"
-            >
-              <LogOutIcon className="h-[18px] w-[18px]" />
-            </button>
+            <SignOutButton />
           </div>
         </div>
       </div>
@@ -428,24 +443,6 @@ function QuestionIcon({ className }: { className?: string }) {
       <circle cx="12" cy="12" r="10" />
       <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3" />
       <line x1="12" y1="17" x2="12.01" y2="17" />
-    </svg>
-  );
-}
-function LogOutIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={1.8}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden="true"
-    >
-      <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" />
-      <polyline points="16 17 21 12 16 7" />
-      <line x1="21" y1="12" x2="9" y2="12" />
     </svg>
   );
 }

@@ -30,6 +30,21 @@ export interface Source {
   effectiveDate: string;
   status: string;
   excerpt: string;
+  /**
+   * Whether this reader may open the document itself.
+   *
+   * Grounding and opening are separate permissions: a source can support an
+   * answer the reader is not allowed to open. Without this the card cannot
+   * mark the difference, so an unopenable source looks identical to an
+   * openable one until the click fails.
+   */
+  hasAccess?: boolean;
+  /**
+   * Backend-vended link to the authoritative original. Never constructed here:
+   * AskAU redirects to the source repository rather than serving the file, so
+   * it does not become the system of record — and the redirect is audited.
+   */
+  accessUrl?: string | null;
 }
 
 export interface Message {

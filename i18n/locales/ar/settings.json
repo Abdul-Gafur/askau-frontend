@@ -48,7 +48,11 @@
     "saveHistoryDescription": "احتفظ بسجل محادثاتك للرجوع إليها مستقبلاً.",
     "shareAnalytics": "مشاركة إحصاءات الاستخدام",
     "shareAnalyticsDescription": "ساعد في تحسين AskAU من خلال مشاركة بيانات الاستخدام المجهولة.",
-    "deleteHistory": "حذف جميع سجلات المحادثة"
+    "deleteHistory": "حذف جميع سجلات المحادثة",
+    "deleteHistoryConfirm": "حذف كل المحادثات من سجلك؟ لا يمكن التراجع عن هذا الإجراء.",
+    "deleteHistoryAction": "حذف الكل",
+    "deleteHistoryCancel": "إلغاء",
+    "deleteHistoryDone": "تم حذف {count} محادثة."
   },
   "notifications": {
     "email": "إشعارات البريد الإلكتروني",

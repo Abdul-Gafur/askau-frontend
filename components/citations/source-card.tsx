@@ -22,7 +22,14 @@ export function SourceCard({ source, onPreview, onDownload }: SourceCardProps) {
   const [downloaded, setDownloaded] = useState(false);
   const [downloading, setDownloading] = useState(false);
 
+  // Grounding and opening are separate permissions (FR-031): a source can
+  // support an answer the reader may not open. The backend says so by omitting
+  // `accessUrl`, and the control has to reflect that — a button that looks
+  // available and does nothing is worse than one that is plainly disabled.
+  const canOpen = source.hasAccess !== false && Boolean(source.accessUrl);
+
   const handleDownload = () => {
+    if (!canOpen) return;
     setDownloading(true);
     onDownload(source);
     setTimeout(() => {
@@ -93,7 +100,8 @@ export function SourceCard({ source, onPreview, onDownload }: SourceCardProps) {
           <button
             type="button"
             onClick={handleDownload}
-            disabled={downloading}
+            disabled={downloading || !canOpen}
+            title={canOpen ? undefined : t("noAccess")}
             className="flex items-center gap-1 text-xs text-neutral-500 transition-colors hover:text-neutral-900 disabled:opacity-50 dark:text-neutral-400 dark:hover:text-neutral-100"
           >
             {downloading ? (

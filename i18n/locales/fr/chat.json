@@ -17,10 +17,10 @@
   "greeting": "Bonjour, {name}",
   "disclaimer": "Les réponses sont exclusivement basées sur les sources de connaissance approuvées de l'UA.",
   "suggestedPrompts": {
-    "leavePolicy": "Quelle est la politique officielle de congés ?",
-    "procurementProcess": "Quel est le processus d'approbation des marchés ?",
-    "travelPolicy": "Montrez-moi les exigences de la politique de voyage.",
-    "annualLeaveSteps": "Quelles sont les étapes pour demander un congé annuel ?"
+    "aspiration6": "Quelle est l'Aspiration 6 de l'Agenda 2063 ?",
+    "chairperson": "Qui est l'actuel Président de la Commission de l'UA ?",
+    "cyberConvention": "Qu'est-ce que la Convention de l'UA sur la cybersécurité et la protection des données à caractère personnel ?",
+    "aiStrategy": "Quel cadre de l'UA encadre l'intelligence artificielle sur le continent ?"
   },
   "loading": {
     "searching": "Recherche dans les sources de connaissances approuvées…",
@@ -90,7 +90,8 @@
     "preview": "Aperçu",
     "download": "Télécharger",
     "downloading": "Téléchargement…",
-    "downloaded": "Téléchargé"
+    "downloaded": "Téléchargé",
+    "noAccess": "Vous ne pouvez pas ouvrir ce document, bien qu'il étaye la réponse"
   },
   "docPreview": {
     "documentType": "Type de document",
@@ -102,7 +103,8 @@
     "effectiveDate": "Date d'entrée en vigueur",
     "status": "Statut",
     "documentExtract": "Extrait du document",
-    "downloadOriginal": "Télécharger le document original"
+    "downloadOriginal": "Télécharger le document original",
+    "noAccess": "Vous ne pouvez pas ouvrir ce document"
   },
   "conversations": {
     "recents": "Récents",

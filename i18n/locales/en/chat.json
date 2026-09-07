@@ -17,10 +17,10 @@
   "greeting": "Hello, {name}",
   "disclaimer": "Answers are grounded exclusively in approved AU knowledge sources.",
   "suggestedPrompts": {
-    "leavePolicy": "What is the official leave policy?",
-    "procurementProcess": "What is the procurement approval process?",
-    "travelPolicy": "Show me the travel policy requirements.",
-    "annualLeaveSteps": "What are the steps for requesting annual leave?"
+    "aspiration6": "What is Aspiration 6 of Agenda 2063?",
+    "chairperson": "Who is the current Chairperson of the AU Commission?",
+    "cyberConvention": "What is the AU Convention on Cyber Security and Personal Data Protection?",
+    "aiStrategy": "Which AU framework guides artificial intelligence on the continent?"
   },
   "loading": {
     "searching": "Searching approved knowledge sources…",
@@ -90,7 +90,8 @@
     "preview": "Preview",
     "download": "Download",
     "downloading": "Downloading…",
-    "downloaded": "Downloaded"
+    "downloaded": "Downloaded",
+    "noAccess": "You may not open this document, though it supports the answer"
   },
   "docPreview": {
     "documentType": "Document type",
@@ -102,7 +103,8 @@
     "effectiveDate": "Effective date",
     "status": "Status",
     "documentExtract": "Document extract",
-    "downloadOriginal": "Download original document"
+    "downloadOriginal": "Download original document",
+    "noAccess": "You may not open this document"
   },
   "conversations": {
     "recents": "Recents",

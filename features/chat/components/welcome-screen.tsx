@@ -7,10 +7,10 @@ interface WelcomeScreenProps {
 }
 
 const SUGGESTED_PROMPT_KEYS = [
-  "suggestedPrompts.leavePolicy",
-  "suggestedPrompts.procurementProcess",
-  "suggestedPrompts.travelPolicy",
-  "suggestedPrompts.annualLeaveSteps",
+  "suggestedPrompts.aspiration6",
+  "suggestedPrompts.chairperson",
+  "suggestedPrompts.cyberConvention",
+  "suggestedPrompts.aiStrategy",
 ] as const;
 
 export function WelcomeScreen({ onSend, userName }: WelcomeScreenProps) {

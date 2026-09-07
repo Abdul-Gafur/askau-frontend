@@ -1,0 +1,175 @@
+@import url("https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap");
+
+/*
+ * AskAU — Public Landing Page
+ *
+ * Scoped, self-contained styling for the marketing landing page.
+ * The landing deliberately commits to a single light, editorial look
+ * (warm paper ground, transitional serif display) and does NOT follow
+ * the app's dark theme — every colour is defined on `.landing`.
+ */
+
+.landing {
+  --ink: #1c1b17;
+  --ink-soft: #55534a;
+  --ink-faint: #8a887d;
+  --paper: #faf8f1;
+  --paper-alt: #f1ede1;
+  --line: #e4e0d1;
+  --au-green: #143d1e;
+  --au-green-bright: #1f7a3d;
+  --au-gold: #d9a520;
+  --au-red: #c1272d;
+
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Display type ------------------------------------------------------ */
+.landing-display {
+  font-family: "Newsreader", Georgia, "Times New Roman", serif;
+  font-weight: 500;
+  letter-spacing: -0.012em;
+  line-height: 1.08;
+}
+
+.landing-eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--au-green-bright);
+}
+
+/* --- AU tricolour rule ---------------------------------------------------- */
+.landing-tricolor {
+  display: flex;
+  height: 3px;
+  width: 100%;
+}
+.landing-tricolor > span:nth-child(1) {
+  flex: 2;
+  background: var(--au-gold);
+}
+.landing-tricolor > span:nth-child(2) {
+  flex: 3;
+  background: var(--au-green-bright);
+}
+.landing-tricolor > span:nth-child(3) {
+  flex: 2;
+  background: var(--au-red);
+}
+
+/* --- Dark (AU green) section ------------------------------------------- */
+.landing-dark {
+  background-color: var(--au-green);
+  color: #e7ebe3;
+}
+.landing-dark .landing-display {
+  color: #ffffff;
+}
+.landing-dark .landing-eyebrow {
+  color: var(--au-gold);
+}
+
+/* --- Ask field mock -------------------------------------------------- */
+.landing-ask {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.4rem 0.4rem 0.4rem 0.9rem;
+  box-shadow: 0 1px 2px rgb(20 61 30 / 0.05);
+}
+.landing-ask__input {
+  flex: 1;
+  color: var(--ink-faint);
+  font-size: 0.875rem;
+}
+.landing-ask__btn {
+  background: var(--au-green-bright);
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.landing-chip {
+  display: inline-block;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  background: #ffffff;
+}
+
+/* --- Status pills ---------------------------------------------------- */
+.landing-pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.landing-pill--solid {
+  background: var(--au-gold);
+  color: #241d04;
+}
+.landing-pill--outline {
+  border: 1px solid rgb(217 165 32 / 0.5);
+  color: var(--au-gold);
+}
+
+/* --- Governance list ----------------------------------------------- */
+.landing-gov-item {
+  border-inline-start: 2px solid var(--au-green-bright);
+  padding-inline-start: 1rem;
+}
+
+/* --- CTA buttons -------------------------------------------------------- */
+.landing-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 0.7rem 1.25rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  transition: opacity 150ms ease;
+}
+.landing-btn:hover {
+  opacity: 0.9;
+}
+.landing-btn--gold {
+  background: var(--au-gold);
+  color: #241d04;
+}
+.landing-btn--outline-dark {
+  border: 1px solid var(--line);
+  color: var(--ink);
+  background: #ffffff;
+}
+.landing-btn--outline-light {
+  border: 1px solid rgb(231 235 227 / 0.4);
+  color: #ffffff;
+}
+
+.landing-navlink {
+  color: var(--ink-soft);
+  font-size: 0.8125rem;
+}
+.landing-navlink:hover {
+  color: var(--ink);
+}

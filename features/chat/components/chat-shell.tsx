@@ -20,6 +20,7 @@ import { WelcomeScreen } from "./welcome-screen";
 import { MessageThread } from "./message-thread";
 import { MessageComposer } from "./message-composer";
 import { DocPreviewPane } from "./doc-preview-pane";
+import { AUFlagBackdrop } from "./au-flag-backdrop";
 
 interface ChatShellProps {
   session?: Session;
@@ -186,9 +187,12 @@ export function ChatShell({ session, initialConvId }: ChatShellProps) {
   }, []);
 
   return (
-    <div className="flex h-full flex-1 overflow-hidden">
+    <div className="relative flex h-full flex-1 overflow-hidden">
+      {/* African Union member-state flags — decorative background */}
+      <AUFlagBackdrop />
+
       {/* Conversation + composer area */}
-      <div className="relative flex min-w-0 flex-1 flex-col">
+      <div className="relative z-10 flex min-w-0 flex-1 flex-col">
         {view === "welcome" && <WelcomeScreen userName={session?.user?.name} onSend={handleSend} />}
 
         {(view === "conversation" || view === "loading") && (

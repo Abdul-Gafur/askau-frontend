@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "flag-icons/css/flag-icons.min.css";
 @import "./tokens.css";
 @import "./themes.css";
 
@@ -227,7 +228,118 @@ h6 {
 }
 
 /* ============================================================
-   7. SCROLLBAR STYLING
+   7. NEW CHAT PAGE — AU BRAND GLOW
+   Soft single-color (AU green) aura around the centered
+   search field. Scoped to the new chat (welcome) screen only.
+   ============================================================ */
+.au-chat-glow {
+  --au-green: #0e591a;
+  /* Brighter tint of the brand green so the aura reads clearly on dark + light. */
+  --au-green-glow: #2fa347;
+}
+
+.au-chat-glow__aura {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 0;
+  width: min(190%, 72rem);
+  height: min(170%, 36rem);
+  translate: -50% -50%;
+  pointer-events: none;
+  filter: blur(56px);
+  opacity: 0.85;
+  background: radial-gradient(
+    ellipse 50% 50% at 50% 50%,
+    color-mix(in oklch, var(--au-green-glow) 95%, transparent) 0%,
+    color-mix(in oklch, var(--au-green-glow) 60%, transparent) 38%,
+    color-mix(in oklch, var(--au-green-glow) 22%, transparent) 62%,
+    transparent 80%
+  );
+}
+
+.dark .au-chat-glow__aura {
+  opacity: 0.9;
+}
+
+/* ============================================================
+   8. CHAT — AFRICAN UNION FLAGS BACKDROP
+   Decorative grid of AU member-state flags behind the chat
+   interface. Heavily blurred / desaturated / low-opacity and
+   masked through the centre so it never hurts readability.
+   ============================================================ */
+.au-flag-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  /* Keep the reading column clear: flags are visible toward the
+     edges and fade to nothing behind the messages / composer. */
+  -webkit-mask-image: radial-gradient(
+    ellipse 62% 78% at 50% 46%,
+    transparent 0%,
+    transparent 34%,
+    rgba(0, 0, 0, 0.55) 68%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 62% 78% at 50% 46%,
+    transparent 0%,
+    transparent 34%,
+    rgba(0, 0, 0, 0.55) 68%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+}
+
+.au-flag-backdrop__grid {
+  position: absolute;
+  inset: -6%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+  grid-auto-rows: 58px;
+  gap: 14px;
+  transform: rotate(-8deg) scale(1.18);
+  transform-origin: center;
+  filter: saturate(0.7) blur(1.5px);
+  opacity: 0.08;
+}
+
+.dark .au-flag-backdrop__grid {
+  filter: saturate(0.75) brightness(0.9) blur(1.5px);
+  opacity: 0.14;
+}
+
+.au-flag-backdrop__flag {
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  background-size: cover;
+  box-shadow: none;
+}
+
+@media (max-width: 640px) {
+  .au-flag-backdrop__grid {
+    grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+    grid-auto-rows: 44px;
+    gap: 10px;
+    opacity: 0.07;
+  }
+
+  .dark .au-flag-backdrop__grid {
+    opacity: 0.12;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .au-flag-backdrop__grid {
+    transform: scale(1.05);
+  }
+}
+
+/* ============================================================
+   9. SCROLLBAR STYLING
    ============================================================ */
 ::-webkit-scrollbar {
   width: 6px;

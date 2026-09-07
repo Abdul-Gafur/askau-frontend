@@ -25,7 +25,12 @@ export function WelcomeScreen({ onSend, userName }: WelcomeScreenProps) {
         {t("welcomeSubtitle")}
       </p>
 
-      <MessageComposer onSend={onSend} floating />
+      <div className="au-chat-glow relative w-full max-w-2xl">
+        <span className="au-chat-glow__aura" aria-hidden="true" />
+        <div className="relative z-[1]">
+          <MessageComposer onSend={onSend} floating />
+        </div>
+      </div>
 
       <div className="mt-12 grid w-full grid-cols-1 gap-3 text-left sm:grid-cols-2">
         {SUGGESTED_PROMPT_KEYS.map((key) => {

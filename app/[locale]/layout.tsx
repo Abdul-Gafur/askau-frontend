@@ -7,6 +7,7 @@ import { QueryProvider } from "@/components/ui/query-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { siteConfig } from "@/config/site";
 import { getLocaleDir } from "@/i18n/config";
+import "flag-icons/css/flag-icons.min.css";
 import "@/styles/globals.css";
 
 export const metadata: Metadata = {

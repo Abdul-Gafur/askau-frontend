@@ -112,5 +112,6 @@
     "archive": "Archive",
     "delete": "Delete"
   },
-  "welcomeHeading": "Hi {name} let's get into it."
+  "welcomeHeading": "Hi {name} let's get into it.",
+  "welcomeHeadingAnonymous": "Hi, let's get into it."
 }

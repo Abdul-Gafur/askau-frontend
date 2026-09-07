@@ -112,5 +112,6 @@
     "archive": "Archiver",
     "delete": "Supprimer"
   },
-  "welcomeHeading": "Salut {name}, allons-y."
+  "welcomeHeading": "Salut {name}, allons-y.",
+  "welcomeHeadingAnonymous": "Salut, allons-y."
 }

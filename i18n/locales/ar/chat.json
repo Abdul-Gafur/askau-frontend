@@ -112,5 +112,6 @@
     "archive": "أرشفة",
     "delete": "حذف"
   },
-  "welcomeHeading": "مرحباً {name}، لنبدأ."
+  "welcomeHeading": "مرحباً {name}، لنبدأ.",
+  "welcomeHeadingAnonymous": "مرحباً، لنبدأ."
 }

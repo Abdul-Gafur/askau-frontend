@@ -112,5 +112,6 @@
     "archive": "Arquivar",
     "delete": "Eliminar"
   },
-  "welcomeHeading": "Olá {name}, vamos começar."
+  "welcomeHeading": "Olá {name}, vamos começar.",
+  "welcomeHeadingAnonymous": "Olá, vamos começar."
 }

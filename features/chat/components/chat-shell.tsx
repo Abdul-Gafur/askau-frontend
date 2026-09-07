@@ -247,7 +247,12 @@ export function ChatShell({ session, initialConvId }: ChatShellProps) {
 
       {/* Conversation + composer area */}
       <div className="relative z-10 flex min-w-0 flex-1 flex-col">
-        {view === "welcome" && <WelcomeScreen userName={session?.user?.name} onSend={handleSend} />}
+        {view === "welcome" && (
+          <WelcomeScreen
+            userName={session?.user?.displayName ?? session?.user?.name}
+            onSend={handleSend}
+          />
+        )}
 
         {(view === "conversation" || view === "loading") && (
           <>

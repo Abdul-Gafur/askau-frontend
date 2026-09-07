@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
 
@@ -134,6 +135,14 @@ export function LandingPage() {
       {/* Header */}
       <header className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
         <div className="flex items-center gap-3">
+          <Image
+            src="/au-emblem.png"
+            alt="African Union emblem"
+            width={250}
+            height={225}
+            priority
+            className="h-10 w-auto"
+          />
           <span className="landing-display text-xl font-semibold">Ask AU</span>
           <span aria-hidden="true" className="hidden h-4 w-px bg-[var(--line)] sm:block" />
           <span className="hidden text-[0.6875rem] tracking-wide text-[var(--ink-faint)] uppercase sm:inline">
@@ -319,7 +328,7 @@ export function LandingPage() {
 
       {/* Footer */}
       <footer className="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-8 text-[0.75rem] text-[var(--ink-faint)] md:flex-row md:items-center md:justify-between">
-        <p>Ask AU — an enterprise AI orchestration platform for the African Union Commission</p>
+        <p>AskAU — an enterprise AI orchestration platform for the African Union Commission</p>
         <p>Management Information Systems Directorate</p>
       </footer>
     </div>
